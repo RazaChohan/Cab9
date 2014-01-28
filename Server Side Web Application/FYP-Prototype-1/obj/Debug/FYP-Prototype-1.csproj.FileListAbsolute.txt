@@ -1,0 +1,5 @@
+D:\FYP\Code\FYP-Prototype-1\FYP-Prototype-1\bin\FYP-Prototype-1.dll
+D:\FYP\Code\FYP-Prototype-1\FYP-Prototype-1\bin\FYP-Prototype-1.pdb
+D:\FYP\Code\FYP-Prototype-1\FYP-Prototype-1\obj\Debug\FYP-Prototype-1.dll
+D:\FYP\Code\FYP-Prototype-1\FYP-Prototype-1\obj\Debug\FYP-Prototype-1.pdb
+D:\FYP\Code\FYP-Prototype-1\FYP-Prototype-1\obj\Debug\FYP-Prototype-1.csprojResolveAssemblyReference.cache
