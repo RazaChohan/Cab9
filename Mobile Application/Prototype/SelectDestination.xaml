@@ -1,0 +1,80 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Prototype.SelectDestination"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    xmlns:Microsoft_Phone_Controls_Maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps" 
+    xmlns:GoogleTileSource="clr-namespace:googlemaps;assembly=googlemaps"
+    xmlns:MSPCMCore="clr-namespace:Microsoft.Phone.Controls.Maps.Core;assembly=Microsoft.Phone.Controls.Maps"
+    xmlns:telerikInput="clr-namespace:Telerik.Windows.Controls;assembly=Telerik.Windows.Controls.Input"
+    mc:Ignorable="d"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton x:Name="OK" IconUri="Images\appbar.check.png" IsEnabled="False" Text="OK" Click="LocateMEDone"/>
+            <shell:ApplicationBarIconButton x:Name="writeAddress" IconUri="Images\appbar.edit.png" IsEnabled="False" Text="Enter Destination" Click="Address_Click_1"/>
+            <shell:ApplicationBarIconButton x:Name="Help" IconUri="Images\questionmark.png" IsEnabled="False" Text="HELP" Click="AskHelp"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,12" Grid.ColumnSpan="2">
+            <TextBlock Text="Set Destination" Style="{StaticResource PhoneTextNormalStyle}" Margin="12,0" FontSize="36" TextAlignment="Center"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1">
+            <Grid Margin="0,-37,0,22">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="83*"/>
+                    <ColumnDefinition Width="158*"/>
+                </Grid.ColumnDefinitions>
+                <Microsoft_Phone_Controls_Maps:Map Name="googlemap" Hold="mapOnhold" Margin="8,10,0,-25" Center="29.4000,69.1833" ZoomLevel="5" CopyrightVisibility="Collapsed" LogoVisibility="Collapsed" ScaleVisibility="Visible" CredentialsProvider="ApBXPZf5IR94SLXE8nh5FYsb5WHKrH1XPY7428-EqQudseivcWhCROIJvGmtnkAV" Grid.ColumnSpan="2">
+                    <Microsoft_Phone_Controls_Maps:Map.Mode>
+                        <MSPCMCore:MercatorMode/>
+                    </Microsoft_Phone_Controls_Maps:Map.Mode>
+                    <Microsoft_Phone_Controls_Maps:MapTileLayer Name="street" Margin="0,14,10,-40" HorizontalAlignment="Right" Width="462">
+                        <Microsoft_Phone_Controls_Maps:MapTileLayer.TileSources>
+                            <GoogleTileSource:GoogleTile TileTypes="Street"/>
+                        </Microsoft_Phone_Controls_Maps:MapTileLayer.TileSources>
+                    </Microsoft_Phone_Controls_Maps:MapTileLayer>
+                </Microsoft_Phone_Controls_Maps:Map>
+
+            </Grid>
+        </Grid>
+
+        <Grid Grid.RowSpan="4" x:Name="ModePanel"  VerticalAlignment="Bottom" Height="220" Margin="0,0,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="texts" Background="#FF302D2D" Opacity="0.45">
+                <TextBlock x:Name="LatitudeTextBlock" FontSize="30" Margin="10,0,0,0"/>
+                <TextBlock x:Name="LongitudeTextBlock" FontSize="30" Margin="10,0,0,0"/>
+                <TextBlock x:Name="Address" FontSize="30" TextWrapping="Wrap" Padding="0,0,80,0" Margin="10,0,0,0"/>
+            </StackPanel>
+            <telerikInput:RadNumericUpDown x:Name="zzoom" HorizontalAlignment="Center" Height="70" Width="220"  ValueChanged="zzoom_ValueChanged"  MaxValue="30" MinValue="1" Value="16" IsEnabled="False" RenderTransformOrigin="0.5,0.5" Background="#FF302D2D" Opacity="0.45" VerticalAlignment="Center" Margin="328,75,-68,75" UseLayoutRounding="False" d:LayoutRounding="Auto">
+                <telerikInput:RadNumericUpDown.RenderTransform>
+                    <CompositeTransform Rotation="90"/>
+                </telerikInput:RadNumericUpDown.RenderTransform>
+            </telerikInput:RadNumericUpDown>
+        </Grid>
+
+
+    </Grid>
+
+</phone:PhoneApplicationPage>

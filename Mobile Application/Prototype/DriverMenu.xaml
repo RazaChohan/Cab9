@@ -1,0 +1,83 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Prototype.DriverMenu"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+  
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    xmlns:my="clr-namespace:System.Windows.Controls;assembly=WindowsPhoneWatermarkTextBoxControl">
+
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
+        <phone:Panorama HorizontalAlignment="Left" Height="758" Title="Driver Menu" VerticalAlignment="Top" Width="480" >
+            <phone:PanoramaItem CacheMode="{x:Null}" Header="Confirm Booking" Orientation="Horizontal">
+                <phone:PanoramaItem.RenderTransform>
+                    <TranslateTransform/>
+                </phone:PanoramaItem.RenderTransform>
+                <Grid Height="478"  Width="422" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Customer Location" VerticalAlignment="Top" Width="234"/>
+                    <TextBox x:Name="customerlocation" HorizontalAlignment="Left" Height="72" Margin="0,31,0,0" TextWrapping="Wrap" Text="Default Location" VerticalAlignment="Top" Width="402" IsReadOnly="True"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Top" Width="234"/>
+                    <TextBox HorizontalAlignment="Left" Height="72" Margin="0,135,0,0" TextWrapping="Wrap" Text="Default Destination" VerticalAlignment="Top" Width="402" IsReadOnly="True" RenderTransformOrigin="0.52,1.164"/>
+
+                    <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Time to Arrive"/>
+                    <TextBox HorizontalAlignment="Left" Height="72" Margin="0,236,0,0" TextWrapping="Wrap" Text="Default Time" VerticalAlignment="Top" Width="402" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
+
+                </Grid>
+
+            </phone:PanoramaItem>
+            <phone:PanoramaItem CacheMode="{x:Null}" Header="Navigation">
+                <phone:PanoramaItem.RenderTransform>
+                    <TranslateTransform/>
+                </phone:PanoramaItem.RenderTransform>
+                <Grid HorizontalAlignment="Left" Height="443" VerticalAlignment="Top" Width="419" Margin="0,0,0,-2">
+                    <maps:Map x:Name="mapWithMyLocation" HorizontalAlignment="Left" Margin="16,27,-13,0" VerticalAlignment="Top" Width="416" Height="249"/>
+                </Grid>
+
+            </phone:PanoramaItem>
+            <phone:PanoramaItem CacheMode="{x:Null}" Header="Road Block Alerts" FontSize="14" Orientation="Horizontal">
+                <phone:PanoramaItem.RenderTransform>
+                    <TranslateTransform/>
+                </phone:PanoramaItem.RenderTransform>
+                <Grid Height="478"  Width="422" VerticalAlignment="Top" HorizontalAlignment="Left">
+                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Road Block 1" VerticalAlignment="Top" Width="353" FontSize="48"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Road Block 2" VerticalAlignment="Top" Width="376" FontSize="48"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Road Block 3" FontSize="48"/>
+
+                </Grid>
+
+
+            </phone:PanoramaItem>
+
+        </phone:Panorama>
+
+        <!--ContentPanel - place additional content here-->
+    </Grid>
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.check.png" Text="Ok" Click="appBar_OnSave"/>
+            <shell:ApplicationBarIconButton IconUri="/Images/appbar.cancel.png" Text="Cancel" Click="appBar_OnCancel"/>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
+
+
+</phone:PhoneApplicationPage>

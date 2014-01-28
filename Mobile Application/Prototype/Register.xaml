@@ -1,0 +1,52 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Prototype.Register"
+   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:toolkit="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls.Toolkit"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:my="clr-namespace:System.Windows.Controls;assembly=WindowsPhoneWatermarkTextBoxControl" xmlns:maps="clr-namespace:Microsoft.Phone.Maps.Controls;assembly=Microsoft.Phone.Maps"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True">
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Text="Cab 9" Style="{StaticResource PhoneTextNormalStyle}" FontSize="22"/>
+            <TextBlock Text="Registration" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="10,10,14,-10">
+            <my:WatermarkTextBox x:Name="UserIdtxt" Height="72" Margin="-1,-9,0,541" WatermarkText="User ID" HorizontalAlignment="Left" Width="456" InputScope="LogOnName" />
+            <my:WatermarkTextBox x:Name="Passwordtxt" Height="72" Margin="-1,47,0,485" WatermarkText="Password" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />
+            <my:WatermarkTextBox x:Name="UserNametxt" Height="72" Margin="0,102,0,430" WatermarkText="User Name" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />
+            <my:WatermarkTextBox x:Name="Nictxt" Height="72" Margin="0,157,0,375" WatermarkText="NIC #" HorizontalAlignment="Left" Width="456" InputScope="Number" />
+            <my:WatermarkTextBox x:Name="emailtxt" Height="72" Margin="0,214,0,318" WatermarkText="Email Address" HorizontalAlignment="Left" Width="456" InputScope="EmailUserName" />
+            <my:WatermarkTextBox x:Name="phnetxt" Height="72" Margin="0,271,0,261" WatermarkText="Contact Number" HorizontalAlignment="Left" Width="456" InputScope="TelephoneNumber" />
+            <my:WatermarkTextBox x:Name="adresstxt" Height="72" Margin="0,326,0,206" WatermarkText="Address" HorizontalAlignment="Left" Width="456" InputScope="AddressCountryName" />
+            <toolkit:ListPicker FullModeItemTemplate="{Binding lpkFullItemTemplate}"
+                 ItemTemplate="{Binding lpkItemTemplate}"
+                x:Name="user" Margin="10,389,10,-365">
+            </toolkit:ListPicker>
+
+            <Button Content="Register" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,502,0,0" Width="185" Click="Button_Click" RenderTransformOrigin="0.469,-0.581"/>
+
+        </Grid>
+        
+    </Grid>
+    
+
+</phone:PhoneApplicationPage>
+    
