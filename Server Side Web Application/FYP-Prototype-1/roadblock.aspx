@@ -164,7 +164,7 @@
         <br />
         <div id="page">
             <div id="leftcolumn">
-            <asp:TreeView ID="SampleTreeView" runat="server" Width="209px" Height="114px" style="margin-top: 5px" ForeColor="White">
+            <asp:TreeView ID="SampleTreeView" runat="server" Width="209px" Height="114px" style="margin-top: 5px" ForeColor="White" OnSelectedNodeChanged="SampleTreeView_SelectedNodeChanged">
                 <Nodes>
                     <asp:TreeNode Value="Home" Text="Home">
                          </asp:TreeNode>

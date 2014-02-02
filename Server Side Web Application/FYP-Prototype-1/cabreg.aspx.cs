@@ -5,6 +5,8 @@ using System.Web;
 using System.Data.SqlClient;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+
 
 namespace FYP_Prototype_1
 {
@@ -25,7 +27,7 @@ namespace FYP_Prototype_1
             if (length == 14)
             {
                 SqlCommand cmd;
-                SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\FYP-Prototype-1\FYP-Prototype-1\FYP-Prototype-1\App_Data\stats.mdf;Integrated Security=True");
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 con.Open();
                 cmd = new SqlCommand("Select Cab_ChassisNum,Cab_RegNo From Cab where Cab_ChassisNum='" + TextBox2.Text + "' AND Cab_RegNo='" + TextBox1.Text + "'", con);
                 SqlDataReader read = cmd.ExecuteReader();

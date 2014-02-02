@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace FYP_Prototype_1
 {
@@ -18,7 +19,8 @@ namespace FYP_Prototype_1
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            SqlConnection sqlConn = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\walee_000\Desktop\Web-Prototype\FYP-Prototype-1\FYP-Prototype-1\FYP-Prototype-1\App_Data\stats.mdf;Integrated Security=True");
+            string ConnectionString = ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString();
+            SqlConnection sqlConn = new SqlConnection(ConnectionString);
             SqlDataAdapter ad = new SqlDataAdapter();
             sqlConn.Open();
             SqlCommand cmd = new SqlCommand("SELECT * from Admin where Admin_Name= '" + TextBox1.Text + "' And Admin_Password= '" + TextBox2.Text + "'", sqlConn);
@@ -34,10 +36,6 @@ namespace FYP_Prototype_1
                 Label3.Visible = true;
                 Label3.Text = "Invalid Username or Password!!!";
             }
-            //if (TextBox1.Text == "RadioCab" && TextBox2.Text == "radiocab")
-            //{
-            //    Response.Redirect("dashboard.aspx");
-            //}
         }
     }
 }

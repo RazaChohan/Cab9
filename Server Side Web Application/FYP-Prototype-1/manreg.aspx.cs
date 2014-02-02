@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace FYP_Prototype_1
 {
@@ -22,7 +23,7 @@ namespace FYP_Prototype_1
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = @"Server=(localdb)\v11.0;Integrated Security=true;AttachDbFileName=D:\FYP\CODE\FYP-PROTOTYPE-1\FYP-PROTOTYPE-1\APP_DATA\STATS.MDF;";
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString();
             conn.Open();
 
             //OleDbConnection conn = new OleDbConnection();

@@ -16,5 +16,10 @@ namespace FYP_Prototype_1
                 Response.Redirect("Index.aspx");
             }
         }
+
+        protected void SampleTreeView_SelectedNodeChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

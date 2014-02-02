@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace FYP_Prototype_1
 {
@@ -17,7 +18,7 @@ namespace FYP_Prototype_1
             {
                 Response.Redirect("Index.aspx");
             }
-            SqlConnection con = new SqlConnection(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=D:\FYP\FYP-Prototype-1\FYP-Prototype-1\FYP-Prototype-1\App_Data\stats.mdf;Integrated Security=True");
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("Select * from Driver", con);
             DataSet ds = new DataSet();
