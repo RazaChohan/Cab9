@@ -19,14 +19,9 @@ namespace FYP_Prototype_1
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString();
-            SqlConnection sqlConn = new SqlConnection(ConnectionString);
-            SqlDataAdapter ad = new SqlDataAdapter();
-            sqlConn.Open();
-            SqlCommand cmd = new SqlCommand("SELECT * from Admin where Admin_Name= '" + TextBox1.Text + "' And Admin_Password= '" + TextBox2.Text + "'", sqlConn);
-            SqlDataReader reader = cmd.ExecuteReader();
+            DbOperations obj = new DbOperations();
 
-            if (reader.Read())
+            if (obj.AuthenticateUser(TextBox1.Text,TextBox2.Text))
             {
                 Session["uname"] = TextBox1.Text;
                 Response.Redirect("dashboard.aspx");

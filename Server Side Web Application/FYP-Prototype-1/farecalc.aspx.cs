@@ -21,7 +21,7 @@ namespace FYP_Prototype_1
         {
             string dist = txtBox1.Text;
             int distance = Convert.ToInt32(dist);
-            int tfare = (distance / 25) * 10;
+            int tfare = (distance / 25);
             Label2.Text = "Total Fare is:  Rs/=" + tfare.ToString();
             Label2.Visible = true;
         }
