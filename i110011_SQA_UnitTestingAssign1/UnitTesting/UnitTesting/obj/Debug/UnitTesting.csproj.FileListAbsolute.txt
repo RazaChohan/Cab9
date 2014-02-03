@@ -6,3 +6,6 @@ C:\Users\walee_000\Desktop\UnitTesting\UnitTesting\bin\Debug\nunit.mocks.dll
 C:\Users\walee_000\Desktop\UnitTesting\UnitTesting\bin\Debug\nunit.framework.xml
 C:\Users\walee_000\Desktop\UnitTesting\UnitTesting\obj\Debug\UnitTesting.exe
 C:\Users\walee_000\Desktop\UnitTesting\UnitTesting\obj\Debug\UnitTesting.pdb
+C:\Users\walee_000\Documents\cab9fyp\i110011_SQA_UnitTestingAssign1\UnitTesting\UnitTesting\bin\Debug\UnitTesting.exe.config
+C:\Users\walee_000\Documents\cab9fyp\i110011_SQA_UnitTestingAssign1\UnitTesting\UnitTesting\obj\Debug\UnitTesting.exe
+C:\Users\walee_000\Documents\cab9fyp\i110011_SQA_UnitTestingAssign1\UnitTesting\UnitTesting\obj\Debug\UnitTesting.pdb
