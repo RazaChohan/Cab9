@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>RadioCab Travel Central</title>
+    <title>Cab 9</title>
     <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
     <style>
 		* { margin: 0; padding: 0; }
@@ -48,6 +48,8 @@
     <div id="page">
         <center>
             <asp:Label ID="Label1" runat="server" Text="Cab Registration" Font-Size="XX-Large" ForeColor="White"></asp:Label>
+            <br />
+            <a href="cabs.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">View All Cabs</a>
         </center>
     </div>
         <br />
@@ -56,36 +58,44 @@
                 <table>
                     <tr><td>
                         <asp:Label ID="Label2" runat="server" ForeColor="White" Text="Registration Number"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td><td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td><td><asp:TextBox ID="RegistrationNumberTextBox" runat="server" Width="150px"></asp:TextBox></td><td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="RegistrationNumberTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td></tr>
                     <tr><td>
                         <asp:Label ID="Label3" runat="server" ForeColor="White" Text="Chassis Number"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></td><td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td><td><asp:TextBox ID="ChassisNumberTextBox" runat="server" Width="150px"></asp:TextBox></td><td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="ChassisNumberTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td></tr>
                     <tr><td class="auto-style1">
                         <asp:Label ID="Label4" runat="server" ForeColor="White" Text="Make"></asp:Label>
-                        </td><td class="auto-style1"><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></td><td class="auto-style1">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="TextBox3" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td><td class="auto-style1">
+                            <asp:DropDownList ID="MakeDropDown" runat="server"  Width="150px">
+                                <asp:ListItem>Toyota</asp:ListItem>
+                                <asp:ListItem>Nissan</asp:ListItem>
+                                <asp:ListItem>Suzuki</asp:ListItem>
+                                <asp:ListItem>Hyundai</asp:ListItem>
+                                <asp:ListItem>Kia</asp:ListItem>
+                                <asp:ListItem>Daihatsu</asp:ListItem>
+                                <asp:ListItem></asp:ListItem>
+                                <asp:ListItem>Honda</asp:ListItem>
+                            </asp:DropDownList>
+                        </td><td class="auto-style1">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="MakeDropDown" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td></tr>
                     <tr><td class="auto-style2">
                         <asp:Label ID="Label5" runat="server" ForeColor="White" Text="Model"></asp:Label>
-                        </td><td class="auto-style2"><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></td><td class="auto-style2">
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="TextBox4" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
-                        </td></tr>
-                    <tr><td>
-                        <asp:Label ID="Label6" runat="server" ForeColor="White" Text="Status"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></td><td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox5" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
-                        </td></tr>
+                        </td><td class="auto-style2">
+                            <asp:TextBox ID="ModelTextBox" runat="server" Width="150px"></asp:TextBox>
+                        </td><td class="auto-style2">
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="ModelTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     <tr><td>
                         <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Color"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></td><td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="TextBox6" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td><td><asp:TextBox ID="ColorTextBox" runat="server" Width="150px"></asp:TextBox></td><td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="ColorTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td></tr>
-                    <tr><td colspan="3"><center><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/s_button.png" Height="40px" Width="138px" OnClick="ImageButton1_Click"></asp:ImageButton></center></td></tr>
-                    <tr><td colspan="3" style="text-align:center"><asp:Label ID="Label8" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="X-Large"></asp:Label></td></tr>
+                    <tr><td colspan="3"><center><br /><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/s_button.png" Height="40px"  Width="150px" OnClick="ImageButton1_Click"></asp:ImageButton></center></td></tr>
+                    <tr><td colspan="3" style="text-align:center"><br/><asp:Label ID="Label8" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="Large"></asp:Label></td></tr>
                 </table>
             </center>
         </div>

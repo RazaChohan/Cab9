@@ -59,6 +59,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminDashboard.aspx" />
     <Content Include="App_Data\stats.mdf" />
     <Content Include="App_Data\stats_log.ldf">
       <DependentUpon>stats.mdf</DependentUpon>
@@ -93,6 +94,7 @@
     <Content Include="images\avatar.jpg" />
     <Content Include="images\Google Maps - Copy.jpg" />
     <Content Include="images\Google-Maps-Location.png" />
+    <Content Include="images\taxi-128.png" />
     <Content Include="Index.aspx" />
     <Content Include="manreg.aspx" />
     <Content Include="roadblock.aspx" />
@@ -100,6 +102,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminDashboard.aspx.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminDashboard.aspx.designer.cs">
+      <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="cabreg.aspx.cs">
       <DependentUpon>cabreg.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
-    <title>RadioCab Travel Central</title>
+    <title>Cab 9</title>
     <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
     <style>
 		* { margin: 0; padding: 0; }
@@ -43,6 +43,8 @@
         <center>
             
             <asp:Label ID="Label1" runat="server" Font-Size="XX-Large" ForeColor="White" Text="Driver Registration"></asp:Label>
+            <br />
+            <a href="drivers.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">View All Drivers</a>
             
         </center>
     </div>
@@ -51,24 +53,82 @@
             <center>
                 <table>
                     <tr><td>
-                        <asp:Label ID="Label2" runat="server" ForeColor="White" Text="ID"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox1" runat="server"></asp:TextBox></td></tr>
+                        <asp:Label ID="Label2" runat="server" ForeColor="White" Text="Driver Name"></asp:Label>
+                        </td><td><asp:TextBox ID="NameTextBox" runat="server" Width="150px"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="NameTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr><td>
-                        <asp:Label ID="Label3" runat="server" ForeColor="White" Text="NIC"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox2" runat="server"></asp:TextBox></td></tr>
+                        <asp:Label ID="Label3" runat="server" ForeColor="White" Text="Password"></asp:Label>
+                        </td><td><asp:TextBox ID="PasswordTextBox" runat="server" Width="150px" TextMode="Password"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="PasswordTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr><td>
-                        <asp:Label ID="Label4" runat="server" ForeColor="White" Text="Address"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox3" runat="server"></asp:TextBox></td></tr>
+                        <asp:Label ID="Label4" runat="server" ForeColor="White" Text="Email"></asp:Label>
+                        </td><td><asp:TextBox ID="EmailTextBox" runat="server" Width="150px"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr><td>
-                        <asp:Label ID="Label5" runat="server" ForeColor="White" Text="Phone"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox4" runat="server"></asp:TextBox></td></tr>
+                        <asp:Label ID="Label5" runat="server" ForeColor="White" Text="Phone Number"></asp:Label>
+                        </td><td><asp:TextBox ID="PhoneNumberTextBox" runat="server" Width="150px"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="PhoneNumberTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr><td>
-                        <asp:Label ID="Label6" runat="server" ForeColor="White" Text="Dependants"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox5" runat="server"></asp:TextBox></td></tr>
+                        <asp:Label ID="Label6" runat="server" ForeColor="White" Text="NIC"></asp:Label>
+                        </td><td><asp:TextBox ID="NICTextBox" runat="server" Width="150px"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="NICTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
                     <tr><td>
-                        <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Availibility"></asp:Label>
-                        </td><td><asp:TextBox ID="TextBox6" runat="server"></asp:TextBox></td></tr>
-                    <tr><td colspan="2"><center><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/s_button.png" OnClick="ImageButton1_Click1"></asp:ImageButton></center></td></tr>
+                        <asp:Label ID="Label7" runat="server" ForeColor="White" Text="Address"></asp:Label>
+                        </td><td><asp:TextBox ID="AddressTextBox" runat="server" Width="150px"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="AddressTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label8" runat="server" ForeColor="White" Text="Gender"></asp:Label></td>
+                        <td><asp:DropDownList ID="GenderDropDown" runat="server" Width="150px">
+                            <asp:ListItem>Male</asp:ListItem>
+                            <asp:ListItem>Female</asp:ListItem>
+                            </asp:DropDownList></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="GenderDropDown" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label9" runat="server" ForeColor="White" Text="Age"></asp:Label></td>
+                        <td><asp:TextBox ID="AgeTextBox" runat="server" Width="150px" OnTextChanged="AgeTextBox_TextChanged"></asp:TextBox></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="AgeTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label10" runat="server" ForeColor="White" Text="Profile Photo"></asp:Label></td>
+                        <td><asp:FileUpload ID="ImageUploadToDB" Width="150px" runat="server" ForeColor="White" /></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="ImageUploadToDB" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><asp:Label ID="Label11" runat="server" ForeColor="White" Text="Cab"></asp:Label></td>
+                        <td><asp:DropDownList ID="CabDropDown" runat="server" Width="150px"></asp:DropDownList></td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="CabDropDown" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
+                    </tr>
+                    <tr><td colspan="3"><center><br/><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/s_button.png" OnClick="ImageButton1_Click1"></asp:ImageButton></center></td></tr>
+                    <tr>
+                        <td colspan="3"><asp:Label ID="WarningLabel" runat="server" Text="Label" Visible="False" ForeColor="White" Font-Size="Large"></asp:Label></td>
+                    </tr>
                 </table>
             </center>
         </div>

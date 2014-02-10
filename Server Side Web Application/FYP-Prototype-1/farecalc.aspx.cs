@@ -38,7 +38,7 @@ namespace FYP_Prototype_1
 
         protected void ImageButton3_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("dashboard.aspx");
+            Response.Redirect("AdminDashboard.aspx");
         }
 
         protected void ImageButton4_Click(object sender, ImageClickEventArgs e)

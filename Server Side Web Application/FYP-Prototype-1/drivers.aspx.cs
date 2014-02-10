@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("Select * from Driver", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT [Driver_Name] as Name, [Driver_PhNum] as 'Phone Number'  FROM [Driver]", con);
             DataSet ds = new DataSet();
             da.Fill(ds);
             GridView1.DataSource = ds;
@@ -69,7 +69,7 @@ namespace FYP_Prototype_1
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("dashboard.aspx");
+            Response.Redirect("AdminDashboard.aspx");
         }
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
@@ -91,6 +91,12 @@ namespace FYP_Prototype_1
         protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
         {
             Response.Redirect("roadblock.aspx");
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session["DriverDetailsName"] = GridView1.SelectedRow.Cells[1].Text;
+            Response.Redirect("ddetails.aspx");
         }
     }
 }

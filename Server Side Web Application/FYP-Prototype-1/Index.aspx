@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>RadioCab Travel Central</title>
+    <title>Cab 9</title>
     <link type="text/css" rel="stylesheet" href="css/stylesheet.css" />
     <style>
 		* { margin: 0; padding: 0; }

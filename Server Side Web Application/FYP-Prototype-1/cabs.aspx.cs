@@ -14,24 +14,18 @@ namespace FYP_Prototype_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //SqlCommand cmd;
-
-            ///////////////////////////////////////////
             if (Session["uname"] == null)
             {
                 Response.Redirect("Index.aspx");
             }
-            if(!IsPostBack)
-            {
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 con.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select * from Cab", con);
+                SqlDataAdapter da = new SqlDataAdapter("Select [Cab_ID] as 'ID',[Cab_RegNo] as 'Registration Number',[Cab_ChassisNum] as 'Chassis Number',[Cab_Make] as 'Make',[Cab_Model] as 'Model',[Cab_Status] as 'Availability Status',[Cab_Color] as 'Color',[Cab_AssignedDriver] as 'Driver Assignment' from Cab", con);
                 DataSet ds = new DataSet();
                 da.Fill(ds);
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
                 con.Close(); 
-            }
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -73,7 +67,8 @@ namespace FYP_Prototype_1
 
         protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("dashboard.aspx");
+            //Response.Redirect("dashboard.aspx");
+            Response.Redirect("AdminDashboard.aspx");
         }
 
         protected void ImageButton3_Click(object sender, ImageClickEventArgs e)

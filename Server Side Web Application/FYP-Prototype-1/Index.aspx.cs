@@ -24,7 +24,7 @@ namespace FYP_Prototype_1
             if (obj.AuthenticateUser(TextBox1.Text,TextBox2.Text))
             {
                 Session["uname"] = TextBox1.Text;
-                Response.Redirect("dashboard.aspx");
+                Response.Redirect("AdminDashboard.aspx");
             }
             else
             {

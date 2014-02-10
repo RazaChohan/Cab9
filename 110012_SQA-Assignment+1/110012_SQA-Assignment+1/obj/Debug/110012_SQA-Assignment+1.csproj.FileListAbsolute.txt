@@ -11,3 +11,4 @@ C:\Users\Raza\Desktop\110012_SQA-Assignment+1\110012_SQA-Assignment+1\bin\Debug\
 C:\Users\Raza\Desktop\110012_SQA-Assignment+1\110012_SQA-Assignment+1\bin\Debug\WP8AsyncWebClient.dll
 C:\Users\Raza\Desktop\110012_SQA-Assignment+1\110012_SQA-Assignment+1\bin\Debug\Newtonsoft.Json.xml
 C:\Users\Raza\Desktop\110012_SQA-Assignment+1\110012_SQA-Assignment+1\bin\Debug\WP8AsyncWebClient.pdb
+C:\Users\walee_000\Documents\cab9fyp\110012_SQA-Assignment+1\110012_SQA-Assignment+1\bin\Debug\110012_SQA-Assignment+1.exe.config
