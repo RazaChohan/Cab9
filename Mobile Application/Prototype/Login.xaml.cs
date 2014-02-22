@@ -18,20 +18,73 @@ namespace Prototype
             InitializeComponent();
             this.user.ItemsSource = users;
         }
+        private void AuthenticateReturnFunction(object sender, ServiceReference1.AuthenticateCustomerCompletedEventArgs e)
+        {
+            if (e.Result == "Allow")
+            {
+                MessageBox.Show("Welcome!");
+                NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+            }
+            else if (e.Result == "Reject")
+            {
+                MessageBox.Show("ERROR! Invalid username or password.");
+            }
+            else
+                MessageBox.Show(e.Result.ToString());
+
+        }
+
+        private void AuthenticateDriverReturnFunction(object sender, ServiceReference1.AuthenticateDriverCompletedEventArgs e)
+        {
+            if (e.Result == "Allow")
+            {
+                MessageBox.Show("Welcome!");
+                NavigationService.Navigate(new Uri("/DriverMenu.xaml", UriKind.Relative));
+            }
+            else if (e.Result == "Reject")
+            {
+                MessageBox.Show("ERROR! Invalid username or password.");
+            }
+            else
+                MessageBox.Show(e.Result.ToString());
+
+        }
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
             //MessageBox.Show(listPicker.SelectedItem.ToString());
-           if (user.SelectedItem.ToString() == "Customer")
+            if (user.SelectedItem.ToString() == "Customer")
             {
-                NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+                try
+                {
+                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                    clientfortesting.AuthenticateCustomerCompleted += new EventHandler<ServiceReference1.AuthenticateCustomerCompletedEventArgs>(AuthenticateReturnFunction);
+                    clientfortesting.AuthenticateCustomerAsync(usertxt.Text.ToString(), Password1.Password.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+
+                //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
             }
-          else if (user.SelectedItem.ToString() == "Driver")
+            else if (user.SelectedItem.ToString() == "Driver")
             {
-                NavigationService.Navigate(new Uri("/DriverMenu.xaml", UriKind.Relative));
+                try
+                {
+                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                    clientfortesting.AuthenticateDriverCompleted += new EventHandler<ServiceReference1.AuthenticateDriverCompletedEventArgs>(AuthenticateDriverReturnFunction);
+                    clientfortesting.AuthenticateDriverAsync(usertxt.Text.ToString(), Password1.Password.ToString());
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message.ToString());
+                }
+                
             }
 
-            //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
         }
 
         private void appBar_OnCancel(object sender, EventArgs e)

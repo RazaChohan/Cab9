@@ -29,19 +29,25 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="10,10,14,-10">
-            <my:WatermarkTextBox x:Name="UserIdtxt" Height="72" Margin="-1,-9,0,541" WatermarkText="User ID" HorizontalAlignment="Left" Width="456" InputScope="LogOnName" />
-            <my:WatermarkTextBox x:Name="Passwordtxt" Height="72" Margin="-1,47,0,485" WatermarkText="Password" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />
-            <my:WatermarkTextBox x:Name="UserNametxt" Height="72" Margin="0,102,0,430" WatermarkText="User Name" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />
-            <my:WatermarkTextBox x:Name="Nictxt" Height="72" Margin="0,157,0,375" WatermarkText="NIC #" HorizontalAlignment="Left" Width="456" InputScope="Number" />
-            <my:WatermarkTextBox x:Name="emailtxt" Height="72" Margin="0,214,0,318" WatermarkText="Email Address" HorizontalAlignment="Left" Width="456" InputScope="EmailUserName" />
-            <my:WatermarkTextBox x:Name="phnetxt" Height="72" Margin="0,271,0,261" WatermarkText="Contact Number" HorizontalAlignment="Left" Width="456" InputScope="TelephoneNumber" />
-            <my:WatermarkTextBox x:Name="adresstxt" Height="72" Margin="0,326,0,206" WatermarkText="Address" HorizontalAlignment="Left" Width="456" InputScope="AddressCountryName" />
+            <my:WatermarkTextBox x:Name="AgeTxt" Height="72" Margin="0,136,0,396" WatermarkText="Age" HorizontalAlignment="Left" Width="456" InputScope="LogOnName" />
+            <!--<my:WatermarkTextBox x:Name="Passwordtxt" Height="72" Margin="0,37,0,495" WatermarkText="Password" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />-->
+            
+            <my:WatermarkTextBox x:Name="UserNametxt" Height="72" Margin="0,-13,0,545" WatermarkText="User Name" HorizontalAlignment="Left" Width="456" InputScope="PersonalFullName" />
+            <my:WatermarkTextBox x:Name="Nictxt" Height="72" Margin="0,87,0,445" WatermarkText="NIC #" HorizontalAlignment="Left" Width="456" InputScope="Number" />
+            <my:WatermarkTextBox x:Name="emailtxt" Height="72" Margin="0,236,0,296" WatermarkText="Email Address" HorizontalAlignment="Left" Width="456" InputScope="EmailUserName" />
+            <my:WatermarkTextBox x:Name="phnetxt" Height="72" Margin="0,186,0,346" WatermarkText="Contact Number" HorizontalAlignment="Left" Width="456" InputScope="TelephoneNumber" />
+            <my:WatermarkTextBox x:Name="adresstxt" Height="72" Margin="0,286,0,246" WatermarkText="Address" HorizontalAlignment="Left" Width="456" InputScope="AddressCountryName" />
             <toolkit:ListPicker FullModeItemTemplate="{Binding lpkFullItemTemplate}"
                  ItemTemplate="{Binding lpkItemTemplate}"
-                x:Name="user" Margin="10,389,10,-365">
+                x:Name="Gender" Margin="10,358,10,-334">
+            </toolkit:ListPicker>
+            <toolkit:ListPicker FullModeItemTemplate="{Binding lpkFullItemTemplate}"
+                 ItemTemplate="{Binding lpkItemTemplate}"
+                x:Name="user" Margin="10,425,10,-401">
             </toolkit:ListPicker>
 
             <Button Content="Register" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,502,0,0" Width="185" Click="Button_Click" RenderTransformOrigin="0.469,-0.581"/>
+            <PasswordBox x:Name="PasswordTxt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,37,0,0" Width="456" />
 
         </Grid>
         

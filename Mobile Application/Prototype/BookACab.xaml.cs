@@ -14,6 +14,11 @@ using System.Device.Location; // Provides the GeoCoordinate class.
 using Windows.Devices.Geolocation; //Provides the Geocoordinate class.
 using System.Windows.Media;
 using System.Windows.Shapes;
+using System.ServiceModel;
+using System.ServiceModel.Channels;
+
+//using System.Web.Services;
+
 
 
 namespace Prototype
@@ -21,6 +26,12 @@ namespace Prototype
     public partial class BookACab : PhoneApplicationPage
     {
         String[] cab_types = { "Economy", "Executive" };
+
+        private void TestCallback(object sender, ServiceReference1.testCompletedEventArgs e)
+        {
+            MessageBox.Show(e.Result.ToString());
+            NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+        }
        
         public BookACab()
         {
@@ -49,6 +60,7 @@ namespace Prototype
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
+
             if (DestinationLocationtxt.Text =="" && currentLocationtxt.Text == "")
             {
                 MessageBox.Show("Select Destination and Current Location.");
@@ -75,10 +87,16 @@ namespace Prototype
             MessageBoxResult result = MessageBox.Show("Are you sure?", "", button);
             if (result == MessageBoxResult.OK)
             {
-                MessageBox.Show("Cab Booking Request Sent!" + "\n" + "Current Location: " + currentLocationtxt.Text + "\n" + "Destination: " + DestinationLocationtxt.Text + "\n" + "Cab Type: " + cab_type.SelectedItem.ToString());
-                NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+                ///////////////////////////
+                ServiceReference1.ServiceClient clientForTesting = new ServiceReference1.ServiceClient();
+                clientForTesting.testCompleted += new EventHandler<ServiceReference1.testCompletedEventArgs>(TestCallback);
+                clientForTesting.testAsync(currentLocationtxt.Text.ToString(),DestinationLocationtxt.Text.ToString());       
+                //////////////////////////                
+
+                //MessageBox.Show("Cab Booking Request Sent!" + "\n" + "Current Location: " + currentLocationtxt.Text + "\n" + "Destination: " + DestinationLocationtxt.Text + "\n" + "Cab Type: " + cab_type.SelectedItem.ToString());
 
             }
+            
         }
 
         private void appBar_OnCancel(object sender, EventArgs e)

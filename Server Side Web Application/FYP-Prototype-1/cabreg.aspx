@@ -76,7 +76,6 @@
                                 <asp:ListItem>Hyundai</asp:ListItem>
                                 <asp:ListItem>Kia</asp:ListItem>
                                 <asp:ListItem>Daihatsu</asp:ListItem>
-                                <asp:ListItem></asp:ListItem>
                                 <asp:ListItem>Honda</asp:ListItem>
                             </asp:DropDownList>
                         </td><td class="auto-style1">
