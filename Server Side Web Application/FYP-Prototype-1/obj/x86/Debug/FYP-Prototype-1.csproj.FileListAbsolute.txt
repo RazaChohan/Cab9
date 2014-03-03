@@ -26,3 +26,10 @@ C:\Users\walee_000\Documents\cab9fyp\Server Side Web Application\FYP-Prototype-1
 C:\Users\walee_000\Documents\cab9fyp\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.dll
 C:\Users\walee_000\Documents\cab9fyp\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.pdb
 C:\Users\walee_000\Documents\cab9fyp\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.csprojResolveAssemblyReference.cache
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\bin\FYP-Prototype-1.dll.config
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\bin\FYP-Prototype-1.dll
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\bin\FYP-Prototype-1.pdb
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.csprojResolveAssemblyReference.cache
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.dll
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.pdb
+C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\obj\x86\Debug\FYP-Prototype-1.dll.licenses

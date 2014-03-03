@@ -39,6 +39,9 @@
         <br />
         <div id="page">
             <center>
+                <asp:Button ID="EditButton" runat="server" Text="Edit Driver Details" OnClick="EditButton_Click"></asp:Button>
+                <br />
+                <br />
                 <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="250" Width="300px"></asp:Image><br /><br />
                 <table>
                     <tr>

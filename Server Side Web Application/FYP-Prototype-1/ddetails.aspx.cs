@@ -44,5 +44,10 @@ namespace FYP_Prototype_1
             CabNoLabel.Text = dt.Rows[0]["Cab_RegNo"].ToString();
             conn.Close();
         }
+
+        protected void EditButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("EditDriverDetails.aspx");
+        }
     }
 }

@@ -1,5 +1,9 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="drivers.aspx.cs" Inherits="FYP_Prototype_1.drivers" %>
 
+<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGridView" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -49,6 +53,9 @@
         <br />
         <div id="page">
             <center>
+                <br />
+                <br />
+                <br />
                 <asp:GridView ID="GridView1" runat="server" CellPadding="4" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand" ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged" AutoGenerateSelectButton="True">
                     <AlternatingRowStyle BackColor="White" />
                     <EditRowStyle BackColor="#2461BF" />
