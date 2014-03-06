@@ -27,10 +27,10 @@ namespace Prototype
     {
         String[] cab_types = { "Economy", "Executive" };
 
-        private void TestCallback(object sender, ServiceReference1.testCompletedEventArgs e)
+        private void TestCallback(object sender, ServiceReference1.CabBookingCompletedEventArgs e)
         {
             MessageBox.Show(e.Result.ToString());
-            NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+            //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
         }
        
         public BookACab()
@@ -77,21 +77,31 @@ namespace Prototype
                 return;
             }
             string Type = cab_type.SelectedItem.ToString();
-            DateTime obj = Convert.ToDateTime(datePicker.Value);
-            string Date = obj.ToString("dd-MM-yyyy");
-            obj = Convert.ToDateTime(timePicker.Value);
-            string Time = obj.ToString("hh:mm tt");
+            DateTime objDate = Convert.ToDateTime(datePicker.Value);
+            string Date = objDate.ToString("dd-MM-yyyy");
+            DateTime objTime = Convert.ToDateTime(timePicker.Value);
+            string Time = objTime.ToString("hh:mm tt");
+
+            DateTime BookingDateTime = new DateTime(objDate.Year, objDate.Month, objDate.Day,
+                          objTime.Hour, objTime.Minute, objTime.Second);
+            //DateTime current = DateTime.Now;
+
+            //MessageBox.Show(BookingDateTime.ToString("dd-MMM-yyy hh:mm:ss tt"));
+            //MessageBox.Show(current.ToString());
+
             MainPage.bookingData.SetPreferences(Date, Time, Type);
+
+            Booking bookingInstance = new Booking(currentLocationtxt.Text, DestinationLocationtxt.Text, BookingDateTime, Type);
 
             MessageBoxButton button = MessageBoxButton.OKCancel;// ("Are you sure?");
             MessageBoxResult result = MessageBox.Show("Are you sure?", "", button);
             if (result == MessageBoxResult.OK)
             {
-                ///////////////////////////
+                // ------------------------------- Remote call to web service (for booking) ----------------------------------
                 ServiceReference1.ServiceClient clientForTesting = new ServiceReference1.ServiceClient();
-                clientForTesting.testCompleted += new EventHandler<ServiceReference1.testCompletedEventArgs>(TestCallback);
-                clientForTesting.testAsync(currentLocationtxt.Text.ToString(),DestinationLocationtxt.Text.ToString());       
-                //////////////////////////                
+                clientForTesting.CabBookingCompleted += new EventHandler<ServiceReference1.CabBookingCompletedEventArgs>(TestCallback);
+                clientForTesting.CabBookingAsync(bookingInstance.BookingStatus, bookingInstance.BookingDateTime, bookingInstance.BookingOrigin, bookingInstance.BookingDestination, bookingInstance.BookingCabType);       
+                      
 
                 //MessageBox.Show("Cab Booking Request Sent!" + "\n" + "Current Location: " + currentLocationtxt.Text + "\n" + "Destination: " + DestinationLocationtxt.Text + "\n" + "Cab Type: " + cab_type.SelectedItem.ToString());
 

@@ -75,6 +75,7 @@
     <Content Include="ddetails.aspx" />
     <Content Include="driverreg.aspx" />
     <Content Include="drivers.aspx" />
+    <Content Include="EditCabDetails.aspx" />
     <Content Include="EditDriverDetails.aspx" />
     <Content Include="farecalc.aspx" />
     <Content Include="gifs\green.gif" />
@@ -161,6 +162,13 @@
     </Compile>
     <Compile Include="drivers.aspx.designer.cs">
       <DependentUpon>drivers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EditCabDetails.aspx.cs">
+      <DependentUpon>EditCabDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EditCabDetails.aspx.designer.cs">
+      <DependentUpon>EditCabDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="EditDriverDetails.aspx.cs">
       <DependentUpon>EditDriverDetails.aspx</DependentUpon>

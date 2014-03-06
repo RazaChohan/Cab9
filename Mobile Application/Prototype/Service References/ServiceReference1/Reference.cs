@@ -74,10 +74,15 @@ namespace Prototype.ServiceReference1 {
         
         Prototype.ServiceReference1.CompositeType EndGetDataUsingDataContract(System.IAsyncResult result);
         
-        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/test", ReplyAction="http://tempuri.org/IService/testResponse")]
-        System.IAsyncResult Begintest(string source, string destination, System.AsyncCallback callback, object asyncState);
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CalculateRoadDistance", ReplyAction="http://tempuri.org/IService/CalculateRoadDistanceResponse")]
+        System.IAsyncResult BeginCalculateRoadDistance(string Origin, string Destination, System.AsyncCallback callback, object asyncState);
         
-        string Endtest(System.IAsyncResult result);
+        double EndCalculateRoadDistance(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CabBooking", ReplyAction="http://tempuri.org/IService/CabBookingResponse")]
+        System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState);
+        
+        string EndCabBooking(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AuthenticateCustomer", ReplyAction="http://tempuri.org/IService/AuthenticateCustomerResponse")]
         System.IAsyncResult BeginAuthenticateCustomer(string username, string password, System.AsyncCallback callback, object asyncState);
@@ -134,11 +139,30 @@ namespace Prototype.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class testCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class CalculateRoadDistanceCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        public testCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        public CalculateRoadDistanceCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public double Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((double)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CabBookingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CabBookingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -205,11 +229,17 @@ namespace Prototype.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onGetDataUsingDataContractCompletedDelegate;
         
-        private BeginOperationDelegate onBegintestDelegate;
+        private BeginOperationDelegate onBeginCalculateRoadDistanceDelegate;
         
-        private EndOperationDelegate onEndtestDelegate;
+        private EndOperationDelegate onEndCalculateRoadDistanceDelegate;
         
-        private System.Threading.SendOrPostCallback ontestCompletedDelegate;
+        private System.Threading.SendOrPostCallback onCalculateRoadDistanceCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCabBookingDelegate;
+        
+        private EndOperationDelegate onEndCabBookingDelegate;
+        
+        private System.Threading.SendOrPostCallback onCabBookingCompletedDelegate;
         
         private BeginOperationDelegate onBeginAuthenticateCustomerDelegate;
         
@@ -280,7 +310,9 @@ namespace Prototype.ServiceReference1 {
         
         public event System.EventHandler<GetDataUsingDataContractCompletedEventArgs> GetDataUsingDataContractCompleted;
         
-        public event System.EventHandler<testCompletedEventArgs> testCompleted;
+        public event System.EventHandler<CalculateRoadDistanceCompletedEventArgs> CalculateRoadDistanceCompleted;
+        
+        public event System.EventHandler<CabBookingCompletedEventArgs> CabBookingCompleted;
         
         public event System.EventHandler<AuthenticateCustomerCompletedEventArgs> AuthenticateCustomerCompleted;
         
@@ -383,51 +415,105 @@ namespace Prototype.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult Prototype.ServiceReference1.IService.Begintest(string source, string destination, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.Begintest(source, destination, callback, asyncState);
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCalculateRoadDistance(string Origin, string Destination, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCalculateRoadDistance(Origin, Destination, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string Prototype.ServiceReference1.IService.Endtest(System.IAsyncResult result) {
-            return base.Channel.Endtest(result);
+        double Prototype.ServiceReference1.IService.EndCalculateRoadDistance(System.IAsyncResult result) {
+            return base.Channel.EndCalculateRoadDistance(result);
         }
         
-        private System.IAsyncResult OnBegintest(object[] inValues, System.AsyncCallback callback, object asyncState) {
-            string source = ((string)(inValues[0]));
-            string destination = ((string)(inValues[1]));
-            return ((Prototype.ServiceReference1.IService)(this)).Begintest(source, destination, callback, asyncState);
+        private System.IAsyncResult OnBeginCalculateRoadDistance(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string Origin = ((string)(inValues[0]));
+            string Destination = ((string)(inValues[1]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCalculateRoadDistance(Origin, Destination, callback, asyncState);
         }
         
-        private object[] OnEndtest(System.IAsyncResult result) {
-            string retVal = ((Prototype.ServiceReference1.IService)(this)).Endtest(result);
+        private object[] OnEndCalculateRoadDistance(System.IAsyncResult result) {
+            double retVal = ((Prototype.ServiceReference1.IService)(this)).EndCalculateRoadDistance(result);
             return new object[] {
                     retVal};
         }
         
-        private void OntestCompleted(object state) {
-            if ((this.testCompleted != null)) {
+        private void OnCalculateRoadDistanceCompleted(object state) {
+            if ((this.CalculateRoadDistanceCompleted != null)) {
                 InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
-                this.testCompleted(this, new testCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+                this.CalculateRoadDistanceCompleted(this, new CalculateRoadDistanceCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
             }
         }
         
-        public void testAsync(string source, string destination) {
-            this.testAsync(source, destination, null);
+        public void CalculateRoadDistanceAsync(string Origin, string Destination) {
+            this.CalculateRoadDistanceAsync(Origin, Destination, null);
         }
         
-        public void testAsync(string source, string destination, object userState) {
-            if ((this.onBegintestDelegate == null)) {
-                this.onBegintestDelegate = new BeginOperationDelegate(this.OnBegintest);
+        public void CalculateRoadDistanceAsync(string Origin, string Destination, object userState) {
+            if ((this.onBeginCalculateRoadDistanceDelegate == null)) {
+                this.onBeginCalculateRoadDistanceDelegate = new BeginOperationDelegate(this.OnBeginCalculateRoadDistance);
             }
-            if ((this.onEndtestDelegate == null)) {
-                this.onEndtestDelegate = new EndOperationDelegate(this.OnEndtest);
+            if ((this.onEndCalculateRoadDistanceDelegate == null)) {
+                this.onEndCalculateRoadDistanceDelegate = new EndOperationDelegate(this.OnEndCalculateRoadDistance);
             }
-            if ((this.ontestCompletedDelegate == null)) {
-                this.ontestCompletedDelegate = new System.Threading.SendOrPostCallback(this.OntestCompleted);
+            if ((this.onCalculateRoadDistanceCompletedDelegate == null)) {
+                this.onCalculateRoadDistanceCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCalculateRoadDistanceCompleted);
             }
-            base.InvokeAsync(this.onBegintestDelegate, new object[] {
-                        source,
-                        destination}, this.onEndtestDelegate, this.ontestCompletedDelegate, userState);
+            base.InvokeAsync(this.onBeginCalculateRoadDistanceDelegate, new object[] {
+                        Origin,
+                        Destination}, this.onEndCalculateRoadDistanceDelegate, this.onCalculateRoadDistanceCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndCabBooking(System.IAsyncResult result) {
+            return base.Channel.EndCabBooking(result);
+        }
+        
+        private System.IAsyncResult OnBeginCabBooking(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string BookingStatus = ((string)(inValues[0]));
+            System.DateTime BookingDateTime = ((System.DateTime)(inValues[1]));
+            string BookingOrigin = ((string)(inValues[2]));
+            string BookingDestination = ((string)(inValues[3]));
+            string BookingCabType = ((string)(inValues[4]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, callback, asyncState);
+        }
+        
+        private object[] OnEndCabBooking(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndCabBooking(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCabBookingCompleted(object state) {
+            if ((this.CabBookingCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CabBookingCompleted(this, new CabBookingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType) {
+            this.CabBookingAsync(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, null);
+        }
+        
+        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, object userState) {
+            if ((this.onBeginCabBookingDelegate == null)) {
+                this.onBeginCabBookingDelegate = new BeginOperationDelegate(this.OnBeginCabBooking);
+            }
+            if ((this.onEndCabBookingDelegate == null)) {
+                this.onEndCabBookingDelegate = new EndOperationDelegate(this.OnEndCabBooking);
+            }
+            if ((this.onCabBookingCompletedDelegate == null)) {
+                this.onCabBookingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCabBookingCompleted);
+            }
+            base.InvokeAsync(this.onBeginCabBookingDelegate, new object[] {
+                        BookingStatus,
+                        BookingDateTime,
+                        BookingOrigin,
+                        BookingDestination,
+                        BookingCabType}, this.onEndCabBookingDelegate, this.onCabBookingCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -628,17 +714,34 @@ namespace Prototype.ServiceReference1 {
                 return _result;
             }
             
-            public System.IAsyncResult Begintest(string source, string destination, System.AsyncCallback callback, object asyncState) {
+            public System.IAsyncResult BeginCalculateRoadDistance(string Origin, string Destination, System.AsyncCallback callback, object asyncState) {
                 object[] _args = new object[2];
-                _args[0] = source;
-                _args[1] = destination;
-                System.IAsyncResult _result = base.BeginInvoke("test", _args, callback, asyncState);
+                _args[0] = Origin;
+                _args[1] = Destination;
+                System.IAsyncResult _result = base.BeginInvoke("CalculateRoadDistance", _args, callback, asyncState);
                 return _result;
             }
             
-            public string Endtest(System.IAsyncResult result) {
+            public double EndCalculateRoadDistance(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("test", _args, result)));
+                double _result = ((double)(base.EndInvoke("CalculateRoadDistance", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[5];
+                _args[0] = BookingStatus;
+                _args[1] = BookingDateTime;
+                _args[2] = BookingOrigin;
+                _args[3] = BookingDestination;
+                _args[4] = BookingCabType;
+                System.IAsyncResult _result = base.BeginInvoke("CabBooking", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndCabBooking(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("CabBooking", _args, result)));
                 return _result;
             }
             

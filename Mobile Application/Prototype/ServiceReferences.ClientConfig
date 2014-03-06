@@ -9,7 +9,7 @@
             </basicHttpBinding>
         </bindings>
         <client>
-            <endpoint address="http://192.168.100.6/Cab9Service/Service.svc"
+            <endpoint address="http://192.168.0.105/Cab9Service/Service.svc"
                 binding="basicHttpBinding" bindingConfiguration="BasicHttpBinding_IService"
                 contract="ServiceReference1.IService" name="BasicHttpBinding_IService" />
         </client>

@@ -108,6 +108,7 @@
     <Compile Include="BookACab.xaml.cs">
       <DependentUpon>BookACab.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Booking.cs" />
     <Compile Include="CabBookingAttributes.cs" />
     <Compile Include="Cancel Booking.xaml.cs">
       <DependentUpon>Cancel Booking.xaml</DependentUpon>
@@ -231,13 +232,13 @@
     <None Include="Service References\ServiceReference1\Prototype.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ServiceReference1\Service.disco" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Service References\ServiceReference1\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <None Include="Service References\ServiceReference1\Service.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
     <None Include="Service References\ServiceReference1\Service.wsdl" />
     <None Include="Service References\ServiceReference1\Service.xsd">

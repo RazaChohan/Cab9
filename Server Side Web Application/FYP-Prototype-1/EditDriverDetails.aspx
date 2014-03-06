@@ -65,17 +65,25 @@
                             &nbsp&nbsp&nbsp&nbsp
                             <asp:TextBox ID="NameTextBox" runat="server" Width="200px"></asp:TextBox><br />
                         </td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="NameTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
+                    <br />
                     <tr>
                         <td>
                             <asp:Label ID="Label3" runat="server" Text="Password:" ForeColor="White"></asp:Label>
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                             <asp:TextBox ID="PasswordTextBox" runat="server" Width="200px" TextMode="Password"></asp:TextBox><br />
+                             <asp:TextBox ID="PasswordTextBox" runat="server" Width="200px"></asp:TextBox><br />
                 
                         </td>
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="PasswordTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
+                    <br />
                     <tr>
                         <td>
                             <asp:Label ID="Label4" runat="server" Text="Email ID:" ForeColor="White"></asp:Label>
@@ -84,6 +92,10 @@
                             &nbsp&nbsp&nbsp&nbsp
                             <asp:TextBox ID="EmailTextBox" runat="server" Width="200px"></asp:TextBox><br />
                 
+                        </td>
+                        
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="EmailTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -96,6 +108,10 @@
                             <br />
                 
                         </td>
+                        
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="PhoneNumberTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -106,6 +122,10 @@
                             <asp:TextBox ID="NICTextBox" runat="server" Width="200px"></asp:TextBox><br />
                 
                         </td>
+                        
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="NICTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                     <tr>
                         <td>
@@ -113,8 +133,12 @@
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                            <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Height="100px" Width="200px" ReadOnly="true"></asp:TextBox>
+                            <asp:TextBox ID="TextBox1" runat="server" TextMode="MultiLine" Height="100px" Width="200px"></asp:TextBox>
 
+                        </td>
+                        
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="TextBox1" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -136,12 +160,19 @@
                             <asp:TextBox ID="AgeTextBox" runat="server" Width="200px"></asp:TextBox>
                             <br />
                         </td>
+                        
+                        <td>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="AgeTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
                 </table>
                 
                <br />
                 <br />
-                <asp:Button ID="CommitChangesButton" runat="server" Text="Commit Changes"></asp:Button>
+                <asp:Button ID="CommitChangesButton" runat="server" Text="Update" OnClick="CommitChangesButton_Click"></asp:Button>
+                <br />
+                <br />
+                <asp:Label ID="WarningLabel" runat="server" Text="Label" Visible="false" ForeColor="White"></asp:Label>
             </center>
         </div>
     </form>

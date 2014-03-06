@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://192.168.100.6/Cab9Service/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
+  <xs:import schemaLocation="http://192.168.0.105/Cab9Service/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -29,18 +29,36 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="test">
+  <xs:element name="CalculateRoadDistance">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="source" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="destination" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Origin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Destination" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="testResponse">
+  <xs:element name="CalculateRoadDistanceResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="testResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CalculateRoadDistanceResult" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CabBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BookingStatus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BookingDateTime" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="BookingOrigin" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BookingDestination" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BookingCabType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CabBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CabBookingResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

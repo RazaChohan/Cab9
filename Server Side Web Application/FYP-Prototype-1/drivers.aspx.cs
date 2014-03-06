@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
             con.Open();
-            SqlDataAdapter da = new SqlDataAdapter("SELECT [Driver_Name] as Name, [Driver_PhNum] as 'Phone Number'  FROM [Driver]", con);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT [Driver_Name] as 'Name', [Driver_PhNum] as 'Phone Number'  FROM [Driver]", con);
             DataSet ds = new DataSet();
             da.Fill(ds);
             GridView1.DataSource = ds;

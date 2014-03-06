@@ -58,6 +58,24 @@ namespace FYP_Prototype_1 {
         protected global::System.Web.UI.WebControls.Button EditButton;
         
         /// <summary>
+        /// DeleteDriverButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button DeleteDriverButton;
+        
+        /// <summary>
+        /// DeleteWarningLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label DeleteWarningLabel;
+        
+        /// <summary>
         /// DriverImage control.
         /// </summary>
         /// <remarks>

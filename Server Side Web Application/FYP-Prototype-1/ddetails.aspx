@@ -39,8 +39,11 @@
         <br />
         <div id="page">
             <center>
-                <asp:Button ID="EditButton" runat="server" Text="Edit Driver Details" OnClick="EditButton_Click"></asp:Button>
+                <asp:Button ID="EditButton" runat="server" Text="Edit Driver Details" OnClick="EditButton_Click" Width="125px"></asp:Button>
+                &nbsp&nbsp&nbsp&nbsp
+                <asp:Button ID="DeleteDriverButton" runat="server" Text="Retire Driver" Width="125px" OnClick="DeleteDriverButton_Click"></asp:Button>
                 <br />
+                <asp:Label ID="DeleteWarningLabel" runat="server" Text="Label" ForeColor="White" Visible="false"></asp:Label>
                 <br />
                 <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="250" Width="300px"></asp:Image><br /><br />
                 <table>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cdetails.aspx.cs" Inherits="FYP_Prototype_1.cdetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditCabDetails.aspx.cs" Inherits="FYP_Prototype_1.EditCabDetails" %>
 
 <!DOCTYPE html>
 
@@ -31,7 +31,7 @@
         <br />
     <div id="page">
         <center>
-           <asp:Label ID="Label1" runat="server" Text="Cab Details" ForeColor="White" Font-Size="XX-Large"></asp:Label>
+           <asp:Label ID="Label1" runat="server" Text="Edit Cab Details" ForeColor="White" Font-Size="XX-Large"></asp:Label>
             <br />
             <a href="cabs.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">View All Cabs</a>
         </center>
@@ -39,12 +39,6 @@
         <br />
         <div id="page">
             <center>
-                <asp:Button ID="EditCabDetailsButtons" runat="server" Text="Edit Cab Details" Width="125px" OnClick="EditCabDetailsButtons_Click"></asp:Button>
-                &nbsp&nbsp&nbsp&nbsp
-                <asp:Button ID="DeleteCabButton" runat="server" Text="Delete Cab" Width="125px" OnClick="DeleteCabButton_Click"></asp:Button>
-                <br />
-                <asp:Label ID="DeleteWarningLabel" runat="server" Text="Label" ForeColor="White" Visible="false"></asp:Label>
-                <br />
                 <br />
                 <table>
                     <tr>
@@ -53,7 +47,10 @@
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                            <asp:Label ID="RegNumberLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
+                            <asp:TextBox ID="RegistrationNumbertextBox" runat="server" Width="200px"></asp:TextBox><br />
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="RegistrationNumberTextBox" runat="server" ForeColor="White" ErrorMessage="* Required Field"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -62,17 +59,31 @@
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                            <asp:Label ID="ChassisNumLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
+                            <asp:TextBox ID="ChassisNumTextBox" runat="server" Width="200px"></asp:TextBox><br />
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ControlToValidate="ChassisNumTextBox" runat="server" ForeColor="White" ErrorMessage="* Required Field"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <asp:Label ID="Label3" runat="server" Text="Make:" ForeColor="White"></asp:Label>
                         </td>
+                        
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                             <asp:Label ID="MakeLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
-                
+                            <asp:DropDownList ID="MakeDropDown" runat="server"  Width="200px">
+                                <asp:ListItem>Toyota</asp:ListItem>
+                                <asp:ListItem>Nissan</asp:ListItem>
+                                <asp:ListItem>Suzuki</asp:ListItem>
+                                <asp:ListItem>Hyundai</asp:ListItem>
+                                <asp:ListItem>Kia</asp:ListItem>
+                                <asp:ListItem>Daihatsu</asp:ListItem>
+                                <asp:ListItem>Honda</asp:ListItem>
+                            </asp:DropDownList>
+                        </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ControlToValidate="MakeDropDown" runat="server" ForeColor="White" ErrorMessage="* Required Field"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -81,18 +92,11 @@
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                            <asp:Label ID="ModelLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
+                            <asp:TextBox ID="ModelTextBox" runat="server" Width="200px"></asp:TextBox><br />
                 
                         </td>
-                    </tr>
-                    <tr>
                         <td>
-                            <asp:Label ID="Label5" runat="server" Text="Status:" ForeColor="White"></asp:Label>
-                        </td>
-                        <td>
-                            &nbsp&nbsp&nbsp&nbsp
-                            <asp:Label ID="StatusLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
-                
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ControlToValidate="MakeDropDown" runat="server" ForeColor="White" ErrorMessage="* Required Field"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                     <tr>
@@ -101,10 +105,26 @@
                         </td>
                         <td>
                             &nbsp&nbsp&nbsp&nbsp
-                            <asp:Label ID="ColorLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
+                            <asp:TextBox ID="ColorTextBox" runat="server" Width="200px"></asp:TextBox><br />
                 
                         </td>
+                        <td>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator6" ControlToValidate="ColorTextBox" runat="server" ForeColor="White" ErrorMessage="* Required Field"></asp:RequiredFieldValidator>
+                        </td>
                     </tr>
+                    <tr>
+                        <td>
+                            <asp:Label ID="Label5" runat="server" Text="Status:" ForeColor="White"></asp:Label>
+                        </td>
+                        <td>
+                            &nbsp&nbsp&nbsp&nbsp
+                            <asp:Label ID="StatusLabel" runat="server" Text="Label" ForeColor="White"></asp:Label>
+                            <br />
+                
+                        </td>
+
+                    </tr>
+                    
                     <tr>
                         <td>
                             <asp:Label ID="Label7" runat="server" Text="Assigned Driver:" ForeColor="White"></asp:Label>
@@ -116,7 +136,12 @@
                     </tr>
                 </table>
                 
-               
+               <br />
+                <br />
+                <asp:Button ID="Button1" runat="server" Text="Update" OnClick="Button1_Click"></asp:Button>
+                <br />
+                <br />
+                <asp:Label ID="WarningLabel" runat="server" Text="Label" Visible="false" ForeColor="White"></asp:Label>
             </center>
         </div>
     </form>
