@@ -111,7 +111,7 @@ public class Service : IService
             if (result > 0)
             {
                 connection.Close();
-                string returnMessage = "Origin: " + BookingOrigin + "\nDestination: " + BookingDestination +"\nApproximate Distance: "+CalculateRoadDistance(BookingOrigin,BookingDestination)+ "\nEstimated Fare: PKR. " + CalculateFare(BookingOrigin,BookingDestination,BookingCabType,BookingDateTime).ToString() +"/-\nCab Type: "+BookingCabType+"\nBooking Time: "+BookingDateTime.ToString()+"\nBooking Status: Received!";
+                string returnMessage = "Origin: " + BookingOrigin + "\nDestination: " + BookingDestination +"\nApproximate Distance: "+CalculateRoadDistance(BookingOrigin,BookingDestination)+ "km\nEstimated Fare: PKR. " + CalculateFare(BookingOrigin,BookingDestination,BookingCabType,BookingDateTime).ToString() +"/-\nCab Type: "+BookingCabType+"\nBooking Time: "+BookingDateTime.ToString()+"\nBooking Status: Received!";
                 return returnMessage;
             }
             else

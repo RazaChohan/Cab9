@@ -93,10 +93,14 @@ namespace FYP_Prototype_1
             Response.Redirect("roadblock.aspx");
         }
 
-        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
             Session["DriverDetailsName"] = GridView1.SelectedRow.Cells[1].Text;
             Response.Redirect("ddetails.aspx");
         }
+
+        
     }
 }
