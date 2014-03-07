@@ -12,6 +12,7 @@ using System.Device.Location;
 using System.Windows.Shapes;
 using System.Windows.Media;
 using Microsoft.Phone.Maps.Controls;
+using Microsoft.Phone.Tasks;
 
 namespace Prototype
 {
@@ -26,35 +27,7 @@ namespace Prototype
         {
 
         }
-        private async void ShowMyLocationOnTheMap()
-        {
-
-            var geoLocator = new Geolocator();
-            var geoloc = await geoLocator.GetGeopositionAsync();
-            Geolocator myGeolocator = new Geolocator();
-            Geoposition myGeoposition = await myGeolocator.GetGeopositionAsync();
-            Geocoordinate myGeocoordinate = myGeoposition.Coordinate;
-            GeoCoordinate myGeoCoordinate = CoordinateConverter.ConvertGeocoordinate(myGeocoordinate);
-            this.mapWithMyLocation.Center = myGeoCoordinate;
-            this.mapWithMyLocation.ZoomLevel = 2;
-
-
-            Ellipse myCircle = new Ellipse();
-            myCircle.Fill = new SolidColorBrush(Colors.Blue);
-            myCircle.Height = 20;
-            myCircle.Width = 20;
-            myCircle.Opacity = 50;
-
-            MapOverlay myLocationOverlay = new MapOverlay();
-            myLocationOverlay.Content = myCircle;
-            myLocationOverlay.PositionOrigin = new Point(0.5, 0.5);
-            myLocationOverlay.GeoCoordinate = myGeoCoordinate;
-            MapLayer myLocationLayer = new MapLayer();
-            myLocationLayer.Add(myLocationOverlay);
-
-            mapWithMyLocation.Layers.Add(myLocationLayer);
-        }
-
+        
 
 
         private void appBar_OnSave(object sender, EventArgs e)
@@ -67,6 +40,13 @@ namespace Prototype
         {
          //   MessageBox.Show("Booking Order Rejected! "+"\n" + "State Reason For Rejection!" + "\n" + "Navigation Started!!!");
            
+        }
+
+        private void navigate_Click(object sender, RoutedEventArgs e)
+        {
+            WebBrowserTask task = new WebBrowserTask();
+            task.URL = "https://maps.google.com/maps?saddr=G-11+Islamabad+Service+Road+West&daddr=g-10+Markaz+Islamabad&hl=en&z=25";
+            task.Show();
         }
 
     }

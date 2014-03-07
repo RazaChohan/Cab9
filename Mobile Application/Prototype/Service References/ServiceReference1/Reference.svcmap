@@ -23,11 +23,19 @@
     <MetadataSource Address="http://192.168.1.14/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+<<<<<<< HEAD
     <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="5b3f4de2-3039-4faa-af9b-aa1c4ef270c8" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd0" />
     <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="53a8afa2-9b3d-409b-a6c1-33c42d58883a" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd2" />
     <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="393e3d05-19c6-439c-83d8-27f3516ce616" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd1" />
     <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="f5a6329a-8708-4d8b-96e7-9115ee68bbfb" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?disco" />
     <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="9da563b3-2a46-45d1-b31e-e31020f5695f" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?wsdl" />
+=======
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="fa7f1c7f-8711-4c49-86ee-5d402561f172" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="d6723a08-5e64-40f3-a08a-816b76db28f6" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="e38ff53e-5a3c-49f3-9f93-2623eeb44181" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="1a68781b-cb90-4f51-8ea5-9850d9b591ec" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="d5d19619-1acd-405c-b3f4-236caab08525" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?wsdl" />
+>>>>>>> cc7116e0f1c52a275379c250e937aee7673d106f
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

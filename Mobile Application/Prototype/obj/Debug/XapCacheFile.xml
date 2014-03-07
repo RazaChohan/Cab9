@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<xapCache source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Prototype_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="07-Mar-14 4:58:07 PM">
   <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\obj\Debug\Prototype.dll" archivePath="Prototype.dll" lastWriteTime="07-Mar-14 4:58:05 PM" />
   <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="07-Mar-14 4:51:56 PM" />
@@ -31,16 +32,52 @@
   <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\obj\Debug\googlemaps.dll" archivePath="googlemaps.dll" lastWriteTime="10-Dec-13 4:55:37 PM" />
   <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Microsoft.Advertising.Mobile.dll" archivePath="Microsoft.Advertising.Mobile.dll" lastWriteTime="22-Jul-13 2:24:06 PM" />
   <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\microsoft.advertising.mobile.ui.dll" archivePath="microsoft.advertising.mobile.ui.dll" lastWriteTime="22-Jul-13 2:24:06 PM" />
+=======
+﻿<xapCache source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Bin\Debug\Prototype_Debug_AnyCPU.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="07-Mar-14 8:19:45 PM">
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\obj\Debug\Prototype.dll" archivePath="Prototype.dll" lastWriteTime="07-Mar-14 8:19:42 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="07-Mar-14 8:19:40 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Google-Maps-Location.png" archivePath="Google-Maps-Location.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\appbar.add.png" archivePath="Images\appbar.add.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\appbar.cancel.png" archivePath="Images\appbar.cancel.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\appbar.cancel.rest.png" archivePath="Images\appbar.cancel.rest.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\appbar.check.png" archivePath="Images\appbar.check.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\appbar.edit.png" archivePath="Images\appbar.edit.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\cabwifi-logo-300x300-[Converted].jpg" archivePath="Images\cabwifi-logo-300x300-[Converted].jpg" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\cabwifi-logo-300x300.jpg" archivePath="Images\cabwifi-logo-300x300.jpg" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\edit.png" archivePath="Images\edit.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\feature.camera.png" archivePath="Images\feature.camera.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\feature.email.png" archivePath="Images\feature.email.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\locate.png" archivePath="Images\locate.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\questionmark.png" archivePath="Images\questionmark.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Images\sms.png" archivePath="Images\sms.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\README_FIRST.txt" archivePath="README_FIRST.txt" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Scripts\jquery-2.0.3.intellisense.js" archivePath="Scripts\jquery-2.0.3.intellisense.js" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Scripts\jquery-2.0.3.js" archivePath="Scripts\jquery-2.0.3.js" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Scripts\jquery-2.0.3.min.js" archivePath="Scripts\jquery-2.0.3.min.js" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Toolkit.Content\ApplicationBar.Add.png" archivePath="Toolkit.Content\ApplicationBar.Add.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Toolkit.Content\ApplicationBar.Cancel.png" archivePath="Toolkit.Content\ApplicationBar.Cancel.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Toolkit.Content\ApplicationBar.Check.png" archivePath="Toolkit.Content\ApplicationBar.Check.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Toolkit.Content\ApplicationBar.Delete.png" archivePath="Toolkit.Content\ApplicationBar.Delete.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Toolkit.Content\ApplicationBar.Select.png" archivePath="Toolkit.Content\ApplicationBar.Select.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="07-Mar-14 7:55:16 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Bin\Debug\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Bin\Debug\Background.png" archivePath="Background.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\FYPDLL'S\googlemaps.dll" archivePath="googlemaps.dll" lastWriteTime="10-Dec-13 4:55:37 PM" />
+  <file source="C:\FYPDLL'S\Microsoft.Advertising.Mobile.dll" archivePath="Microsoft.Advertising.Mobile.dll" lastWriteTime="22-Jul-13 2:24:06 PM" />
+  <file source="C:\FYPDLL'S\microsoft.advertising.mobile.ui.dll" archivePath="microsoft.advertising.mobile.ui.dll" lastWriteTime="22-Jul-13 2:24:06 PM" />
+>>>>>>> cc7116e0f1c52a275379c250e937aee7673d106f
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\Libraries\Microsoft.Phone.Controls.dll" archivePath="Microsoft.Phone.Controls.dll" lastWriteTime="01-Jan-13 6:57:00 PM" />
   <file source="C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v8.0\Libraries\Microsoft.Phone.Controls.Maps.dll" archivePath="Microsoft.Phone.Controls.Maps.dll" lastWriteTime="01-Jan-13 6:57:00 PM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\packages\WPtoolkit.4.2013.08.16\lib\wp8\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="24-Oct-13 1:30:28 AM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="05-Nov-13 1:46:27 PM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Telerik.Windows.Controls.Input.dll" archivePath="Telerik.Windows.Controls.Input.dll" lastWriteTime="16-Oct-13 10:59:14 AM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Telerik.Windows.Controls.Primitives.dll" archivePath="Telerik.Windows.Controls.Primitives.dll" lastWriteTime="16-Oct-13 10:59:06 AM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Telerik.Windows.Core.dll" archivePath="Telerik.Windows.Core.dll" lastWriteTime="16-Oct-13 10:59:02 AM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\WindowsPhoneWatermarkTextBoxControl.dll" archivePath="WindowsPhoneWatermarkTextBoxControl.dll" lastWriteTime="27-Oct-13 6:06:34 PM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\packages\WP8AsyncWebClient.1.0.1\lib\wp8\WP8AsyncWebClient.dll" archivePath="WP8AsyncWebClient.dll" lastWriteTime="05-Nov-13 12:55:15 PM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="25-Sep-12 1:41:02 AM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\packages\Newtonsoft.Json.5.0.8\lib\portable-net45+wp80+win8\Newtonsoft.Json.xml" archivePath="Newtonsoft.Json.xml" lastWriteTime="05-Nov-13 1:46:27 PM" />
-  <file source="C:\Users\walee_000\Documents\Cab9\Mobile Application\Prototype\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="28-Feb-14 12:31:00 PM" />
+  <file source="C:\FYPDLL'S\Microsoft.Phone.Controls.Toolkit.dll" archivePath="Microsoft.Phone.Controls.Toolkit.dll" lastWriteTime="24-Oct-13 1:30:28 AM" />
+  <file source="C:\FYPDLL'S\Newtonsoft.Json.dll" archivePath="Newtonsoft.Json.dll" lastWriteTime="05-Nov-13 1:46:27 PM" />
+  <file source="C:\FYPDLL'S\Telerik.Windows.Controls.Input.dll" archivePath="Telerik.Windows.Controls.Input.dll" lastWriteTime="16-Oct-13 10:59:14 AM" />
+  <file source="C:\FYPDLL'S\Telerik.Windows.Controls.Primitives.dll" archivePath="Telerik.Windows.Controls.Primitives.dll" lastWriteTime="16-Oct-13 10:59:06 AM" />
+  <file source="C:\FYPDLL'S\Telerik.Windows.Core.dll" archivePath="Telerik.Windows.Core.dll" lastWriteTime="16-Oct-13 10:59:02 AM" />
+  <file source="C:\FYPDLL'S\WindowsPhoneWatermarkTextBoxControl.dll" archivePath="WindowsPhoneWatermarkTextBoxControl.dll" lastWriteTime="27-Oct-13 6:06:34 PM" />
+  <file source="C:\FYPDLL'S\WP8AsyncWebClient.dll" archivePath="WP8AsyncWebClient.dll" lastWriteTime="05-Nov-13 12:55:15 PM" />
+  <file source="C:\Program Files (x86)\Microsoft SDKs\Expression\Blend\Windows Phone\v8.0\Libraries\System.Windows.Interactivity.dll" archivePath="System.Windows.Interactivity.dll" lastWriteTime="25-Sep-12 1:41:02 AM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Background.png" archivePath="Background.png" lastWriteTime="07-Mar-14 2:21:33 PM" />
+  <file source="C:\Users\Raza\Documents\cab9fyp\Mobile Application\Prototype\Bin\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="07-Mar-14 2:21:33 PM" />
 </xapCache>
