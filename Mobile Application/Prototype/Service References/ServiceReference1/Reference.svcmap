@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.0.105/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.14/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="a125c01c-8aef-467b-99e2-af17f8a79b81" SourceId="1" SourceUrl="http://192.168.0.105/Cab9Service/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="415c68ec-4661-4b71-98c4-32745862fe1e" SourceId="1" SourceUrl="http://192.168.0.105/Cab9Service/Service.svc?disco" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="5997e49f-a257-4a1d-8e2b-de21b3388305" SourceId="1" SourceUrl="http://192.168.0.105/Cab9Service/Service.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="4d682361-515e-40ac-9fa6-466caf898e6d" SourceId="1" SourceUrl="http://192.168.0.105/Cab9Service/Service.svc?wsdl" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="a3a60649-5c1a-4a88-84fc-c13c90bcb19f" SourceId="1" SourceUrl="http://192.168.0.105/Cab9Service/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="fa7f1c7f-8711-4c49-86ee-5d402561f172" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="d6723a08-5e64-40f3-a08a-816b76db28f6" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="e38ff53e-5a3c-49f3-9f93-2623eeb44181" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="1a68781b-cb90-4f51-8ea5-9850d9b591ec" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="d5d19619-1acd-405c-b3f4-236caab08525" SourceId="1" SourceUrl="http://192.168.1.14/Cab9Service/Service.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -18,6 +18,7 @@ namespace Prototype
             InitializeComponent();
             this.user.ItemsSource = users;
         }
+
         private void AuthenticateReturnFunction(object sender, ServiceReference1.AuthenticateCustomerCompletedEventArgs e)
         {
             if (e.Result == "Allow")
@@ -53,6 +54,12 @@ namespace Prototype
         private void appBar_OnSave(object sender, EventArgs e)
         {
             //MessageBox.Show(listPicker.SelectedItem.ToString());
+            if (usertxt.Text == "" || Password1.Password == "")
+            {
+                MessageBox.Show("Username or Password Missing");
+                return;
+            }
+
             if (user.SelectedItem.ToString() == "Customer")
             {
                 try

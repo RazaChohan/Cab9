@@ -27,7 +27,7 @@
 
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
-        <phone:Panorama HorizontalAlignment="Left" Height="758" Title="Driver Menu" VerticalAlignment="Top" Width="480" >
+        <phone:Panorama HorizontalAlignment="Left" Height="758" Title="Driver Menu" VerticalAlignment="Top" Width="480" Margin="10,0,-10,0" >
             <phone:PanoramaItem CacheMode="{x:Null}" Header="Confirm Booking" Orientation="Horizontal">
                 <phone:PanoramaItem.RenderTransform>
                     <TranslateTransform/>
@@ -45,13 +45,14 @@
                 </Grid>
 
             </phone:PanoramaItem>
+
             <phone:PanoramaItem CacheMode="{x:Null}" Header="Navigation">
                 <phone:PanoramaItem.RenderTransform>
                     <TranslateTransform/>
+
+
                 </phone:PanoramaItem.RenderTransform>
-                <Grid HorizontalAlignment="Left" Height="443" VerticalAlignment="Top" Width="419" Margin="0,0,0,-2">
-                    <maps:Map x:Name="mapWithMyLocation" HorizontalAlignment="Left" Margin="16,27,-13,0" VerticalAlignment="Top" Width="416" Height="249"/>
-                </Grid>
+                <Button x:Name="navigate" Content="Display Navigation" HorizontalAlignment="Left" Margin="84,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.492,-0.007" Height="91" Width="253" Click="navigate_Click"/>
 
             </phone:PanoramaItem>
             <phone:PanoramaItem CacheMode="{x:Null}" Header="Road Block Alerts" FontSize="14" Orientation="Horizontal">
@@ -67,7 +68,7 @@
 
 
             </phone:PanoramaItem>
-
+         
         </phone:Panorama>
 
         <!--ContentPanel - place additional content here-->
