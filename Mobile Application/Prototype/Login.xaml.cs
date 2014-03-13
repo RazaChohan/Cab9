@@ -53,7 +53,6 @@ namespace Prototype
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
-            //MessageBox.Show(listPicker.SelectedItem.ToString());
             if (usertxt.Text == "" || Password1.Password == "")
             {
                 MessageBox.Show("Username or Password Missing");

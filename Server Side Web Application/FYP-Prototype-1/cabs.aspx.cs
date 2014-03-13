@@ -27,17 +27,11 @@ namespace FYP_Prototype_1
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 dt.Columns.Add("StatusLight", typeof(Byte[]));
-                //ASPxGridView1.DataSource = ds;
-                //ASPxGridView1.DataBind();
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
                 con.Close();
             }
         }
-
-        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //}
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
