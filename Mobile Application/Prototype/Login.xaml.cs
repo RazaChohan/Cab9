@@ -54,8 +54,11 @@ namespace Prototype
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             var periodicTask = new PeriodicTask("PeriodicTaskDemo") { Description = "Are presenting a periodic task" };
             //MessageBox.Show(listPicker.SelectedItem.ToString());
+=======
+>>>>>>> 9d1a6f9161b51c875d97e01424778448fc7e4f19
             if (usertxt.Text == "" || Password1.Password == "")
             {
                 MessageBox.Show("Username or Password Missing");
