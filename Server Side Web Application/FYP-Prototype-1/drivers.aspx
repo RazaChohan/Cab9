@@ -13,13 +13,13 @@
     <style>
 		* { margin: 0; padding: 0; }
 		
-		html { 
+		/*html { 
 			background: url(images/bg.jpg) no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
-		}
+		}*/
 		
 		#page-wrap { width: 400px; margin: 50px auto; padding: 20px; background: white; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
 		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
@@ -33,8 +33,7 @@
                 <asp:Image ID="Image1" runat="server" ImageUrl="~/images/banner2.png"></asp:Image>
             </center>
         </div>
-        <br />
-        <div id="page">
+        <%--<div id="page">
         <center>
             <asp:ImageButton ID="ImageButton1" runat="server" Height="53px" ImageUrl="~/images/buttons/dshb.png" OnClick="ImageButton1_Click" Width="183px"></asp:ImageButton>
         &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/buttons/c_button.png" OnClick="ImageButton2_Click" Height="52px" Width="197px" />
@@ -42,7 +41,32 @@
 &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/images/buttons/lg.png" OnClick="ImageButton4_Click" />
         &nbsp;<asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/images/buttons/r_button.png" OnClick="ImageButton5_Click" />
         &nbsp;</center>
-    </div>
+    </div>--%>
+        <br />
+         <div id="page">
+            <center>
+                <table>
+                    <td>
+                        <dx:ASPxButton ID="DashboardButton" runat="server" Text="Dashboard" Width="180" Height="50" Theme="BlackGlass" OnClick="DashboardButton_Click1"></dx:ASPxButton>
+                    </td>
+                    <td>
+                        <dx:ASPxButton ID="DriversButton" runat="server" Text="Drivers" Width="180" Height="50" Theme="BlackGlass" OnClick="DriversButton_Click1"></dx:ASPxButton>
+                    </td>
+                    <td>
+                        <dx:ASPxButton ID="CabsButton" runat="server" Text="Cabs" Width="180" Height="50" Theme="BlackGlass" OnClick="CabsButton_Click1"></dx:ASPxButton>
+                    </td>
+                    <td>
+                        <dx:ASPxButton ID="BookingRequestsButton" runat="server" Text="Booking Requests" Width="180" Height="50" Theme="BlackGlass" OnClick="BookingRequestsButton_Click1"></dx:ASPxButton>
+                    </td>
+                    <td>
+                        <dx:ASPxButton ID="LogoutButton" runat="server" Text="Logout" Width="180" Height="50" Theme="BlackGlass" OnClick="LogoutButton_Click1"></dx:ASPxButton>
+                    </td>
+                </table>
+                 
+            </center>
+            
+        </div>
+        <br />
     <div id="page">
         <center>
             <asp:Label ID="Label1" runat="server" Text="Drivers" Font-Size="XX-Large" ForeColor="White"></asp:Label>
@@ -50,7 +74,6 @@
             <a href="driverreg.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">Driver Registration</a>
         </center>
     </div>
-        <br />
         <div id="page">
             <center>
                 <br />

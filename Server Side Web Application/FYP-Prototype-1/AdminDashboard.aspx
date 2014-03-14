@@ -1,5 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="FYP_Prototype_1.AdminDashboard" %>
 
+<%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,14 +13,7 @@
             margin: 0;
             padding: 0;
         }
-
-        html {
-            background: url(images/bg.jpg) no-repeat center center fixed;
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
-        }
+        
 
         #page-wrap {
             width: 400px;
@@ -38,6 +33,9 @@
             font: 15px/2 Georgia, Serif;
             margin: 0 0 30px 0;
             text-indent: 40px;
+        }
+        .auto-style1 {
+            height: 52px;
         }
     </style>
 
@@ -109,12 +107,12 @@
         }
 
         function CreateMarkers() {
-            Latitude1 = Latitude1 + 0.000001;
-            Longitude1 = Longitude1 + 0.000001;
+            Latitude1 = Latitude1 - 0.00001;
+            Longitude1 = Longitude1 - 0.00001;
             Latitude2 = Latitude2 + 0.000001;
             Longitude2 = Longitude2 + 0.000001;
-            Latitude3 = Latitude3 + 0.000001;
-            Longitude3 = Longitude3 + 0.000001;
+            Latitude3 = Latitude3 + 0.0000001;
+            //Longitude3 = Longitude3 + 0.0000001;
             Latitude4 = Latitude4 + 0.000001;
             Longitude4 = Longitude4 + 0.000001;
 
@@ -191,17 +189,36 @@
         <br />
         <div id="page">
             <center>
+                <table>
+                    <td class="auto-style1">
+                        <dx:ASPxButton ID="DriversButton" runat="server" Text="Drivers" Theme="BlackGlass" Width="180" Height="50px" OnClick="DriversButton_Click"></dx:ASPxButton>
+                    </td>
+                    <td class="auto-style1">
+                        <dx:ASPxButton ID="CabsButton" runat="server" Text="Cabs" Theme="BlackGlass" Width="180" Height="50px" OnClick="CabsButton_Click"></dx:ASPxButton>
+                    </td>
+                    <td class="auto-style1">
+                        <dx:ASPxButton ID="BookingRequestsButton" runat="server" Text="Booking Requests" Theme="BlackGlass" Width="180" Height="50px" OnClick="BookingRequestsButton_Click"></dx:ASPxButton>
+                    </td>
+                    <td class="auto-style1">
+                        <dx:ASPxButton ID="LogoutButton" runat="server" Text="Logout" Theme="BlackGlass" Width="180" Height="50px" OnClick="LogoutButton_Click"></dx:ASPxButton>
+                    </td>
+                </table>
+                 
+            </center>
+            
+        </div>
+        <%--<div id="page">
+            <center>
                 <asp:ImageButton ID="ImageButton1" runat="server" Height="53px" ImageUrl="~/images/buttons/d_button.png" OnClick="ImageButton1_Click" Width="183px"></asp:ImageButton>
                 &nbsp;<asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/images/buttons/c_button.png" OnClick="ImageButton2_Click" />
                 &nbsp;<asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/images/buttons/f_button.png" OnClick="ImageButton3_Click" Height="53px" />
                 &nbsp;<asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/images/buttons/m_button.png" OnClick="ImageButton4_Click" />
                 &nbsp;<asp:ImageButton ID="ImageButton5" runat="server" ImageUrl="~/images/buttons/r_button.png" OnClick="ImageButton5_Click" />
-                &nbsp;
-
-            </center>
-        </div>
+                &nbsp;<asp:Button ID="Button1" runat="server" Text="Booking Requests" OnClick="Button1_Click1"></asp:Button>
+                &nbsp;</center>
+        </div>--%>
         <br />
-        <center><div id="googleMap" style="width: 700px; height: 500px;"></div></center>
+        <div id="page"><center><div id="googleMap" style="width: 700px; height: 500px;"></div></center></div>
         <br />
         <br />
         <br />

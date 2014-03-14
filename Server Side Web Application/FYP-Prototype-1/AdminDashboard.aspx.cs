@@ -45,5 +45,31 @@ namespace FYP_Prototype_1
         {
             Response.Redirect("manreg.aspx");
         }
+
+        protected void Button1_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("CabBookingRequests.aspx");
+        }
+
+        protected void DriversButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("drivers.aspx");
+        }
+
+        protected void CabsButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("cabs.aspx");
+        }
+
+        protected void BookingRequestsButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("CabBookingRequests.aspx");
+        }
+
+        protected void LogoutButton_Click(object sender, EventArgs e)
+        {
+            Session["uname"] = null;
+            Response.Redirect("Index.aspx");
+        }
     }
 }

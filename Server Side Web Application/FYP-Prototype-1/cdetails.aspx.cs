@@ -72,6 +72,32 @@ namespace FYP_Prototype_1
             }
         }
 
-        
+
+
+        protected void DashboardButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("AdminDashboard.aspx");
+        }
+
+        protected void DriversButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("Drivers.aspx");
+        }
+
+        protected void CabsButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("Cabs.aspx");
+        }
+
+        protected void BookingRequestsButton_Click1(object sender, EventArgs e)
+        {
+            Response.Redirect("CabBookingRequests.aspx");
+        }
+
+        protected void LogoutButton_Click1(object sender, EventArgs e)
+        {
+            Session["uname"] = null;
+            Response.Redirect("index.aspx");
+        }
     }
 }

@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
+using Microsoft.Phone.Scheduler;
 
 namespace Prototype
 {
@@ -19,7 +20,7 @@ namespace Prototype
             this.user.ItemsSource = users;
         }
 
-        private void AuthenticateReturnFunction(object sender, ServiceReference1.AuthenticateCustomerCompletedEventArgs e)
+        private void AuthenticateReturnFunction(object sender, ServRef.AuthenticateCustomerCompletedEventArgs e)
         {
             if (e.Result == "Allow")
             {
@@ -35,7 +36,7 @@ namespace Prototype
 
         }
 
-        private void AuthenticateDriverReturnFunction(object sender, ServiceReference1.AuthenticateDriverCompletedEventArgs e)
+        private void AuthenticateDriverReturnFunction(object sender, ServRef.AuthenticateDriverCompletedEventArgs e)
         {
             if (e.Result == "Allow")
             {
@@ -53,6 +54,7 @@ namespace Prototype
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
+            var periodicTask = new PeriodicTask("PeriodicTaskDemo") { Description = "Are presenting a periodic task" };
             //MessageBox.Show(listPicker.SelectedItem.ToString());
             if (usertxt.Text == "" || Password1.Password == "")
             {
@@ -64,9 +66,14 @@ namespace Prototype
             {
                 try
                 {
-                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
-                    clientfortesting.AuthenticateCustomerCompleted += new EventHandler<ServiceReference1.AuthenticateCustomerCompletedEventArgs>(AuthenticateReturnFunction);
+                    ServRef.ServiceClient clientfortesting = new ServRef.ServiceClient();
+                    clientfortesting.AuthenticateCustomerCompleted += new EventHandler<ServRef.AuthenticateCustomerCompletedEventArgs>(AuthenticateReturnFunction);
                     clientfortesting.AuthenticateCustomerAsync(usertxt.Text.ToString(), Password1.Password.ToString());
+                    // Scheduled Agent
+                    ScheduledActionService.Add(periodicTask);
+                    ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(3));
+                    MessageBox.Show("Open the background agent success");
+                    ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(60));
                 }
                 catch (Exception ex)
                 {
@@ -80,9 +87,14 @@ namespace Prototype
             {
                 try
                 {
-                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
-                    clientfortesting.AuthenticateDriverCompleted += new EventHandler<ServiceReference1.AuthenticateDriverCompletedEventArgs>(AuthenticateDriverReturnFunction);
+                    ServRef.ServiceClient clientfortesting = new ServRef.ServiceClient();
+                    clientfortesting.AuthenticateDriverCompleted += new EventHandler<ServRef.AuthenticateDriverCompletedEventArgs>(AuthenticateDriverReturnFunction);
                     clientfortesting.AuthenticateDriverAsync(usertxt.Text.ToString(), Password1.Password.ToString());
+                    // Scheduled Agent
+                    ScheduledActionService.Add(periodicTask);
+                    ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(3));
+                    MessageBox.Show("Open the background agent success");
+                    ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(60));
                 }
                 catch (Exception ex)
                 {

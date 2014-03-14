@@ -40,48 +40,39 @@ namespace FYP_Prototype_1 {
         protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
-        /// ImageButton1 control.
+        /// DriversButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton1;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton DriversButton;
         
         /// <summary>
-        /// ImageButton2 control.
+        /// CabsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton2;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton CabsButton;
         
         /// <summary>
-        /// ImageButton3 control.
+        /// BookingRequestsButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton3;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton BookingRequestsButton;
         
         /// <summary>
-        /// ImageButton4 control.
+        /// LogoutButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton4;
-        
-        /// <summary>
-        /// ImageButton5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImageButton5;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton LogoutButton;
     }
 }

@@ -27,7 +27,7 @@ namespace Prototype
     {
         String[] cab_types = { "Economy", "Executive" };
 
-        private void TestCallback(object sender, ServiceReference1.CabBookingCompletedEventArgs e)
+        private void TestCallback(object sender, ServRef.CabBookingCompletedEventArgs e)
         {
             MessageBox.Show(e.Result.ToString());
             //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
@@ -98,8 +98,8 @@ namespace Prototype
             if (result == MessageBoxResult.OK)
             {
                 // ------------------------------- Remote call to web service (for booking) ----------------------------------
-                ServiceReference1.ServiceClient clientForTesting = new ServiceReference1.ServiceClient();
-                clientForTesting.CabBookingCompleted += new EventHandler<ServiceReference1.CabBookingCompletedEventArgs>(TestCallback);
+                ServRef.ServiceClient clientForTesting = new ServRef.ServiceClient();
+                clientForTesting.CabBookingCompleted += new EventHandler<ServRef.CabBookingCompletedEventArgs>(TestCallback);
                 clientForTesting.CabBookingAsync(bookingInstance.BookingStatus, bookingInstance.BookingDateTime, bookingInstance.BookingOrigin, bookingInstance.BookingDestination, bookingInstance.BookingCabType);       
                       
 

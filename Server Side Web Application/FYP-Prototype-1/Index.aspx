@@ -9,13 +9,13 @@
     <style>
 		* { margin: 0; padding: 0; }
 		
-		html { 
+		/*html { 
 			background: url(images/buttons/bg.jpg) no-repeat center center fixed; 
 			-webkit-background-size: cover;
 			-moz-background-size: cover;
 			-o-background-size: cover;
 			background-size: cover;
-		}
+		}*/
 		
 		#page-wrap { width: 400px; margin: 50px auto; padding: 20px; background: white; -moz-box-shadow: 0 0 20px black; -webkit-box-shadow: 0 0 20px black; box-shadow: 0 0 20px black; }
 		p { font: 15px/2 Georgia, Serif; margin: 0 0 30px 0; text-indent: 40px; }
@@ -41,17 +41,21 @@
                 </tr>
                 <tr><td class="auto-style1"><center><asp:Label ID="Label2" runat="server" Text="Password" ForeColor="White"></asp:Label></center></td><td><asp:TextBox ID="TextBox2" TextMode="Password" runat="server"></asp:TextBox></td></tr>
                 <tr>
-                    <td colspan="2">
+                    <td></td>
+                    <td >
                         <center><br />
-                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/Log-In.png" OnClick="ImageButton1_Click" />
+                            <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/LoginButton.png" OnClick="ImageButton1_Click" />
                         </center>
                     </td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td><asp:Label ID="Label3" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="Large" ></asp:Label></td></tr>
+            
                 
             </table>
             <table>
-                <tr><td><asp:Label ID="Label3" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="Large" ></asp:Label></td></tr>
-            </table>
+                </table>
         </center>
     </div>
     </form>

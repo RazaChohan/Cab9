@@ -66,6 +66,7 @@
     <Content Include="App_Data\stats_log.ldf">
       <DependentUpon>stats.mdf</DependentUpon>
     </Content>
+    <Content Include="CabBookingRequests.aspx" />
     <Content Include="cabreg.aspx" />
     <Content Include="cabs.aspx" />
     <Content Include="cdetails.aspx" />
@@ -83,6 +84,7 @@
     <Content Include="images\Banner.png" />
     <Content Include="images\banner2.png" />
     <Content Include="images\bg.jpg" />
+    <Content Include="images\BlackMap.jpg" />
     <Content Include="images\buttons\Banner.png" />
     <Content Include="images\buttons\banner2.png" />
     <Content Include="images\buttons\bg.jpg" />
@@ -92,12 +94,15 @@
     <Content Include="images\buttons\f_button.png" />
     <Content Include="images\buttons\lg.png" />
     <Content Include="images\buttons\Log-In.png" />
+    <Content Include="images\buttons\LoginButton.png" />
     <Content Include="images\buttons\m_button.png" />
     <Content Include="images\buttons\r_button.png" />
+    <Content Include="images\buttons\SubmitButton.png" />
     <Content Include="images\buttons\s_button.png" />
     <Content Include="images\avatar.jpg" />
     <Content Include="images\Google Maps - Copy.jpg" />
     <Content Include="images\Google-Maps-Location.png" />
+    <Content Include="images\simple-blue.jpg" />
     <Content Include="images\taxi-128.png" />
     <Content Include="Index.aspx" />
     <Content Include="manreg.aspx" />
@@ -112,6 +117,13 @@
     </Compile>
     <Compile Include="AdminDashboard.aspx.designer.cs">
       <DependentUpon>AdminDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CabBookingRequests.aspx.cs">
+      <DependentUpon>CabBookingRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CabBookingRequests.aspx.designer.cs">
+      <DependentUpon>CabBookingRequests.aspx</DependentUpon>
     </Compile>
     <Compile Include="cabreg.aspx.cs">
       <DependentUpon>cabreg.aspx</DependentUpon>
