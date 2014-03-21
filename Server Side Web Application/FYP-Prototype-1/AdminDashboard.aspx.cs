@@ -71,5 +71,10 @@ namespace FYP_Prototype_1
             Session["uname"] = null;
             Response.Redirect("Index.aspx");
         }
+
+        protected void PendingRegReqButton_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("PendingRegRequests.aspx");
+        }
     }
 }

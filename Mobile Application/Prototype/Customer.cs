@@ -8,23 +8,25 @@ namespace Prototype
 {
     public class Customer
     {
-        private int ID;
-        private string username;
-        private string password;
-        private string address;
-        private string PhoneNumber;
-        private string email;
-        private string NIC;
+        public string username;
+        public string password;
+        public string address;
+        public string PhoneNumber;
+        public string email;
+        public string NIC;
+        public string Gender;
+        public string age;
 
-        public Customer(int idd, String usernamee, String passwordd, String addresss, String phone, String emailID, String NICNo)
+        public Customer(String usernamee, String passwordd, String addresss, String phone, String emailID, String NICNo, String Gender, String Age)
         {
-            this.ID = idd;
             this.username = usernamee;
             this.password = passwordd;
             this.address = addresss;
             this.PhoneNumber = phone;
             this.email = emailID;
             this.NIC = NICNo;
+            this.Gender = Gender;
+            this.age = Age;
         }
     }
 }

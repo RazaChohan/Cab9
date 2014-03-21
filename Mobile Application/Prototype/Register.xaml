@@ -41,12 +41,9 @@
                  ItemTemplate="{Binding lpkItemTemplate}"
                 x:Name="Gender" Margin="10,358,10,-334">
             </toolkit:ListPicker>
-            <toolkit:ListPicker FullModeItemTemplate="{Binding lpkFullItemTemplate}"
-                 ItemTemplate="{Binding lpkItemTemplate}"
-                x:Name="user" Margin="10,425,10,-401">
-            </toolkit:ListPicker>
+            
 
-            <Button Content="Register" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="118,502,0,0" Width="185" Click="Button_Click" RenderTransformOrigin="0.469,-0.581"/>
+            <Button Content="Register" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="127,471,0,0" Width="185" Click="Button_Click" RenderTransformOrigin="0.469,-0.581"/>
             <PasswordBox x:Name="PasswordTxt" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,37,0,0" Width="456" />
 
         </Grid>

@@ -200,6 +200,9 @@
                         <dx:ASPxButton ID="BookingRequestsButton" runat="server" Text="Booking Requests" Theme="BlackGlass" Width="180" Height="50px" OnClick="BookingRequestsButton_Click"></dx:ASPxButton>
                     </td>
                     <td class="auto-style1">
+                        <dx:ASPxButton ID="PendingRegReqButton" runat="server" Text="Registration Requests" Theme="BlackGlass" Width="180" Height="50px" OnClick="PendingRegReqButton_Click"></dx:ASPxButton>
+                    </td>
+                    <td class="auto-style1">
                         <dx:ASPxButton ID="LogoutButton" runat="server" Text="Logout" Theme="BlackGlass" Width="180" Height="50px" OnClick="LogoutButton_Click"></dx:ASPxButton>
                     </td>
                 </table>

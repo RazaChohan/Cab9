@@ -20,7 +20,7 @@ namespace Prototype
             this.user.ItemsSource = users;
         }
 
-        private void AuthenticateReturnFunction(object sender, ServRef.AuthenticateCustomerCompletedEventArgs e)
+        private void AuthenticateReturnFunction(object sender, ServiceReference1.AuthenticateCustomerCompletedEventArgs e)
         {
             if (e.Result == "Allow")
             {
@@ -36,7 +36,7 @@ namespace Prototype
 
         }
 
-        private void AuthenticateDriverReturnFunction(object sender, ServRef.AuthenticateDriverCompletedEventArgs e)
+        private void AuthenticateDriverReturnFunction(object sender, ServiceReference1.AuthenticateDriverCompletedEventArgs e)
         {
             if (e.Result == "Allow")
             {
@@ -54,11 +54,8 @@ namespace Prototype
 
         private void appBar_OnSave(object sender, EventArgs e)
         {
-<<<<<<< HEAD
             var periodicTask = new PeriodicTask("PeriodicTaskDemo") { Description = "Are presenting a periodic task" };
             //MessageBox.Show(listPicker.SelectedItem.ToString());
-=======
->>>>>>> 9d1a6f9161b51c875d97e01424778448fc7e4f19
             if (usertxt.Text == "" || Password1.Password == "")
             {
                 MessageBox.Show("Username or Password Missing");
@@ -69,19 +66,19 @@ namespace Prototype
             {
                 try
                 {
-                    ServRef.ServiceClient clientfortesting = new ServRef.ServiceClient();
-                    clientfortesting.AuthenticateCustomerCompleted += new EventHandler<ServRef.AuthenticateCustomerCompletedEventArgs>(AuthenticateReturnFunction);
+                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                    clientfortesting.AuthenticateCustomerCompleted += new EventHandler<ServiceReference1.AuthenticateCustomerCompletedEventArgs>(AuthenticateReturnFunction);
                     clientfortesting.AuthenticateCustomerAsync(usertxt.Text.ToString(), Password1.Password.ToString());
                     // Scheduled Agent
                     ScheduledActionService.Add(periodicTask);
                     ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(3));
-                    MessageBox.Show("Open the background agent success");
+                    //MessageBox.Show("Open the background agent success");
                     ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(60));
                 }
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message.ToString());
+                    //MessageBox.Show(ex.Message.ToString());
                 }
 
                 //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
@@ -90,19 +87,19 @@ namespace Prototype
             {
                 try
                 {
-                    ServRef.ServiceClient clientfortesting = new ServRef.ServiceClient();
-                    clientfortesting.AuthenticateDriverCompleted += new EventHandler<ServRef.AuthenticateDriverCompletedEventArgs>(AuthenticateDriverReturnFunction);
+                    ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                    clientfortesting.AuthenticateDriverCompleted += new EventHandler<ServiceReference1.AuthenticateDriverCompletedEventArgs>(AuthenticateDriverReturnFunction);
                     clientfortesting.AuthenticateDriverAsync(usertxt.Text.ToString(), Password1.Password.ToString());
                     // Scheduled Agent
                     ScheduledActionService.Add(periodicTask);
                     ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(3));
-                    MessageBox.Show("Open the background agent success");
+                    //MessageBox.Show("Open the background agent success");
                     ScheduledActionService.LaunchForTest("PeriodicTaskDemo", TimeSpan.FromSeconds(60));
                 }
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message.ToString());
+                   // MessageBox.Show(ex.Message.ToString());
                 }
                 
             }

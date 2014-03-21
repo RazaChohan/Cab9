@@ -10,7 +10,7 @@
 namespace FYP_Prototype_1 {
     
     
-    public partial class AdminDashboard {
+    public partial class PendingRegRequests {
         
         /// <summary>
         /// Head1 control.
@@ -40,6 +40,15 @@ namespace FYP_Prototype_1 {
         protected global::System.Web.UI.WebControls.Image Image3;
         
         /// <summary>
+        /// DashboardButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton DashboardButton;
+        
+        /// <summary>
         /// DriversButton control.
         /// </summary>
         /// <remarks>
@@ -67,15 +76,6 @@ namespace FYP_Prototype_1 {
         protected global::DevExpress.Web.ASPxEditors.ASPxButton BookingRequestsButton;
         
         /// <summary>
-        /// PendingRegReqButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton PendingRegReqButton;
-        
-        /// <summary>
         /// LogoutButton control.
         /// </summary>
         /// <remarks>
@@ -83,5 +83,59 @@ namespace FYP_Prototype_1 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxEditors.ASPxButton LogoutButton;
+        
+        /// <summary>
+        /// Label1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label1;
+        
+        /// <summary>
+        /// ScriptManager1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager1;
+        
+        /// <summary>
+        /// Timer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer1;
+        
+        /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
+        /// BookingsGridView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView BookingsGridView;
+        
+        /// <summary>
+        /// ReviewButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton ReviewButton;
     }
 }

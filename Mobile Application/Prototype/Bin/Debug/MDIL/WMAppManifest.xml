@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Deployment xmlns="http://schemas.microsoft.com/windowsphone/2012/deployment" AppPlatformVersion="8.0">
   <DefaultLanguage xmlns="" code="" />
-  <App xmlns="" ProductID="{4f6bce2f-924f-49bc-8635-e30d8ca91f86}" Title="Prototype" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Prototype author" Description="Sample description" Publisher="Prototype" PublisherID="{5870919c-0f61-4010-a90e-57d26c42a489}">
+  <App xmlns="" ProductID="{4f6bce2f-924f-49bc-8635-e30d8ca91f86}" Title="Cab 9" RuntimeType="Silverlight" Version="1.0.0.0" Genre="apps.normal" Author="Prototype author" Description="Sample description" Publisher="Prototype" PublisherID="{5870919c-0f61-4010-a90e-57d26c42a489}">
     <IconPath IsRelative="true" IsResource="false">ApplicationIcon.png</IconPath>
     <Capabilities>
       <Capability Name="ID_CAP_GAMERSERVICES" />

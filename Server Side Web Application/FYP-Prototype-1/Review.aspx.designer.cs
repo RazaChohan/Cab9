@@ -10,16 +10,7 @@
 namespace FYP_Prototype_1 {
     
     
-    public partial class AdminDashboard {
-        
-        /// <summary>
-        /// Head1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
+    public partial class Review {
         
         /// <summary>
         /// form1 control.
@@ -31,57 +22,39 @@ namespace FYP_Prototype_1 {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Image3 control.
+        /// Label1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image3;
+        protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// DriversButton control.
+        /// YesButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton DriversButton;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton YesButton;
         
         /// <summary>
-        /// CabsButton control.
+        /// noButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton CabsButton;
+        protected global::DevExpress.Web.ASPxEditors.ASPxButton noButton;
         
         /// <summary>
-        /// BookingRequestsButton control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton BookingRequestsButton;
-        
-        /// <summary>
-        /// PendingRegReqButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton PendingRegReqButton;
-        
-        /// <summary>
-        /// LogoutButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxEditors.ASPxButton LogoutButton;
+        protected global::System.Web.UI.WebControls.Label Label2;
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="2055cffc-67e5-4ff6-974f-903cd1cf4b62" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9c482bab-a7db-4b9a-946c-11ccc447fd4b" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.13/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.3/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="920e746f-4b56-405f-8d97-1f0cf2c09f49" SourceId="1" SourceUrl="http://192.168.1.13/Cab9Service/Service.svc?disco" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="dd6d81ea-c48b-446f-976d-e36deb08bd24" SourceId="1" SourceUrl="http://192.168.1.13/Cab9Service/Service.svc?wsdl" />
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="dba6fd4c-f728-4b34-8e8e-02b11ade4685" SourceId="1" SourceUrl="http://192.168.1.13/Cab9Service/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="b6f051c1-c7d2-4563-9478-4b2aeef4c7a4" SourceId="1" SourceUrl="http://192.168.1.13/Cab9Service/Service.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="3628d169-16e9-40f8-8909-f299d99df7ca" SourceId="1" SourceUrl="http://192.168.1.13/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="9dff5b68-2ed3-4259-b9bf-14c4e4b6b048" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?disco" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="7e0412f7-d31f-4bba-a760-b6b37aa63a95" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="8fddb5d4-2124-4e69-a699-12d0c4f00bf6" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?wsdl" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="00f50f80-4353-418c-a8fe-69987e9ae0e1" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="c96f535d-4e73-416c-8757-c910f72d5665" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

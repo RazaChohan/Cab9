@@ -122,19 +122,19 @@ namespace FYP_Prototype_1
 
                 if (link_status == "Unavailable")
                 {
-                    drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\red.gif",new string[]{".gif"});
-                    //TableCellCollection myCells = e.Row.Cells;
-                    //int count = e.Row.Cells.Count;
-                    //HyperLink planLink = (HyperLink)myCells[count + 1].Controls[0];
-                    //planLink.ImageUrl = "~/gifs/red.gif";
+                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\red.gif",new string[]{".gif"});
+                    TableCellCollection myCells = e.Row.Cells;
+                    int count = e.Row.Cells.Count;
+                    HyperLink planLink = (HyperLink)myCells[1].Controls[0];
+                    planLink.ImageUrl = "~/gifs/red.gif";
                 }
                 else if (link_status == "Available")
                 {
-                    drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\green.gif", new string[] { ".gif" });
-                    //TableCellCollection myCells = e.Row.Cells;
-                    //int count = e.Row.Cells.Count;
-                    //HyperLink planLink = (HyperLink)myCells[count+1].Controls[0];
-                    //planLink.ImageUrl = "~/gifs/green.gif";
+                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\green.gif", new string[] { ".gif" });
+                    TableCellCollection myCells = e.Row.Cells;
+                    int count = e.Row.Cells.Count;
+                    HyperLink planLink = (HyperLink)myCells[1].Controls[0];
+                    planLink.ImageUrl = "~/gifs/green.gif";
                 }
             }
             else

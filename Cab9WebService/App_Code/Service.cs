@@ -17,6 +17,31 @@ public class Service : IService
 		return string.Format("You entered: {0}", value);
 	}
 
+    public string CustomerRegistrationRequest(string name, string password, string email, string phNum, string NIC, string address, string gender, string age)
+    {
+        try
+        {
+            SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+            conn.Open();
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = "insert into PendingCustomers ([PCustomer_Name],[PCustomer_Password] ,[PCustomer_Email],[PCustomer_PhNum],[PCustomer_NIC],[PCustomer_Address],[PCustomer_Gender],[PCustomer_Age]) values ('" + name + "', '" + password + "','" + email + "','" + phNum + "','" + NIC + "', '" + address + "','" + gender + "'," + age + ")";
+            int result=command.ExecuteNonQuery();
+            if(result>0)
+            {
+                return "Your registration request has been forwarded to the Administrator. It will be reviewed in one day. Thankyou!";
+            }
+            else
+            {
+                return "Error forwarding the request to Administrator";
+            }
+        }
+        catch(Exception ex)
+        {
+            return ex.Message;
+        }
+    }
+	
+
 	public CompositeType GetDataUsingDataContract(CompositeType composite)
 	{
 		if (composite == null)
@@ -133,16 +158,27 @@ public class Service : IService
         {
             SqlConnection connection = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
             connection.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from Customer where Customer_Name='" + username + "' and Customer_Password='" + password + "'", connection);
-            DataTable dt = new DataTable();
-            da.Fill(dt);
-            connection.Close();
-            if (dt.Rows.Count > 0)
+            SqlDataAdapter daa = new SqlDataAdapter("select RCustomer_ID from RejectedCustomers where RCustomer_name='"+username+"' AND RCustomer_Password='"+password+"'", connection);
+            DataTable dt2 = new DataTable();
+            daa.Fill(dt2);
+            if(dt2.Rows.Count>0)
             {
-                return "Allow";
+                return "Sorry your registration request has been denied by the Administrator after review";
             }
+
             else
-                return "Reject";
+            {
+                SqlDataAdapter da = new SqlDataAdapter("select * from Customer where Customer_Name='" + username + "' and Customer_Password='" + password + "'", connection);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+                connection.Close();
+                if (dt.Rows.Count > 0)
+                {
+                    return "Allow";
+                }
+                else
+                    return "Reject";
+            }
 
 
         }

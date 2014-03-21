@@ -96,6 +96,7 @@
     <Content Include="images\buttons\Log-In.png" />
     <Content Include="images\buttons\LoginButton.png" />
     <Content Include="images\buttons\m_button.png" />
+    <Content Include="images\buttons\ReviewButton.png" />
     <Content Include="images\buttons\r_button.png" />
     <Content Include="images\buttons\SubmitButton.png" />
     <Content Include="images\buttons\s_button.png" />
@@ -106,6 +107,8 @@
     <Content Include="images\taxi-128.png" />
     <Content Include="Index.aspx" />
     <Content Include="manreg.aspx" />
+    <Content Include="PendingRegRequests.aspx" />
+    <Content Include="Review.aspx" />
     <Content Include="roadblock.aspx" />
     <Content Include="style.css" />
     <Content Include="Web.config" />
@@ -210,7 +213,21 @@
     <Compile Include="manreg.aspx.designer.cs">
       <DependentUpon>manreg.aspx</DependentUpon>
     </Compile>
+    <Compile Include="PendingRegRequests.aspx.cs">
+      <DependentUpon>PendingRegRequests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PendingRegRequests.aspx.designer.cs">
+      <DependentUpon>PendingRegRequests.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Review.aspx.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Review.aspx.designer.cs">
+      <DependentUpon>Review.aspx</DependentUpon>
+    </Compile>
     <Compile Include="roadblock.aspx.cs">
       <DependentUpon>roadblock.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

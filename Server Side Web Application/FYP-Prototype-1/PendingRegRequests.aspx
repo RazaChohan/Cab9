@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CabBookingRequests.aspx.cs" Inherits="FYP_Prototype_1.CabBookingRequests" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="PendingRegRequests.aspx.cs" Inherits="FYP_Prototype_1.PendingRegRequests" %>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 
@@ -90,7 +90,7 @@
         </div>--%>
         <div id="page">
             <center>
-                <asp:Label ID="Label1" runat="server" Text="Cab Booking Requests" Font-Size="Large" ForeColor="White"></asp:Label>
+                <asp:Label ID="Label1" runat="server" Text="Pending Registration Requests" Font-Size="Large" ForeColor="White"></asp:Label>
                 <br />
                 <br />
                 <asp:ScriptManager ID="ScriptManager1" runat="server">
@@ -103,11 +103,8 @@
                             <asp:AsyncPostBackTrigger ControlID="Timer1" EventName="Tick" />
                         </Triggers>
                         <ContentTemplate>
-                            <asp:GridView ID="BookingsGridView" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="960px" OnRowDataBound="BookingsGridView_RowDataBound">
+                            <asp:GridView ID="BookingsGridView" runat="server" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" Width="960px" AutoGenerateSelectButton="True" OnSelectedIndexChanged="BookingsGridView_SelectedIndexChanged">
                                 <AlternatingRowStyle BackColor="#DCDCDC" />
-                                <Columns>
-                                    <asp:HyperLinkField />
-                                </Columns>
                                 <FooterStyle BackColor="#CCCCCC" ForeColor="Black" />
                                 <HeaderStyle BackColor="#000084" Font-Bold="True" ForeColor="White" />
                                 <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
@@ -120,6 +117,8 @@
                             </asp:GridView>
                         </ContentTemplate>
                     </asp:UpdatePanel>
+                    <br />
+                    <asp:ImageButton ID="ReviewButton" runat="server" ImageUrl="~/images/buttons/ReviewButton.png" OnClick="ReviewButton_Click"></asp:ImageButton>
                 </center>
                 
             </center>

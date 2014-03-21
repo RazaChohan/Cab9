@@ -35,28 +35,28 @@ namespace ScheduledTaskAgent1
                 System.Diagnostics.Debugger.Break();
             }
         }
-        private void TestCallback(object sender, ScheduledTaskServiceReference.CabBookingCompletedEventArgs e)
-        {
-            
-            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = e.Result.ToString() };
-            //toast.Show();
-            //MessageBox.Show(e.Result.ToString());
-            //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
-        }
+        //private void TestCallback(object sender, BackAgentServRef.CabBookingCompletedEventArgs e)
+        //{
+
+        //    //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = e.Result.ToString() };
+        //    //toast.Show();
+        //    //MessageBox.Show(e.Result.ToString());
+        //    //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
+        //}
 
         protected override void OnInvoke(ScheduledTask task)
         {
 
             ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(60));
 
-            //ScheduledTaskServiceReference.ServiceClient clientForTesting = new ScheduledTaskServiceReference.ServiceClient();
-            //clientForTesting.AuthenticateCustomerCompleted += new EventHandler<ScheduledTaskServiceReference.AuthenticateCustomerCompletedEventArgs>(TestCallback);
+            //BackAgentServRef.ServiceClient clientForTesting = new BackAgentServRef.ServiceClient();
+            //clientForTesting.AuthenticateCustomerCompleted += new EventHandler<BackAgentServRef.AuthenticateCustomerCompletedEventArgs>(TestCallback);
             //clientForTesting.AuthenticateCustomerAsync("Taimoor Bin Khalid","123");       
                  
             /////////////////
-            ScheduledTaskServiceReference.ServiceClient clientForTesting = new ScheduledTaskServiceReference.ServiceClient();
-            clientForTesting.CabBookingCompleted += new EventHandler<ScheduledTaskServiceReference.CabBookingCompletedEventArgs>(TestCallback);
-            clientForTesting.CabBookingAsync("Uncatered", DateTime.Now, "AK. Brohi Road, H-11/4, H-11, Islamabad, Pakistan,", "A. K. Brohi Road, G-11/1, G-11, Islamabad, Pakistan,", "Executive");
+            //BackAgentServRef.ServiceClient clientForTesting = new BackAgentServRef.ServiceClient();
+            //clientForTesting.CabBookingCompleted += new EventHandler<BackAgentServRef.CabBookingCompletedEventArgs>(TestCallback);
+            //clientForTesting.CabBookingAsync("Uncatered", DateTime.Now, "AK. Brohi Road, H-11/4, H-11, Islamabad, Pakistan,", "A. K. Brohi Road, G-11/1, G-11, Islamabad, Pakistan,", "Executive");
                
             //////////////////
             //System.Threading.Thread.Sleep(5000);    //2 seconds wait

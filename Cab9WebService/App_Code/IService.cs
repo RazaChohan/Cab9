@@ -29,6 +29,8 @@ public interface IService
     [OperationContract]
     string AuthenticateDriver(string username, string password);
 
+    [OperationContract]
+    string CustomerRegistrationRequest(string name, string password, string email, string phNum, string NIC, string address, string gender, string age);
 	// TODO: Add your service operations here
 }
 

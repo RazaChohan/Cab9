@@ -12,50 +12,33 @@ namespace Prototype
 {
     public partial class Register : PhoneApplicationPage
     {
-        String[] users = { "Customer", "Driver" };
         String[] genders = { "Male", "Female" };
         public Register()
         {
             InitializeComponent();
-           
-            this.user.ItemsSource = users;
             this.Gender.ItemsSource = genders;
-            
-        }
 
+        }
+        private void CustomerRegistrationRequestReturnFunction(object sender, ServiceReference1.CustomerRegistrationRequestCompletedEventArgs e)
+        {
+            
+                MessageBox.Show(e.Result.ToString());
+
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-        //    if (user.SelectedItem == "Customer")
-        //    {
-        //        if ((UserNametxt.Text == "") || (UserNametxt.Text == "") || (PasswordTxt.Password == "") || (adresstxt.Text == "") || (phnetxt.Text == "") || (emailtxt.Text == "") || (Nictxt.Text == ""))
-        //        {
-        //            MessageBox.Show("Enter Complete Information");
-        //        }
-        //        else
-        //        {
-        //            Customer cust1 = new Customer(Convert.ToInt32(UserIdtxt.Text.ToString()), UserNametxt.Text.ToString(), Passwordtxt.Text.ToString(), adresstxt.Text.ToString(), phnetxt.Text.ToString(), emailtxt.Text.ToString(), Nictxt.Text.ToString());
-        //            MessageBox.Show("New Customer Created");
-        //        }
-
-        //    }
-        //    else if (user.SelectedItem == "Driver")
-        //    {
-        //        if ((UserIdtxt.Text == "") || (UserNametxt.Text == "") || (Passwordtxt.Text == "") || (adresstxt.Text == "") || (phnetxt.Text == "") || (emailtxt.Text == "") || (Nictxt.Text == ""))
-        //        {
-        //            MessageBox.Show("Enter Complete Information");
-        //        }
-        //        else
-        //        {
-        //            Driver driver = new Driver(Convert.ToInt32(UserIdtxt.Text.ToString()), UserNametxt.Text.ToString(), Passwordtxt.Text.ToString(), adresstxt.Text.ToString(), phnetxt.Text.ToString(), emailtxt.Text.ToString(), Nictxt.Text.ToString());
-        //            MessageBox.Show("New Driver Created");
-        //        }
-
-        //    }
-
-        //    MessageBox.Show("Registration Request Sent to Admin Panel");
-
-        //    NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
-        //
+             if ((UserNametxt.Text == "") || (UserNametxt.Text == "") || (PasswordTxt.Password == "") || (adresstxt.Text == "") || (phnetxt.Text == "") || (emailtxt.Text == "") || (Nictxt.Text == ""))
+             {
+                 MessageBox.Show("Enter Complete Information");
+             }
+             else
+             {
+                 Customer cus = new Customer(UserNametxt.Text, PasswordTxt.Password, adresstxt.Text, phnetxt.Text, emailtxt.Text, Nictxt.Text, Gender.SelectedItem.ToString(), AgeTxt.Text);
+                 ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                 clientfortesting.CustomerRegistrationRequestCompleted += new EventHandler<ServiceReference1.CustomerRegistrationRequestCompletedEventArgs>(CustomerRegistrationRequestReturnFunction);
+                 clientfortesting.CustomerRegistrationRequestAsync(cus.username,cus.password,cus.email,cus.PhoneNumber,cus.NIC,cus.address,cus.Gender,cus.age);
+             }
+       
         }
 
     }

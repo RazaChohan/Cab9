@@ -86,48 +86,9 @@
   <ItemGroup>
     <Compile Include="ScheduledAgent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\ScheduledTaskServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ScheduledTaskServiceReference\ScheduledTaskAgent1.ScheduledTaskServiceReference.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ScheduledTaskServiceReference\Service.wsdl" />
-    <None Include="Service References\ScheduledTaskServiceReference\Service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ScheduledTaskServiceReference\Service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ScheduledTaskServiceReference\Service2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="ServiceReferences.ClientConfig" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ScheduledTaskServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ScheduledTaskServiceReference\Service.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ScheduledTaskServiceReference\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ScheduledTaskServiceReference\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ScheduledTaskServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).$(TargetFrameworkVersion).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\$(TargetFrameworkIdentifier)\$(TargetFrameworkVersion)\Microsoft.$(TargetFrameworkIdentifier).CSharp.targets" />

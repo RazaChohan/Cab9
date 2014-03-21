@@ -10,15 +10,15 @@ using System.Web.UI.WebControls;
 
 namespace FYP_Prototype_1
 {
-    public partial class CabBookingRequests : System.Web.UI.Page
+    public partial class PendingRegRequests : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
                 conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking ORDER BY Booking_DateTime DESC", conn);
+                SqlDataAdapter da = new SqlDataAdapter("SELECT [PCustomer_ID] as 'ID',[PCustomer_Name] as 'Name',[PCustomer_Email] as 'Email',[PCustomer_PhNum] as 'Contact',[PCustomer_NIC] as 'NIC',[PCustomer_Address] as 'Address',[PCustomer_Gender] as 'Gender',[PCustomer_Age] as 'Age' FROM [Cab9].[dbo].[PendingCustomers]", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 BookingsGridView.DataSource = dt;
@@ -32,7 +32,7 @@ namespace FYP_Prototype_1
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("Select Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking ORDER BY Booking_DateTime DESC", conn);
+            SqlDataAdapter da = new SqlDataAdapter("SELECT [PCustomer_ID] as 'ID',[PCustomer_Name] as 'Name',[PCustomer_Email] as 'Email',[PCustomer_PhNum] as 'Contact',[PCustomer_NIC] as 'NIC',[PCustomer_Address] as 'Address',[PCustomer_Gender] as 'Gender',[PCustomer_Age] as 'Age' FROM [Cab9].[dbo].[PendingCustomers]", conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             BookingsGridView.DataSource = dt;
@@ -91,33 +91,18 @@ namespace FYP_Prototype_1
             Response.Redirect("Index.aspx");
         }
 
-        protected void BookingsGridView_RowDataBound(object sender, GridViewRowEventArgs e)
+        protected void BookingsGridView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.Row.DataItem != null)
-            {
-                DataRowView drv = (DataRowView)e.Row.DataItem;
-                string link_status = drv["Status"].ToString();
-
-                if (link_status == "Uncatered")
-                {
-                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\red.gif",new string[]{".gif"});
-                    TableCellCollection myCells = e.Row.Cells;
-                    int count = e.Row.Cells.Count;
-                    HyperLink planLink = (HyperLink)myCells[0].Controls[0];
-                    planLink.ImageUrl = "~/gifs/red.gif";
-                }
-                else if (link_status == "Catered")
-                {
-                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\green.gif", new string[] { ".gif" });
-                    TableCellCollection myCells = e.Row.Cells;
-                    int count = e.Row.Cells.Count;
-                    HyperLink planLink = (HyperLink)myCells[0].Controls[0];
-                    planLink.ImageUrl = "~/gifs/green.gif";
-                }
-            }
-            else
-            { }
+            Session["RegReqReviewID"] = BookingsGridView.SelectedRow.Cells[1].Text;
         }
 
+        protected void ReviewButton_Click(object sender, ImageClickEventArgs e)
+        {
+            string queryString = "Review.aspx";
+
+            string newWin = "window.open('" + queryString + "');";
+
+            ClientScript.RegisterStartupScript(this.GetType(), "pop", newWin, true);
+        }
     }
 }
