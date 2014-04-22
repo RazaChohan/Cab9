@@ -21,17 +21,42 @@ public interface IService
     double CalculateRoadDistance(string Origin, string Destination);
 
     [OperationContract]
-    string CabBooking(string BookingStatus, DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType);
+    string CabBooking(string BookingStatus, DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID);
 
     [OperationContract]
-    string AuthenticateCustomer(string username, string password);
+    int AuthenticateCustomer(string username, string password);
 
     [OperationContract]
-    string AuthenticateDriver(string username, string password);
+    int AuthenticateDriver(string username, string password);
 
     [OperationContract]
     string CustomerRegistrationRequest(string name, string password, string email, string phNum, string NIC, string address, string gender, string age);
-	// TODO: Add your service operations here
+
+    [OperationContract]
+    string UpdateLocation(string latitude, string longitude, int CabID);
+
+    [OperationContract]
+    int CabIDforDriver(int DriverID);
+
+    [OperationContract]
+    string CheckForDriverBooking(int CabID);
+
+    [OperationContract]
+    String AddresstoCoordinates(String location);
+
+    [OperationContract]
+    bool MakeAvailableIfReached(int CabID, string DestinationLat, string DestinationLong, int BookingID);
+
+    [OperationContract]
+    int CheckCustomerBookings(int CustomerID);
+
+    [OperationContract]
+    DateTime GetBookingTime(int BookingID);
+
+    [OperationContract]
+    String CancelBooking(int BookingID, String time, string BookingStatus, int ApproximateFare);
+    //[OperationContract]
+    //int DetermineNearestCab(string latitude, string longitude);
 }
 
 // Use a data contract as illustrated in the sample below to add composite types to service operations.

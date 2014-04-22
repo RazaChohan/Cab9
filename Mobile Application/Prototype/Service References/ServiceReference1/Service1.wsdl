@@ -49,6 +49,54 @@
   <wsdl:message name="IService_CustomerRegistrationRequest_OutputMessage">
     <wsdl:part name="parameters" element="tns:CustomerRegistrationRequestResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_UpdateLocation_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocation" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateLocation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateLocationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CabIDforDriver_InputMessage">
+    <wsdl:part name="parameters" element="tns:CabIDforDriver" />
+  </wsdl:message>
+  <wsdl:message name="IService_CabIDforDriver_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CabIDforDriverResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckForDriverBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForDriverBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckForDriverBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForDriverBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddresstoCoordinates_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddresstoCoordinates" />
+  </wsdl:message>
+  <wsdl:message name="IService_AddresstoCoordinates_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddresstoCoordinatesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_MakeAvailableIfReached_InputMessage">
+    <wsdl:part name="parameters" element="tns:MakeAvailableIfReached" />
+  </wsdl:message>
+  <wsdl:message name="IService_MakeAvailableIfReached_OutputMessage">
+    <wsdl:part name="parameters" element="tns:MakeAvailableIfReachedResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckCustomerBookings_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCustomerBookings" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckCustomerBookings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckCustomerBookingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBookingTime_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingTime" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetBookingTime_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetBookingTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CancelBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_CancelBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelBookingResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -77,6 +125,38 @@
     <wsdl:operation name="CustomerRegistrationRequest">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CustomerRegistrationRequest" message="tns:IService_CustomerRegistrationRequest_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CustomerRegistrationRequestResponse" message="tns:IService_CustomerRegistrationRequest_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateLocation" message="tns:IService_UpdateLocation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateLocationResponse" message="tns:IService_UpdateLocation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CabIDforDriver">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CabIDforDriver" message="tns:IService_CabIDforDriver_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CabIDforDriverResponse" message="tns:IService_CabIDforDriver_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckForDriverBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CheckForDriverBooking" message="tns:IService_CheckForDriverBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CheckForDriverBookingResponse" message="tns:IService_CheckForDriverBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddresstoCoordinates">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AddresstoCoordinates" message="tns:IService_AddresstoCoordinates_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AddresstoCoordinatesResponse" message="tns:IService_AddresstoCoordinates_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="MakeAvailableIfReached">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/MakeAvailableIfReached" message="tns:IService_MakeAvailableIfReached_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/MakeAvailableIfReachedResponse" message="tns:IService_MakeAvailableIfReached_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckCustomerBookings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CheckCustomerBookings" message="tns:IService_CheckCustomerBookings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CheckCustomerBookingsResponse" message="tns:IService_CheckCustomerBookings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingTime">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetBookingTime" message="tns:IService_GetBookingTime_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetBookingTimeResponse" message="tns:IService_GetBookingTime_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CancelBooking" message="tns:IService_CancelBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CancelBookingResponse" message="tns:IService_CancelBooking_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -137,6 +217,78 @@
     </wsdl:operation>
     <wsdl:operation name="CustomerRegistrationRequest">
       <soap:operation soapAction="http://tempuri.org/IService/CustomerRegistrationRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateLocation">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateLocation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CabIDforDriver">
+      <soap:operation soapAction="http://tempuri.org/IService/CabIDforDriver" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForDriverBooking">
+      <soap:operation soapAction="http://tempuri.org/IService/CheckForDriverBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddresstoCoordinates">
+      <soap:operation soapAction="http://tempuri.org/IService/AddresstoCoordinates" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MakeAvailableIfReached">
+      <soap:operation soapAction="http://tempuri.org/IService/MakeAvailableIfReached" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckCustomerBookings">
+      <soap:operation soapAction="http://tempuri.org/IService/CheckCustomerBookings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetBookingTime">
+      <soap:operation soapAction="http://tempuri.org/IService/GetBookingTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelBooking">
+      <soap:operation soapAction="http://tempuri.org/IService/CancelBooking" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

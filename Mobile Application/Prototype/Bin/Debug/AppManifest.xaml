@@ -1,19 +1,24 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="Prototype" EntryPointType="Prototype.App" RuntimeVersion="4.7.50308.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="Prototype" Source="Prototype.dll" />
+    <AssemblyPart x:Name="ForGlobalVariables" Source="ForGlobalVariables.dll" />
     <AssemblyPart x:Name="googlemaps" Source="googlemaps.dll" />
     <AssemblyPart x:Name="Microsoft.Advertising.Mobile" Source="Microsoft.Advertising.Mobile.dll" />
     <AssemblyPart x:Name="microsoft.advertising.mobile.ui" Source="microsoft.advertising.mobile.ui.dll" />
+    <AssemblyPart x:Name="Microsoft.Expression.Controls" Source="Microsoft.Expression.Controls.dll" />
+    <AssemblyPart x:Name="Microsoft.Expression.Drawing" Source="Microsoft.Expression.Drawing.dll" />
+    <AssemblyPart x:Name="Microsoft.Expression.Interactions" Source="Microsoft.Expression.Interactions.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls.Toolkit" Source="Microsoft.Phone.Controls.Toolkit.dll" />
+    <AssemblyPart x:Name="Microsoft.VisualBasic.LateBinder" Source="Microsoft.VisualBasic.LateBinder.dll" />
     <AssemblyPart x:Name="Newtonsoft.Json" Source="Newtonsoft.Json.dll" />
     <AssemblyPart x:Name="ScheduledTaskAgent1" Source="ScheduledTaskAgent1.dll" />
+    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls.Input" Source="Telerik.Windows.Controls.Input.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls.Primitives" Source="Telerik.Windows.Controls.Primitives.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Core" Source="Telerik.Windows.Core.dll" />
     <AssemblyPart x:Name="WindowsPhoneWatermarkTextBoxControl" Source="WindowsPhoneWatermarkTextBoxControl.dll" />
     <AssemblyPart x:Name="WP8AsyncWebClient" Source="WP8AsyncWebClient.dll" />
-    <AssemblyPart x:Name="System.Windows.Interactivity" Source="System.Windows.Interactivity.dll" />
   </Deployment.Parts>
 </Deployment>

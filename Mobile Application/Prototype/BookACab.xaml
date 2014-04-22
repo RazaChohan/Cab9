@@ -52,7 +52,7 @@
                         <RowDefinition Height="354*"/>
                     </Grid.RowDefinitions>
                     <Button Content="Acquire Location" HorizontalAlignment="Left" Margin="93,0,0,0" VerticalAlignment="Top" Click="Button_Click" Height="95" Grid.Row="2" Width="254"/>
-                    <my:WatermarkTextBox Name="currentLocationtxt" Height="72" Margin="12,95,-2,159" WatermarkText="Current Location..." HorizontalAlignment="Left" Width="419" InputScope="LogOnName" Grid.Row="2" RenderTransformOrigin="0.504,1.167" />
+                    <my:WatermarkTextBox Name="currentLocationtxt" Height="72" Margin="27,95,-2,159" WatermarkText="Current Location..." HorizontalAlignment="Left" Width="404" InputScope="LogOnName" Grid.Row="2" RenderTransformOrigin="0.504,1.167" />
 
 
 

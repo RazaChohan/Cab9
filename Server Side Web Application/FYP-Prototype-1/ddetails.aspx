@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ddetails.aspx.cs" Inherits="FYP_Prototype_1.ddetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ddetails.aspx.cs" Inherits="FYP_Prototype_1.ddetails" CodeFile="~/ddetails.aspx.cs" %>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 
@@ -70,7 +70,7 @@
                 <br />
                 <asp:Label ID="DeleteWarningLabel" runat="server" Text="Label" ForeColor="White" Visible="false"></asp:Label>
                 <br />
-                <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="250" Width="300px"></asp:Image><br /><br />
+                <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="300px" Width="260px"></asp:Image><br /><br />
                 <table>
                     <tr>
                         <td>

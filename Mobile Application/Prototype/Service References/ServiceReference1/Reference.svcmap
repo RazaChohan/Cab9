@@ -23,11 +23,11 @@
     <MetadataSource Address="http://192.168.1.3/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="9dff5b68-2ed3-4259-b9bf-14c4e4b6b048" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?disco" />
-    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="7e0412f7-d31f-4bba-a760-b6b37aa63a95" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="8fddb5d4-2124-4e69-a699-12d0c4f00bf6" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?wsdl" />
-    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="00f50f80-4353-418c-a8fe-69987e9ae0e1" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="c96f535d-4e73-416c-8757-c910f72d5665" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="7d824f06-de6d-464f-be5c-0405b0ae3b70" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?disco" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="6b23f313-438c-466c-8785-860fd55e6f1d" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="1b30beb2-992d-476e-af7c-ee41b7fb393b" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?wsdl" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="2b5938ab-5538-4aa1-8aa5-872898765559" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="4f5c20fd-0bee-45d3-ac17-3f9499491518" SourceId="1" SourceUrl="http://192.168.1.3/Cab9Service/Service.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

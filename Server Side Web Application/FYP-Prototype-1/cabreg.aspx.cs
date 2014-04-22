@@ -24,6 +24,7 @@ namespace FYP_Prototype_1
         {
             string chassis = ChassisNumberTextBox.Text;
             int length = chassis.Length;
+
             if (length == 14)
             {
                 SqlCommand cmd;
@@ -40,7 +41,7 @@ namespace FYP_Prototype_1
                 else
                 {
                     read.Close();
-                    cmd = new SqlCommand("INSERT INTO Cab ( Cab_RegNo, Cab_ChassisNum, Cab_Make, Cab_Model, Cab_Status, Cab_Color, Cab_AssignedDriver) VALUES('" + RegistrationNumberTextBox.Text + "', '" + ChassisNumberTextBox.Text + "','" + MakeDropDown.SelectedItem.ToString() + "','" + ModelTextBox.Text + "','Available','"+ColorTextBox.Text+"','No')", con);
+                    cmd = new SqlCommand("INSERT INTO Cab ( Cab_RegNo, Cab_ChassisNum, Cab_Make, Cab_Model, Cab_Status, Cab_Color, Cab_AssignedDriver) VALUES('" + RegistrationNumberTextBox.Text + "', '" + ChassisNumberTextBox.Text + "','" + MakeDropDown.SelectedItem.ToString() + "','" + ModelTextBox.Text + "','Unavailable','"+ColorTextBox.Text+"','No')", con);
                     try
                     {
                         int rows=cmd.ExecuteNonQuery();

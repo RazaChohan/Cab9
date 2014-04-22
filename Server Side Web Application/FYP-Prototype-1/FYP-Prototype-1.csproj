@@ -105,6 +105,7 @@
     <Content Include="images\Google-Maps-Location.png" />
     <Content Include="images\simple-blue.jpg" />
     <Content Include="images\taxi-128.png" />
+    <Content Include="images\taxi-icon_vectorized.png" />
     <Content Include="Index.aspx" />
     <Content Include="manreg.aspx" />
     <Content Include="PendingRegRequests.aspx" />

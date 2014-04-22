@@ -60,6 +60,11 @@ namespace FYP_Prototype_1
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandText = "delete from DriverActivation where Driver_ID=" + Session["DriverEditID"].ToString();
+                cmd.ExecuteNonQuery();
+
                 SqlDataAdapter da = new SqlDataAdapter("Select Cab_ID from driver where Driver_Name='" + Session["DriverDetailsName"].ToString() + "'", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);

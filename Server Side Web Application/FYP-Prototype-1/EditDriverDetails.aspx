@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditDriverDetails.aspx.cs" Inherits="FYP_Prototype_1.EditDriverDetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditDriverDetails.aspx.cs" Inherits="FYP_Prototype_1.EditDriverDetails" CodeFile="~/EditDriverDetails.aspx.cs"%>
 
 <!DOCTYPE html>
 
@@ -55,7 +55,7 @@
         <br />
         <div id="page">
             <center>
-                <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="250" Width="300px"></asp:Image><br /><br />
+                <asp:Image ID="DriverImage" runat="server" ImageUrl="~/images/avatar.jpg" Height="300px" Width="260px"></asp:Image><br /><br />
                 <table>
                     <tr>
                         <td>
@@ -149,20 +149,6 @@
                             &nbsp&nbsp&nbsp&nbsp
                             <asp:Label ID="GenderLabel" runat="server" Text="Label" Font-Size="Large" ForeColor="White"></asp:Label><br />
                 
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <asp:Label ID="Label9" runat="server" Text="Age:" ForeColor="White"></asp:Label>
-                        </td>
-                        <td>
-                            &nbsp&nbsp&nbsp&nbsp
-                            <asp:TextBox ID="AgeTextBox" runat="server" Width="200px"></asp:TextBox>
-                            <br />
-                        </td>
-                        
-                        <td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="AgeTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
                 </table>

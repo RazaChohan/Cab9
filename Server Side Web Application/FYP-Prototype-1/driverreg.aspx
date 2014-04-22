@@ -1,6 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="driverreg.aspx.cs" Inherits="FYP_Prototype_1.driverreg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="~/driverreg.aspx.cs" Inherits="FYP_Prototype_1.driverreg" CodeFile="~/driverreg.aspx.cs"%>
+
+<%@ Register assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxEditors" tagprefix="dx" %>
 
 <!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
@@ -104,13 +107,7 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="GenderDropDown" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
-                    <tr>
-                        <td><asp:Label ID="Label9" runat="server" ForeColor="White" Text="Age"></asp:Label></td>
-                        <td><asp:TextBox ID="AgeTextBox" runat="server" Width="150px" OnTextChanged="AgeTextBox_TextChanged"></asp:TextBox></td>
-                        <td>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="AgeTextBox" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
-                        </td>
-                    </tr>
+                    
                     <tr>
                         <td><asp:Label ID="Label10" runat="server" ForeColor="White" Text="Profile Photo"></asp:Label></td>
                         <td><asp:FileUpload ID="ImageUploadToDB" Width="150px" runat="server" ForeColor="White" /></td>
@@ -125,11 +122,24 @@
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="CabDropDown" ErrorMessage="* Required Field" ForeColor="White"></asp:RequiredFieldValidator>
                         </td>
                     </tr>
-                    <tr><td></td></datalist><td><center><br/><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/SubmitButton.png" OnClick="ImageButton1_Click1"></asp:ImageButton></center></td></tr>
-                    <tr><td></td>
-                        <td colspan="3"><asp:Label ID="WarningLabel" runat="server" Text="Label" Visible="False" ForeColor="White" Font-Size="Large"></asp:Label></td>
+                    
+                   
+                </table>
+                <table>
+                    <tr>
+                        <td><asp:Label ID="Label9" runat="server" ForeColor="White" Text="Date of Birth"></asp:Label></td>
+                        <td>
+                            <dx:ASPxCalendar ID="DOB" runat="server">
+                            </dx:ASPxCalendar>
+                        </td>
                     </tr>
                 </table>
+            </center>
+            <center>
+                <br/><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/SubmitButton.png" OnClick="ImageButton1_Click1"></asp:ImageButton>
+            </center>
+            <center>
+                <asp:Label ID="WarningLabel" runat="server" Text="Label" Visible="False" ForeColor="White" Font-Size="Large"></asp:Label>
             </center>
         </div>
     </form>

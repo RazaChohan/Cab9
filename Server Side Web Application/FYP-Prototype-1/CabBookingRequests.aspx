@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CabBookingRequests.aspx.cs" Inherits="FYP_Prototype_1.CabBookingRequests" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CabBookingRequests.aspx.cs" Inherits="FYP_Prototype_1.CabBookingRequests" CodeFile="~/CabBookingRequests.aspx.cs"%>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 

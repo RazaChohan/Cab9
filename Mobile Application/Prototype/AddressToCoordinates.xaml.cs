@@ -17,53 +17,55 @@ namespace Prototype
         public AddressToCoordinates()
         {
             InitializeComponent();
+            MainPage.bookingData.isDesSet = false;
+        }
+        private async void AddresstoCoordinatesReturnFunction(object sender, ServiceReference1.AddresstoCoordinatesCompletedEventArgs e)
+        {
+            double lat = 0.00;
+            double lng = 0.00;
+            int count = 0;
+            String latlngCoordinates = e.Result;
+            string[] coordinates = latlngCoordinates.Split(':');
+            count = 0;
+            foreach (string singleCoordinate in coordinates)
+            {
+                if (count == 0)
+                {
+                    lat = Convert.ToDouble(singleCoordinate);
+                    count++;
+                }
+                else if (count == 1)
+                {
+                    lng = Convert.ToDouble(singleCoordinate);
+                }
+            }
+
+            MainPage.bookingData.lat = lat;
+            MainPage.bookingData.lng = lng;
+            //MainPage.bookingData.are.Set();
+
+            GeoCoordinate geo = new GeoCoordinate(MainPage.bookingData.lat, MainPage.bookingData.lng);
+
+            MainPage.bookingData.isDesSet = true;
+            MainPage.bookingData.desitnation_location = geo;
+            NavigationService.Navigate(new Uri("/SelectDestination.xaml", UriKind.Relative));
         }
 
         private async void appBar_OnChk(object sender, EventArgs e)
         {
             try
             {
-                GeoCoordinate geo = new GeoCoordinate();
                 getCoordinatesFromLocation geocoding = new getCoordinatesFromLocation();
                 string location = "";
-                location = addressLocationtxt + "+" + cityLocationtxt + "+" + "Pakistan";
-                geo = geocoding.corrdinatioes(location);
-                if (geo == null)
-                {
-                    MessageBox.Show("Unable to Locate Your Desired Location..");
-                }
-                else
-                {
-                    //string url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + geo.Latitude + "," + geo.Longitude + "&sensor=true";
-                    //var client = new WebClient();
+                location = addressLocationtxt.Text + "+" + cityLocationtxt.Text + "+" + "Pakistan";
 
-                    //string response = await client.DownloadStringTaskAsync(new Uri(url));
-                    //JObject root = JObject.Parse(response);
+                ///////////////////////////////////////
 
-                    //JArray items = (JArray)root["results"];
-                    //JObject item;
-                    //JToken jtoken;
-                    //item = (JObject)items[0];
-                    //JArray add_comp = (JArray)item["address_components"];
-                    //string address = null;
-                    //string[] add_types = { "street_number", "route", "neighborhood", "locality", "city", "country" };
-                    //foreach (var comp in add_comp)
-                    //{
-                    //    if (add_types.Any(comp["types"].ToString().Contains))
-                    //    {
-                    //        address += comp["long_name"].ToString() + ", ";
-                    //        if (comp["types"].ToString().Contains("city") | comp["types"].ToString().Contains("country"))
-                    //        {
-                    //            address += "\n";
-                    //        }
-                    //    }
-                    //}
-                    MainPage.bookingData.set_destination_attributes(null, geo);
-                    MessageBox.Show(geo.Latitude.ToString());
-                    MessageBox.Show(geo.Longitude.ToString());
-                    NavigationService.Navigate(new Uri("/SelectDestination.xaml", UriKind.Relative));
- 
-                }
+                ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                clientfortesting.AddresstoCoordinatesCompleted += new EventHandler<ServiceReference1.AddresstoCoordinatesCompletedEventArgs>(AddresstoCoordinatesReturnFunction);
+                clientfortesting.AddresstoCoordinatesAsync(location);
+
+                ///////////////////////////////
             }
             catch (Exception ed)
             {

@@ -14,11 +14,15 @@ namespace FYP_Prototype_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["uname"] == null)
+            {
+                Response.Redirect("Index.aspx");
+            }
             if(!IsPostBack)
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
                 conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking ORDER BY Booking_DateTime DESC", conn);
+                SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY Booking_DateTime DESC", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 BookingsGridView.DataSource = dt;
@@ -32,7 +36,7 @@ namespace FYP_Prototype_1
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("Select Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking ORDER BY Booking_DateTime DESC", conn);
+            SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY Booking_DateTime DESC", conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             BookingsGridView.DataSource = dt;

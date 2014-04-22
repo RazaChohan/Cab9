@@ -52,6 +52,11 @@
         <xs:element minOccurs="0" name="BookingOrigin" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="BookingDestination" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="BookingCabType" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceLat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SourceLong" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DestinationLat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DestinationLong" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CustomerID" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -73,7 +78,7 @@
   <xs:element name="AuthenticateCustomerResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AuthenticateCustomerResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthenticateCustomerResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -88,7 +93,7 @@
   <xs:element name="AuthenticateDriverResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="AuthenticateDriverResult" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AuthenticateDriverResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -110,6 +115,126 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="CustomerRegistrationRequestResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLocation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="latitude" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="longitude" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CabID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateLocationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateLocationResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CabIDforDriver">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DriverID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CabIDforDriverResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CabIDforDriverResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckForDriverBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CabID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckForDriverBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckForDriverBookingResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddresstoCoordinates">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="location" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddresstoCoordinatesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="AddresstoCoordinatesResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeAvailableIfReached">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CabID" type="xs:int" />
+        <xs:element minOccurs="0" name="DestinationLat" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DestinationLong" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BookingID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MakeAvailableIfReachedResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="MakeAvailableIfReachedResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckCustomerBookings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CustomerID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CheckCustomerBookingsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CheckCustomerBookingsResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingTime">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BookingID" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetBookingTimeResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetBookingTimeResult" type="xs:dateTime" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelBooking">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="BookingID" type="xs:int" />
+        <xs:element minOccurs="0" name="time" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="BookingStatus" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ApproximateFare" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CancelBookingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CancelBookingResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

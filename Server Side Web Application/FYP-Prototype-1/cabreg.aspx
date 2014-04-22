@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cabreg.aspx.cs" Inherits="FYP_Prototype_1.cabreg" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cabreg.aspx.cs" Inherits="FYP_Prototype_1.cabreg" CodeFile="~/cabreg.aspx.cs"%>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 
@@ -101,8 +101,11 @@
                         </td></tr>
                     <tr><td></td>
                         <td><center><br /><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/images/buttons/SubmitButton.png" OnClick="ImageButton1_Click"></asp:ImageButton></center></td></tr>
-                    <tr><td></td><td colspan="3" style="text-align:center"><br/><asp:Label ID="Label8" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="Large"></asp:Label></td></tr>
+                    
                 </table>
+            </center>
+            <center>
+                <asp:Label ID="Label8" runat="server" Text="Label" Visible="false" ForeColor="White" Font-Size="Large"></asp:Label>
             </center>
         </div>
         <br />

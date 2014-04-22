@@ -18,6 +18,9 @@ namespace Prototype
         public string Time;
         public string CabType;
 
+        public double lat;
+        public double lng;
+
         public GeoCoordinate desitnation_location = new GeoCoordinate();
         public string destination_location_address;
 

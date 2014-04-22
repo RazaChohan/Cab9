@@ -80,24 +80,64 @@ namespace Prototype.ServiceReference1 {
         double EndCalculateRoadDistance(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CabBooking", ReplyAction="http://tempuri.org/IService/CabBookingResponse")]
-        System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState);
+        System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID, System.AsyncCallback callback, object asyncState);
         
         string EndCabBooking(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AuthenticateCustomer", ReplyAction="http://tempuri.org/IService/AuthenticateCustomerResponse")]
         System.IAsyncResult BeginAuthenticateCustomer(string username, string password, System.AsyncCallback callback, object asyncState);
         
-        string EndAuthenticateCustomer(System.IAsyncResult result);
+        int EndAuthenticateCustomer(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AuthenticateDriver", ReplyAction="http://tempuri.org/IService/AuthenticateDriverResponse")]
         System.IAsyncResult BeginAuthenticateDriver(string username, string password, System.AsyncCallback callback, object asyncState);
         
-        string EndAuthenticateDriver(System.IAsyncResult result);
+        int EndAuthenticateDriver(System.IAsyncResult result);
         
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CustomerRegistrationRequest", ReplyAction="http://tempuri.org/IService/CustomerRegistrationRequestResponse")]
         System.IAsyncResult BeginCustomerRegistrationRequest(string name, string password, string email, string phNum, string NIC, string address, string gender, string age, System.AsyncCallback callback, object asyncState);
         
         string EndCustomerRegistrationRequest(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/UpdateLocation", ReplyAction="http://tempuri.org/IService/UpdateLocationResponse")]
+        System.IAsyncResult BeginUpdateLocation(string latitude, string longitude, int CabID, System.AsyncCallback callback, object asyncState);
+        
+        string EndUpdateLocation(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CabIDforDriver", ReplyAction="http://tempuri.org/IService/CabIDforDriverResponse")]
+        System.IAsyncResult BeginCabIDforDriver(int DriverID, System.AsyncCallback callback, object asyncState);
+        
+        int EndCabIDforDriver(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CheckForDriverBooking", ReplyAction="http://tempuri.org/IService/CheckForDriverBookingResponse")]
+        System.IAsyncResult BeginCheckForDriverBooking(int CabID, System.AsyncCallback callback, object asyncState);
+        
+        string EndCheckForDriverBooking(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/AddresstoCoordinates", ReplyAction="http://tempuri.org/IService/AddresstoCoordinatesResponse")]
+        System.IAsyncResult BeginAddresstoCoordinates(string location, System.AsyncCallback callback, object asyncState);
+        
+        string EndAddresstoCoordinates(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/MakeAvailableIfReached", ReplyAction="http://tempuri.org/IService/MakeAvailableIfReachedResponse")]
+        System.IAsyncResult BeginMakeAvailableIfReached(int CabID, string DestinationLat, string DestinationLong, int BookingID, System.AsyncCallback callback, object asyncState);
+        
+        bool EndMakeAvailableIfReached(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CheckCustomerBookings", ReplyAction="http://tempuri.org/IService/CheckCustomerBookingsResponse")]
+        System.IAsyncResult BeginCheckCustomerBookings(int CustomerID, System.AsyncCallback callback, object asyncState);
+        
+        int EndCheckCustomerBookings(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/GetBookingTime", ReplyAction="http://tempuri.org/IService/GetBookingTimeResponse")]
+        System.IAsyncResult BeginGetBookingTime(int BookingID, System.AsyncCallback callback, object asyncState);
+        
+        System.DateTime EndGetBookingTime(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CancelBooking", ReplyAction="http://tempuri.org/IService/CancelBookingResponse")]
+        System.IAsyncResult BeginCancelBooking(int BookingID, string time, string BookingStatus, int ApproximateFare, System.AsyncCallback callback, object asyncState);
+        
+        string EndCancelBooking(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -191,10 +231,10 @@ namespace Prototype.ServiceReference1 {
             this.results = results;
         }
         
-        public string Result {
+        public int Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -210,10 +250,10 @@ namespace Prototype.ServiceReference1 {
             this.results = results;
         }
         
-        public string Result {
+        public int Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                return ((int)(this.results[0]));
             }
         }
     }
@@ -225,6 +265,158 @@ namespace Prototype.ServiceReference1 {
         private object[] results;
         
         public CustomerRegistrationRequestCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateLocationCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateLocationCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CabIDforDriverCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CabIDforDriverCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckForDriverBookingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CheckForDriverBookingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class AddresstoCoordinatesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public AddresstoCoordinatesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class MakeAvailableIfReachedCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public MakeAvailableIfReachedCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public bool Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckCustomerBookingsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CheckCustomerBookingsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class GetBookingTimeCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public GetBookingTimeCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public System.DateTime Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((System.DateTime)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CancelBookingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CancelBookingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -282,6 +474,54 @@ namespace Prototype.ServiceReference1 {
         private EndOperationDelegate onEndCustomerRegistrationRequestDelegate;
         
         private System.Threading.SendOrPostCallback onCustomerRegistrationRequestCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateLocationDelegate;
+        
+        private EndOperationDelegate onEndUpdateLocationDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateLocationCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCabIDforDriverDelegate;
+        
+        private EndOperationDelegate onEndCabIDforDriverDelegate;
+        
+        private System.Threading.SendOrPostCallback onCabIDforDriverCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCheckForDriverBookingDelegate;
+        
+        private EndOperationDelegate onEndCheckForDriverBookingDelegate;
+        
+        private System.Threading.SendOrPostCallback onCheckForDriverBookingCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginAddresstoCoordinatesDelegate;
+        
+        private EndOperationDelegate onEndAddresstoCoordinatesDelegate;
+        
+        private System.Threading.SendOrPostCallback onAddresstoCoordinatesCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginMakeAvailableIfReachedDelegate;
+        
+        private EndOperationDelegate onEndMakeAvailableIfReachedDelegate;
+        
+        private System.Threading.SendOrPostCallback onMakeAvailableIfReachedCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCheckCustomerBookingsDelegate;
+        
+        private EndOperationDelegate onEndCheckCustomerBookingsDelegate;
+        
+        private System.Threading.SendOrPostCallback onCheckCustomerBookingsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginGetBookingTimeDelegate;
+        
+        private EndOperationDelegate onEndGetBookingTimeDelegate;
+        
+        private System.Threading.SendOrPostCallback onGetBookingTimeCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginCancelBookingDelegate;
+        
+        private EndOperationDelegate onEndCancelBookingDelegate;
+        
+        private System.Threading.SendOrPostCallback onCancelBookingCompletedDelegate;
         
         private BeginOperationDelegate onBeginOpenDelegate;
         
@@ -349,6 +589,22 @@ namespace Prototype.ServiceReference1 {
         public event System.EventHandler<AuthenticateDriverCompletedEventArgs> AuthenticateDriverCompleted;
         
         public event System.EventHandler<CustomerRegistrationRequestCompletedEventArgs> CustomerRegistrationRequestCompleted;
+        
+        public event System.EventHandler<UpdateLocationCompletedEventArgs> UpdateLocationCompleted;
+        
+        public event System.EventHandler<CabIDforDriverCompletedEventArgs> CabIDforDriverCompleted;
+        
+        public event System.EventHandler<CheckForDriverBookingCompletedEventArgs> CheckForDriverBookingCompleted;
+        
+        public event System.EventHandler<AddresstoCoordinatesCompletedEventArgs> AddresstoCoordinatesCompleted;
+        
+        public event System.EventHandler<MakeAvailableIfReachedCompletedEventArgs> MakeAvailableIfReachedCompleted;
+        
+        public event System.EventHandler<CheckCustomerBookingsCompletedEventArgs> CheckCustomerBookingsCompleted;
+        
+        public event System.EventHandler<GetBookingTimeCompletedEventArgs> GetBookingTimeCompleted;
+        
+        public event System.EventHandler<CancelBookingCompletedEventArgs> CancelBookingCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -495,8 +751,8 @@ namespace Prototype.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState) {
-            return base.Channel.BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, callback, asyncState);
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, SourceLat, SourceLong, DestinationLat, DestinationLong, CustomerID, callback, asyncState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -510,7 +766,12 @@ namespace Prototype.ServiceReference1 {
             string BookingOrigin = ((string)(inValues[2]));
             string BookingDestination = ((string)(inValues[3]));
             string BookingCabType = ((string)(inValues[4]));
-            return ((Prototype.ServiceReference1.IService)(this)).BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, callback, asyncState);
+            string SourceLat = ((string)(inValues[5]));
+            string SourceLong = ((string)(inValues[6]));
+            string DestinationLat = ((string)(inValues[7]));
+            string DestinationLong = ((string)(inValues[8]));
+            string CustomerID = ((string)(inValues[9]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCabBooking(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, SourceLat, SourceLong, DestinationLat, DestinationLong, CustomerID, callback, asyncState);
         }
         
         private object[] OnEndCabBooking(System.IAsyncResult result) {
@@ -526,11 +787,11 @@ namespace Prototype.ServiceReference1 {
             }
         }
         
-        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType) {
-            this.CabBookingAsync(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, null);
+        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID) {
+            this.CabBookingAsync(BookingStatus, BookingDateTime, BookingOrigin, BookingDestination, BookingCabType, SourceLat, SourceLong, DestinationLat, DestinationLong, CustomerID, null);
         }
         
-        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, object userState) {
+        public void CabBookingAsync(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID, object userState) {
             if ((this.onBeginCabBookingDelegate == null)) {
                 this.onBeginCabBookingDelegate = new BeginOperationDelegate(this.OnBeginCabBooking);
             }
@@ -545,7 +806,12 @@ namespace Prototype.ServiceReference1 {
                         BookingDateTime,
                         BookingOrigin,
                         BookingDestination,
-                        BookingCabType}, this.onEndCabBookingDelegate, this.onCabBookingCompletedDelegate, userState);
+                        BookingCabType,
+                        SourceLat,
+                        SourceLong,
+                        DestinationLat,
+                        DestinationLong,
+                        CustomerID}, this.onEndCabBookingDelegate, this.onCabBookingCompletedDelegate, userState);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -554,7 +820,7 @@ namespace Prototype.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string Prototype.ServiceReference1.IService.EndAuthenticateCustomer(System.IAsyncResult result) {
+        int Prototype.ServiceReference1.IService.EndAuthenticateCustomer(System.IAsyncResult result) {
             return base.Channel.EndAuthenticateCustomer(result);
         }
         
@@ -565,7 +831,7 @@ namespace Prototype.ServiceReference1 {
         }
         
         private object[] OnEndAuthenticateCustomer(System.IAsyncResult result) {
-            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndAuthenticateCustomer(result);
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndAuthenticateCustomer(result);
             return new object[] {
                     retVal};
         }
@@ -602,7 +868,7 @@ namespace Prototype.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        string Prototype.ServiceReference1.IService.EndAuthenticateDriver(System.IAsyncResult result) {
+        int Prototype.ServiceReference1.IService.EndAuthenticateDriver(System.IAsyncResult result) {
             return base.Channel.EndAuthenticateDriver(result);
         }
         
@@ -613,7 +879,7 @@ namespace Prototype.ServiceReference1 {
         }
         
         private object[] OnEndAuthenticateDriver(System.IAsyncResult result) {
-            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndAuthenticateDriver(result);
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndAuthenticateDriver(result);
             return new object[] {
                     retVal};
         }
@@ -702,6 +968,390 @@ namespace Prototype.ServiceReference1 {
                         address,
                         gender,
                         age}, this.onEndCustomerRegistrationRequestDelegate, this.onCustomerRegistrationRequestCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginUpdateLocation(string latitude, string longitude, int CabID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateLocation(latitude, longitude, CabID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndUpdateLocation(System.IAsyncResult result) {
+            return base.Channel.EndUpdateLocation(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateLocation(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string latitude = ((string)(inValues[0]));
+            string longitude = ((string)(inValues[1]));
+            int CabID = ((int)(inValues[2]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginUpdateLocation(latitude, longitude, CabID, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateLocation(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndUpdateLocation(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateLocationCompleted(object state) {
+            if ((this.UpdateLocationCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateLocationCompleted(this, new UpdateLocationCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateLocationAsync(string latitude, string longitude, int CabID) {
+            this.UpdateLocationAsync(latitude, longitude, CabID, null);
+        }
+        
+        public void UpdateLocationAsync(string latitude, string longitude, int CabID, object userState) {
+            if ((this.onBeginUpdateLocationDelegate == null)) {
+                this.onBeginUpdateLocationDelegate = new BeginOperationDelegate(this.OnBeginUpdateLocation);
+            }
+            if ((this.onEndUpdateLocationDelegate == null)) {
+                this.onEndUpdateLocationDelegate = new EndOperationDelegate(this.OnEndUpdateLocation);
+            }
+            if ((this.onUpdateLocationCompletedDelegate == null)) {
+                this.onUpdateLocationCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateLocationCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateLocationDelegate, new object[] {
+                        latitude,
+                        longitude,
+                        CabID}, this.onEndUpdateLocationDelegate, this.onUpdateLocationCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCabIDforDriver(int DriverID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCabIDforDriver(DriverID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int Prototype.ServiceReference1.IService.EndCabIDforDriver(System.IAsyncResult result) {
+            return base.Channel.EndCabIDforDriver(result);
+        }
+        
+        private System.IAsyncResult OnBeginCabIDforDriver(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int DriverID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCabIDforDriver(DriverID, callback, asyncState);
+        }
+        
+        private object[] OnEndCabIDforDriver(System.IAsyncResult result) {
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndCabIDforDriver(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCabIDforDriverCompleted(object state) {
+            if ((this.CabIDforDriverCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CabIDforDriverCompleted(this, new CabIDforDriverCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CabIDforDriverAsync(int DriverID) {
+            this.CabIDforDriverAsync(DriverID, null);
+        }
+        
+        public void CabIDforDriverAsync(int DriverID, object userState) {
+            if ((this.onBeginCabIDforDriverDelegate == null)) {
+                this.onBeginCabIDforDriverDelegate = new BeginOperationDelegate(this.OnBeginCabIDforDriver);
+            }
+            if ((this.onEndCabIDforDriverDelegate == null)) {
+                this.onEndCabIDforDriverDelegate = new EndOperationDelegate(this.OnEndCabIDforDriver);
+            }
+            if ((this.onCabIDforDriverCompletedDelegate == null)) {
+                this.onCabIDforDriverCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCabIDforDriverCompleted);
+            }
+            base.InvokeAsync(this.onBeginCabIDforDriverDelegate, new object[] {
+                        DriverID}, this.onEndCabIDforDriverDelegate, this.onCabIDforDriverCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCheckForDriverBooking(int CabID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCheckForDriverBooking(CabID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndCheckForDriverBooking(System.IAsyncResult result) {
+            return base.Channel.EndCheckForDriverBooking(result);
+        }
+        
+        private System.IAsyncResult OnBeginCheckForDriverBooking(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int CabID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCheckForDriverBooking(CabID, callback, asyncState);
+        }
+        
+        private object[] OnEndCheckForDriverBooking(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndCheckForDriverBooking(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCheckForDriverBookingCompleted(object state) {
+            if ((this.CheckForDriverBookingCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CheckForDriverBookingCompleted(this, new CheckForDriverBookingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CheckForDriverBookingAsync(int CabID) {
+            this.CheckForDriverBookingAsync(CabID, null);
+        }
+        
+        public void CheckForDriverBookingAsync(int CabID, object userState) {
+            if ((this.onBeginCheckForDriverBookingDelegate == null)) {
+                this.onBeginCheckForDriverBookingDelegate = new BeginOperationDelegate(this.OnBeginCheckForDriverBooking);
+            }
+            if ((this.onEndCheckForDriverBookingDelegate == null)) {
+                this.onEndCheckForDriverBookingDelegate = new EndOperationDelegate(this.OnEndCheckForDriverBooking);
+            }
+            if ((this.onCheckForDriverBookingCompletedDelegate == null)) {
+                this.onCheckForDriverBookingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCheckForDriverBookingCompleted);
+            }
+            base.InvokeAsync(this.onBeginCheckForDriverBookingDelegate, new object[] {
+                        CabID}, this.onEndCheckForDriverBookingDelegate, this.onCheckForDriverBookingCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginAddresstoCoordinates(string location, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginAddresstoCoordinates(location, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndAddresstoCoordinates(System.IAsyncResult result) {
+            return base.Channel.EndAddresstoCoordinates(result);
+        }
+        
+        private System.IAsyncResult OnBeginAddresstoCoordinates(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string location = ((string)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginAddresstoCoordinates(location, callback, asyncState);
+        }
+        
+        private object[] OnEndAddresstoCoordinates(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndAddresstoCoordinates(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnAddresstoCoordinatesCompleted(object state) {
+            if ((this.AddresstoCoordinatesCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.AddresstoCoordinatesCompleted(this, new AddresstoCoordinatesCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void AddresstoCoordinatesAsync(string location) {
+            this.AddresstoCoordinatesAsync(location, null);
+        }
+        
+        public void AddresstoCoordinatesAsync(string location, object userState) {
+            if ((this.onBeginAddresstoCoordinatesDelegate == null)) {
+                this.onBeginAddresstoCoordinatesDelegate = new BeginOperationDelegate(this.OnBeginAddresstoCoordinates);
+            }
+            if ((this.onEndAddresstoCoordinatesDelegate == null)) {
+                this.onEndAddresstoCoordinatesDelegate = new EndOperationDelegate(this.OnEndAddresstoCoordinates);
+            }
+            if ((this.onAddresstoCoordinatesCompletedDelegate == null)) {
+                this.onAddresstoCoordinatesCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnAddresstoCoordinatesCompleted);
+            }
+            base.InvokeAsync(this.onBeginAddresstoCoordinatesDelegate, new object[] {
+                        location}, this.onEndAddresstoCoordinatesDelegate, this.onAddresstoCoordinatesCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginMakeAvailableIfReached(int CabID, string DestinationLat, string DestinationLong, int BookingID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginMakeAvailableIfReached(CabID, DestinationLat, DestinationLong, BookingID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        bool Prototype.ServiceReference1.IService.EndMakeAvailableIfReached(System.IAsyncResult result) {
+            return base.Channel.EndMakeAvailableIfReached(result);
+        }
+        
+        private System.IAsyncResult OnBeginMakeAvailableIfReached(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int CabID = ((int)(inValues[0]));
+            string DestinationLat = ((string)(inValues[1]));
+            string DestinationLong = ((string)(inValues[2]));
+            int BookingID = ((int)(inValues[3]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginMakeAvailableIfReached(CabID, DestinationLat, DestinationLong, BookingID, callback, asyncState);
+        }
+        
+        private object[] OnEndMakeAvailableIfReached(System.IAsyncResult result) {
+            bool retVal = ((Prototype.ServiceReference1.IService)(this)).EndMakeAvailableIfReached(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnMakeAvailableIfReachedCompleted(object state) {
+            if ((this.MakeAvailableIfReachedCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.MakeAvailableIfReachedCompleted(this, new MakeAvailableIfReachedCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void MakeAvailableIfReachedAsync(int CabID, string DestinationLat, string DestinationLong, int BookingID) {
+            this.MakeAvailableIfReachedAsync(CabID, DestinationLat, DestinationLong, BookingID, null);
+        }
+        
+        public void MakeAvailableIfReachedAsync(int CabID, string DestinationLat, string DestinationLong, int BookingID, object userState) {
+            if ((this.onBeginMakeAvailableIfReachedDelegate == null)) {
+                this.onBeginMakeAvailableIfReachedDelegate = new BeginOperationDelegate(this.OnBeginMakeAvailableIfReached);
+            }
+            if ((this.onEndMakeAvailableIfReachedDelegate == null)) {
+                this.onEndMakeAvailableIfReachedDelegate = new EndOperationDelegate(this.OnEndMakeAvailableIfReached);
+            }
+            if ((this.onMakeAvailableIfReachedCompletedDelegate == null)) {
+                this.onMakeAvailableIfReachedCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnMakeAvailableIfReachedCompleted);
+            }
+            base.InvokeAsync(this.onBeginMakeAvailableIfReachedDelegate, new object[] {
+                        CabID,
+                        DestinationLat,
+                        DestinationLong,
+                        BookingID}, this.onEndMakeAvailableIfReachedDelegate, this.onMakeAvailableIfReachedCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCheckCustomerBookings(int CustomerID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCheckCustomerBookings(CustomerID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int Prototype.ServiceReference1.IService.EndCheckCustomerBookings(System.IAsyncResult result) {
+            return base.Channel.EndCheckCustomerBookings(result);
+        }
+        
+        private System.IAsyncResult OnBeginCheckCustomerBookings(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int CustomerID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCheckCustomerBookings(CustomerID, callback, asyncState);
+        }
+        
+        private object[] OnEndCheckCustomerBookings(System.IAsyncResult result) {
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndCheckCustomerBookings(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCheckCustomerBookingsCompleted(object state) {
+            if ((this.CheckCustomerBookingsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CheckCustomerBookingsCompleted(this, new CheckCustomerBookingsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CheckCustomerBookingsAsync(int CustomerID) {
+            this.CheckCustomerBookingsAsync(CustomerID, null);
+        }
+        
+        public void CheckCustomerBookingsAsync(int CustomerID, object userState) {
+            if ((this.onBeginCheckCustomerBookingsDelegate == null)) {
+                this.onBeginCheckCustomerBookingsDelegate = new BeginOperationDelegate(this.OnBeginCheckCustomerBookings);
+            }
+            if ((this.onEndCheckCustomerBookingsDelegate == null)) {
+                this.onEndCheckCustomerBookingsDelegate = new EndOperationDelegate(this.OnEndCheckCustomerBookings);
+            }
+            if ((this.onCheckCustomerBookingsCompletedDelegate == null)) {
+                this.onCheckCustomerBookingsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCheckCustomerBookingsCompleted);
+            }
+            base.InvokeAsync(this.onBeginCheckCustomerBookingsDelegate, new object[] {
+                        CustomerID}, this.onEndCheckCustomerBookingsDelegate, this.onCheckCustomerBookingsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginGetBookingTime(int BookingID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginGetBookingTime(BookingID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.DateTime Prototype.ServiceReference1.IService.EndGetBookingTime(System.IAsyncResult result) {
+            return base.Channel.EndGetBookingTime(result);
+        }
+        
+        private System.IAsyncResult OnBeginGetBookingTime(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int BookingID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginGetBookingTime(BookingID, callback, asyncState);
+        }
+        
+        private object[] OnEndGetBookingTime(System.IAsyncResult result) {
+            System.DateTime retVal = ((Prototype.ServiceReference1.IService)(this)).EndGetBookingTime(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnGetBookingTimeCompleted(object state) {
+            if ((this.GetBookingTimeCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.GetBookingTimeCompleted(this, new GetBookingTimeCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void GetBookingTimeAsync(int BookingID) {
+            this.GetBookingTimeAsync(BookingID, null);
+        }
+        
+        public void GetBookingTimeAsync(int BookingID, object userState) {
+            if ((this.onBeginGetBookingTimeDelegate == null)) {
+                this.onBeginGetBookingTimeDelegate = new BeginOperationDelegate(this.OnBeginGetBookingTime);
+            }
+            if ((this.onEndGetBookingTimeDelegate == null)) {
+                this.onEndGetBookingTimeDelegate = new EndOperationDelegate(this.OnEndGetBookingTime);
+            }
+            if ((this.onGetBookingTimeCompletedDelegate == null)) {
+                this.onGetBookingTimeCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnGetBookingTimeCompleted);
+            }
+            base.InvokeAsync(this.onBeginGetBookingTimeDelegate, new object[] {
+                        BookingID}, this.onEndGetBookingTimeDelegate, this.onGetBookingTimeCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCancelBooking(int BookingID, string time, string BookingStatus, int ApproximateFare, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCancelBooking(BookingID, time, BookingStatus, ApproximateFare, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndCancelBooking(System.IAsyncResult result) {
+            return base.Channel.EndCancelBooking(result);
+        }
+        
+        private System.IAsyncResult OnBeginCancelBooking(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int BookingID = ((int)(inValues[0]));
+            string time = ((string)(inValues[1]));
+            string BookingStatus = ((string)(inValues[2]));
+            int ApproximateFare = ((int)(inValues[3]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCancelBooking(BookingID, time, BookingStatus, ApproximateFare, callback, asyncState);
+        }
+        
+        private object[] OnEndCancelBooking(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndCancelBooking(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCancelBookingCompleted(object state) {
+            if ((this.CancelBookingCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CancelBookingCompleted(this, new CancelBookingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CancelBookingAsync(int BookingID, string time, string BookingStatus, int ApproximateFare) {
+            this.CancelBookingAsync(BookingID, time, BookingStatus, ApproximateFare, null);
+        }
+        
+        public void CancelBookingAsync(int BookingID, string time, string BookingStatus, int ApproximateFare, object userState) {
+            if ((this.onBeginCancelBookingDelegate == null)) {
+                this.onBeginCancelBookingDelegate = new BeginOperationDelegate(this.OnBeginCancelBooking);
+            }
+            if ((this.onEndCancelBookingDelegate == null)) {
+                this.onEndCancelBookingDelegate = new EndOperationDelegate(this.OnEndCancelBooking);
+            }
+            if ((this.onCancelBookingCompletedDelegate == null)) {
+                this.onCancelBookingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCancelBookingCompleted);
+            }
+            base.InvokeAsync(this.onBeginCancelBookingDelegate, new object[] {
+                        BookingID,
+                        time,
+                        BookingStatus,
+                        ApproximateFare}, this.onEndCancelBookingDelegate, this.onCancelBookingCompletedDelegate, userState);
         }
         
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
@@ -820,13 +1470,18 @@ namespace Prototype.ServiceReference1 {
                 return _result;
             }
             
-            public System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, System.AsyncCallback callback, object asyncState) {
-                object[] _args = new object[5];
+            public System.IAsyncResult BeginCabBooking(string BookingStatus, System.DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[10];
                 _args[0] = BookingStatus;
                 _args[1] = BookingDateTime;
                 _args[2] = BookingOrigin;
                 _args[3] = BookingDestination;
                 _args[4] = BookingCabType;
+                _args[5] = SourceLat;
+                _args[6] = SourceLong;
+                _args[7] = DestinationLat;
+                _args[8] = DestinationLong;
+                _args[9] = CustomerID;
                 System.IAsyncResult _result = base.BeginInvoke("CabBooking", _args, callback, asyncState);
                 return _result;
             }
@@ -845,9 +1500,9 @@ namespace Prototype.ServiceReference1 {
                 return _result;
             }
             
-            public string EndAuthenticateCustomer(System.IAsyncResult result) {
+            public int EndAuthenticateCustomer(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("AuthenticateCustomer", _args, result)));
+                int _result = ((int)(base.EndInvoke("AuthenticateCustomer", _args, result)));
                 return _result;
             }
             
@@ -859,9 +1514,9 @@ namespace Prototype.ServiceReference1 {
                 return _result;
             }
             
-            public string EndAuthenticateDriver(System.IAsyncResult result) {
+            public int EndAuthenticateDriver(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                string _result = ((string)(base.EndInvoke("AuthenticateDriver", _args, result)));
+                int _result = ((int)(base.EndInvoke("AuthenticateDriver", _args, result)));
                 return _result;
             }
             
@@ -882,6 +1537,118 @@ namespace Prototype.ServiceReference1 {
             public string EndCustomerRegistrationRequest(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("CustomerRegistrationRequest", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUpdateLocation(string latitude, string longitude, int CabID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[3];
+                _args[0] = latitude;
+                _args[1] = longitude;
+                _args[2] = CabID;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateLocation", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndUpdateLocation(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("UpdateLocation", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCabIDforDriver(int DriverID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = DriverID;
+                System.IAsyncResult _result = base.BeginInvoke("CabIDforDriver", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndCabIDforDriver(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("CabIDforDriver", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCheckForDriverBooking(int CabID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = CabID;
+                System.IAsyncResult _result = base.BeginInvoke("CheckForDriverBooking", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndCheckForDriverBooking(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("CheckForDriverBooking", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginAddresstoCoordinates(string location, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = location;
+                System.IAsyncResult _result = base.BeginInvoke("AddresstoCoordinates", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndAddresstoCoordinates(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("AddresstoCoordinates", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginMakeAvailableIfReached(int CabID, string DestinationLat, string DestinationLong, int BookingID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = CabID;
+                _args[1] = DestinationLat;
+                _args[2] = DestinationLong;
+                _args[3] = BookingID;
+                System.IAsyncResult _result = base.BeginInvoke("MakeAvailableIfReached", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public bool EndMakeAvailableIfReached(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                bool _result = ((bool)(base.EndInvoke("MakeAvailableIfReached", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCheckCustomerBookings(int CustomerID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = CustomerID;
+                System.IAsyncResult _result = base.BeginInvoke("CheckCustomerBookings", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndCheckCustomerBookings(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("CheckCustomerBookings", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginGetBookingTime(int BookingID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = BookingID;
+                System.IAsyncResult _result = base.BeginInvoke("GetBookingTime", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public System.DateTime EndGetBookingTime(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                System.DateTime _result = ((System.DateTime)(base.EndInvoke("GetBookingTime", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCancelBooking(int BookingID, string time, string BookingStatus, int ApproximateFare, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[4];
+                _args[0] = BookingID;
+                _args[1] = time;
+                _args[2] = BookingStatus;
+                _args[3] = ApproximateFare;
+                System.IAsyncResult _result = base.BeginInvoke("CancelBooking", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndCancelBooking(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("CancelBooking", _args, result)));
                 return _result;
             }
         }

@@ -28,24 +28,30 @@
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel Grid.Row="0" Margin="12,17,0,28"/>
         <phone:Panorama HorizontalAlignment="Left" Height="758" Title="Driver Menu" VerticalAlignment="Top" Width="480" Margin="10,0,-10,0" >
-            <phone:PanoramaItem CacheMode="{x:Null}" Header="Confirm Booking" Orientation="Horizontal">
+            <phone:PanoramaItem CacheMode="{x:Null}" Header="Booking Details" Orientation="Horizontal">
                 <phone:PanoramaItem.RenderTransform>
                     <TranslateTransform/>
                 </phone:PanoramaItem.RenderTransform>
                 <Grid Height="478"  Width="422" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Customer Location" VerticalAlignment="Top" Width="234"/>
-                    <TextBox x:Name="customerlocation" HorizontalAlignment="Left" Height="72" Margin="0,31,0,0" TextWrapping="Wrap" Text="Default Location" VerticalAlignment="Top" Width="402" IsReadOnly="True"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,-2,0,0" TextWrapping="Wrap" Text="Customer Location" VerticalAlignment="Top" Width="234"/>
+                    <TextBox x:Name="CustomerLocationText" HorizontalAlignment="Left" Height="72" Margin="0,12,0,0" TextWrapping="Wrap" Text="Default Location" VerticalAlignment="Top" Width="402" IsReadOnly="True"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Top" Width="234"/>
-                    <TextBox HorizontalAlignment="Left" Height="72" Margin="0,135,0,0" TextWrapping="Wrap" Text="Default Destination" VerticalAlignment="Top" Width="402" IsReadOnly="True" RenderTransformOrigin="0.52,1.164"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,73,0,0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Top" Width="234"/>
+                    <TextBox x:Name="DestinationTextBox" HorizontalAlignment="Left" Height="72" Margin="0,87,0,0" TextWrapping="Wrap" Text="Default Destination" VerticalAlignment="Top" Width="402" IsReadOnly="True" RenderTransformOrigin="0.52,1.164"/>
 
-                    <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Time to Arrive"/>
-                    <TextBox HorizontalAlignment="Left" Height="72" Margin="0,236,0,0" TextWrapping="Wrap" Text="Default Time" VerticalAlignment="Top" Width="402" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,148,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Booking Date"/>
+                    <TextBox x:Name="DateTextBox" HorizontalAlignment="Left" Height="72" Margin="0,162,0,0" TextWrapping="Wrap" Text="Default Time" VerticalAlignment="Top" Width="402" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="10,223,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Booking Time"/>
+                    <TextBox x:Name="TimeTextBox" HorizontalAlignment="Left" Height="72" Margin="0,238,0,0" TextWrapping="Wrap" Text="Default Time" VerticalAlignment="Top" Width="402" IsReadOnly="True" TextChanged="TextBox_TextChanged"/>
 
                 </Grid>
 
             </phone:PanoramaItem>
 
+
+           
+            <!--Panorama item two-->
+          
             <phone:PanoramaItem CacheMode="{x:Null}" Header="Navigation">
                 <phone:PanoramaItem.RenderTransform>
                     <TranslateTransform/>
@@ -55,20 +61,10 @@
                 <Button x:Name="navigate" Content="Display Navigation" HorizontalAlignment="Left" Margin="84,134,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.492,-0.007" Height="91" Width="253" Click="navigate_Click"/>
 
             </phone:PanoramaItem>
-            <phone:PanoramaItem CacheMode="{x:Null}" Header="Road Block Alerts" FontSize="14" Orientation="Horizontal">
-                <phone:PanoramaItem.RenderTransform>
-                    <TranslateTransform/>
-                </phone:PanoramaItem.RenderTransform>
-                <Grid Height="478"  Width="422" VerticalAlignment="Top" HorizontalAlignment="Left">
-                    <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="Road Block 1" VerticalAlignment="Top" Width="353" FontSize="48"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,108,0,0" TextWrapping="Wrap" Text="Road Block 2" VerticalAlignment="Top" Width="376" FontSize="48"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="10,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Road Block 3" FontSize="48"/>
 
-                </Grid>
+            
 
 
-            </phone:PanoramaItem>
-         
         </phone:Panorama>
 
         <!--ContentPanel - place additional content here-->

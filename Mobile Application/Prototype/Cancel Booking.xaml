@@ -29,10 +29,11 @@
 
         <!--ContentPanel - place additional content here-->
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
-            <TextBlock HorizontalAlignment="Left" Margin="10,114,0,0" TextWrapping="Wrap" Text="Time Elasped" VerticalAlignment="Top" FontSize="24"/>
-            <TextBox HorizontalAlignment="Left" Height="72" Margin="0,151,0,0" TextWrapping="Wrap" Text="3 Minutes" VerticalAlignment="Top" Width="456"/>
-            <TextBlock HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="Booking Request" VerticalAlignment="Top" RenderTransformOrigin="0.279,0.839" FontSize="24"/>
-            <TextBox HorizontalAlignment="Left" Height="72" Margin="0,288,0,0" TextWrapping="Wrap" Text="Accepted" VerticalAlignment="Top" Width="456"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,114,0,0" TextWrapping="Wrap" Text="Time Elapsed" VerticalAlignment="Top" FontSize="24"/>
+            <TextBox x:Name="TimeElapsedTextBox" HorizontalAlignment="Left" Height="72" Margin="0,151,0,0" TextWrapping="Wrap" Text="3 Minutes" VerticalAlignment="Top" Width="456"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,251,0,0" TextWrapping="Wrap" Text="Booking Status" VerticalAlignment="Top" RenderTransformOrigin="0.279,0.839" FontSize="24"/>
+            <TextBox x:Name="BookingStatusTextBox" HorizontalAlignment="Left" Height="72" Margin="0,288,0,0" TextWrapping="Wrap" Text="Accepted" VerticalAlignment="Top" Width="456"/>
+            <Button x:Name="CancelBookingButton" Content="Cancel Booking" HorizontalAlignment="Left" Margin="118,404,0,0" VerticalAlignment="Top" Height="81" Width="214" Click="CancelBookingButton_Click"/>
 
         </Grid>
     </Grid>

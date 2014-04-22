@@ -33,7 +33,6 @@ namespace FYP_Prototype_1
                 NICTextBox.Text = dt.Rows[0]["Driver_NIC"].ToString();
                 TextBox1.Text = dt.Rows[0]["Driver_Address"].ToString();
                 GenderLabel.Text = dt.Rows[0]["Driver_Gender"].ToString();
-                AgeTextBox.Text = dt.Rows[0]["Driver_Age"].ToString();
 
                 // To view the driver picture
                 Session["Image"] = (byte[])dt.Rows[0]["Driver_Picture"];
@@ -56,7 +55,7 @@ namespace FYP_Prototype_1
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = "Update Driver set Driver_Name='" + NameTextBox.Text + "', Driver_Password='" + PasswordTextBox.Text + "', Driver_Email='" + EmailTextBox.Text + "', Driver_PhNum='" + PhoneNumberTextBox.Text + "', Driver_NIC='" + NICTextBox.Text + "', Driver_Address='" + TextBox1.Text + "', Driver_Age=" + AgeTextBox.Text + " where Driver_ID=" + Session["DriverEditID"].ToString();
+                command.CommandText = "Update Driver set Driver_Name='" + NameTextBox.Text + "', Driver_Password='" + PasswordTextBox.Text + "', Driver_Email='" + EmailTextBox.Text + "', Driver_PhNum='" + PhoneNumberTextBox.Text + "', Driver_NIC='" + NICTextBox.Text + "', Driver_Address='" + TextBox1.Text + "' where Driver_ID=" + Session["DriverEditID"].ToString();
                 int result = command.ExecuteNonQuery();
                 if(result>0)
                 {

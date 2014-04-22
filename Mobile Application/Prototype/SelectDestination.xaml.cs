@@ -52,28 +52,73 @@ namespace Prototype
             googlemap.Children.Add(pushPinCurrentLocation);
             pushPinCurrentLocation.AddChild(new_pushpin, geo, PositionOrigin.BottomLeft);
 
-            if (MainPage.bookingData.isDesSet == true)
+            
+                if (MainPage.bookingData.isDesSet == true)
+                {
+                    AddressMapping();
+                }
+
+ 
+            
+        }
+        private async void AddressMapping()
+        {
+            googlemap.Children.Remove(pushPinLayer);
+            pushPinLayer = new MapLayer();
+
+            try
             {
-                GeoCoordinate geo_des = new GeoCoordinate();
-                geo_des = MainPage.bookingData.desitnation_location;
-                
-                
-                Microsoft.Phone.Controls.Maps.Pushpin new_pushpin_destination = new Microsoft.Phone.Controls.Maps.Pushpin();
-                new_pushpin_destination.Location = geo_des;
+                GeoCoordinate geo = new GeoCoordinate(MainPage.bookingData.lat, MainPage.bookingData.lng);
 
-                pushPinCurrentLocation = new MapLayer();
+                Microsoft.Phone.Controls.Maps.Pushpin new_pushpin = new Microsoft.Phone.Controls.Maps.Pushpin();
+                new_pushpin.Location = geo;
+                googlemap.Center = geo;
 
-                new_pushpin_destination.Content = "Destination Location:\n ";
-                new_pushpin_destination.Content += MainPage.bookingData.destination_location_address;
+                string url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + geo.Latitude + "," + geo.Longitude + "&sensor=true";
+                var client = new WebClient();
+
+                string response = await client.DownloadStringTaskAsync(new Uri(url));
+                JObject root = JObject.Parse(response);
+
+                JArray items = (JArray)root["results"];
+                JObject item;
+                JToken jtoken;
+                item = (JObject)items[0];
+                JArray add_comp = (JArray)item["address_components"];
+                string address = null;
+                string[] add_types = { "street_number", "route", "neighborhood", "locality", "city", "country" };
+                foreach (var comp in add_comp)
+                {
+                    if (add_types.Any(comp["types"].ToString().Contains))
+                    {
+                        address += comp["long_name"].ToString() + ", ";
+                        if (comp["types"].ToString().Contains("city") | comp["types"].ToString().Contains("country"))
+                        {
+                            address += "\n";
+                        }
+                    }
+                }
+
+                (ApplicationBar.Buttons[0] as ApplicationBarIconButton).IsEnabled = true;
+                (ApplicationBar.Buttons[2] as ApplicationBarIconButton).IsEnabled = true;
+
+                new_pushpin.Content = "Destination Location:\n" + address;
+
+                Address.Text = address;
                 new_pushpin.Visibility = Visibility.Visible;
 
                 googlemap.Children.Add(pushPinLayer);
-                pushPinLayer.AddChild(new_pushpin_destination, geo, PositionOrigin.BottomLeft);
-
- 
+                pushPinLayer.AddChild(new_pushpin, geo, PositionOrigin.BottomLeft);
+                MainPage.bookingData.set_destination_attributes(address, geo);
+                LatitudeTextBlock.Text = "Latitude:  " + geo.Latitude.ToString("0.00"); //geoposition.Coordinate.Latitude.ToString("0.00"); //
+                LongitudeTextBlock.Text = "Longitude: " + geo.Longitude.ToString("0.00");//geoposition.Coordinate.Longitude.ToString("0.00"); //
+            }
+            catch (Exception ed)
+            {
+                MessageBox.Show(ed.ToString());
             }
         }
-       
+
         //CabBookingAttributes bookingData = new CabBookingAttributes();
         
         private async void LocateMEDone(object sender, EventArgs e)
@@ -106,8 +151,12 @@ namespace Prototype
 
                 dlat = gPos.Coordinate.Latitude;
                 dlong = gPos.Coordinate.Longitude;
-                LatitudeTextBlock.Text = "Latitude:  " + gPos.Coordinate.Latitude.ToString("0.00"); //geoposition.Coordinate.Latitude.ToString("0.00"); //
-                LongitudeTextBlock.Text = "Longitude: " + gPos.Coordinate.Longitude.ToString("0.00");//geoposition.Coordinate.Longitude.ToString("0.00"); //
+                LatitudeTextBlock.Text = "Latitude:  " + gPos.Coordinate.Latitude.ToString("0.000000"); //geoposition.Coordinate.Latitude.ToString("0.00"); //
+                LongitudeTextBlock.Text = "Longitude: " + gPos.Coordinate.Longitude.ToString("0.000000");//geoposition.Coordinate.Longitude.ToString("0.00"); //
+
+                //Storing in static variables for access in other pages of app
+                Booking.DestinationLat = gPos.Coordinate.Latitude.ToString("0.000000");
+                Booking.DestinationLong = gPos.Coordinate.Longitude.ToString("0.000000");
                 ReverseGeocodeQuery getAddress = new ReverseGeocodeQuery();
         
                 GeoCoordinate geo = new GeoCoordinate();
@@ -218,6 +267,10 @@ namespace Prototype
 
                 Microsoft.Phone.Controls.Maps.Pushpin new_pushpin = new Microsoft.Phone.Controls.Maps.Pushpin();
                 new_pushpin.Location = geo;
+                
+                // Storing in static variables
+                Booking.DestinationLat = geo.Latitude.ToString("0.000000");
+                Booking.DestinationLong = geo.Longitude.ToString("0.000000");
 
                 string url = "http://maps.googleapis.com/maps/api/geocode/json?latlng=" + geo.Latitude + "," + geo.Longitude + "&sensor=true";
                 var client = new WebClient();
@@ -254,8 +307,9 @@ namespace Prototype
                 googlemap.Children.Add(pushPinLayer);
                 pushPinLayer.AddChild(new_pushpin, geo, PositionOrigin.BottomLeft);
                 MainPage.bookingData.set_destination_attributes(address, geo);
-                LatitudeTextBlock.Text = "Latitude:  " + geo.Latitude.ToString("0.00"); //geoposition.Coordinate.Latitude.ToString("0.00"); //
-                LongitudeTextBlock.Text = "Longitude: " + geo.Longitude.ToString("0.00");//geoposition.Coordinate.Longitude.ToString("0.00"); //
+                LatitudeTextBlock.Text = "Latitude:  " + geo.Latitude.ToString("0.000000"); //geoposition.Coordinate.Latitude.ToString("0.00"); //
+                LongitudeTextBlock.Text = "Longitude: " + geo.Longitude.ToString("0.000000");//geoposition.Coordinate.Longitude.ToString("0.00"); //
+                
             }
             catch (Exception ed)
             {

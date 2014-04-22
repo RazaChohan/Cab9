@@ -2,3 +2,20 @@ C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\Bin\Deb
 C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ScheduledTaskAgent1.pdb
 C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.dll
 C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.pdb
+C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.dll
+C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.pdb
+C:\Users\walee_000\Documents\Cab9\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.csprojResolveAssemblyReference.cache
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ScheduledTaskAgent1.dll
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ScheduledTaskAgent1.pdb
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.dll
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.pdb
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.csprojResolveAssemblyReference.cache
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.dll
+C:\Users\Raza\Desktop\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.pdb
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ScheduledTaskAgent1.dll
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ScheduledTaskAgent1.pdb
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.dll
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\Bin\Debug\ForGlobalVariables.pdb
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.csprojResolveAssemblyReference.cache
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.dll
+C:\Users\walee_000\Desktop\20+April+Mobile Application\Mobile Application\Mobile Application\ScheduledTaskAgent1\obj\Debug\ScheduledTaskAgent1.pdb

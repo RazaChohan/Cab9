@@ -15,12 +15,14 @@ namespace FYP_Prototype_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (Session["uname"] == null)
             {
                 Response.Redirect("Index.aspx");
             }
             if (!IsPostBack)
             {
+                /////////////////////////////////////////////////////////////
                 SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 con.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select [Cab_ID] as 'ID',[Cab_RegNo] as 'Registration Number',[Cab_Make] as 'Make',[Cab_Model] as 'Model', [Cab_Status] as 'Status' from Cab", con);
@@ -29,6 +31,11 @@ namespace FYP_Prototype_1
                 dt.Columns.Add("StatusLight", typeof(Byte[]));
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+                SqlDataAdapter da1 = new SqlDataAdapter("Select [Cab_ID] as 'ID',[Cab_RegNo] as 'Registration',[Cab_Make] as 'Make' from Cab", con);
+                DataTable table = new DataTable();
+                da1.Fill(table);
+                ListView1.DataSource = table;
+                ListView1.DataBind();
                 con.Close();
             }
         }
@@ -72,7 +79,7 @@ namespace FYP_Prototype_1
 
         protected void GridView1_SelectedIndexChanged1(object sender, EventArgs e)
         {
-            Session["CabDetailsID"] = GridView1.SelectedRow.Cells[1].Text;
+            Session["CabDetailsID"] = GridView1.SelectedRow.Cells[2].Text;
             Response.Redirect("cdetails.aspx");
         }
 

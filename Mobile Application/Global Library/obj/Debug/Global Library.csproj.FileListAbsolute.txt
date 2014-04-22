@@ -1,0 +1,4 @@
+C:\Users\walee_000\Documents\Cab9\Mobile Application\Global Library\Bin\Debug\Global Library.dll
+C:\Users\walee_000\Documents\Cab9\Mobile Application\Global Library\Bin\Debug\Global Library.pdb
+C:\Users\walee_000\Documents\Cab9\Mobile Application\Global Library\obj\Debug\Global Library.dll
+C:\Users\walee_000\Documents\Cab9\Mobile Application\Global Library\obj\Debug\Global Library.pdb

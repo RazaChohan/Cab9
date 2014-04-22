@@ -119,6 +119,9 @@
     <Compile Include="CoordinateConverter.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Driver.cs" />
+    <Compile Include="DriverMainPage.xaml.cs">
+      <DependentUpon>DriverMainPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DriverMenu.xaml.cs">
       <DependentUpon>DriverMenu.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="SimulateTracking.xaml.cs">
+      <DependentUpon>SimulateTracking.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -176,6 +182,10 @@
     <Page Include="CheckStatus.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="DriverMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DriverMenu.xaml">
       <SubType>Designer</SubType>
@@ -218,6 +228,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="SelectDestination.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SimulateTracking.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -307,14 +321,19 @@
     <Reference Include="microsoft.advertising.mobile.ui, Version=6.2.959.1, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\..\..\FYPDLL'S\microsoft.advertising.mobile.ui.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Controls, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Drawing, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Expression.Interactions, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Maps, Version=8.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Phone.Controls.Toolkit">
       <HintPath>..\..\..\..\..\..\FYPDLL'S\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic.LateBinder, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\..\..\FYPDLL'S\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Interactivity, Version=3.9.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Telerik.Windows.Controls.Input, Version=2013.3.1016.3040, Culture=neutral, PublicKeyToken=5803cfa389c90ce7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\FYPDLL'S\Telerik.Windows.Controls.Input.dll</HintPath>
@@ -338,6 +357,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForGlobalVariables\ForGlobalVariables.csproj">
+      <Project>{1DA0CB42-9B12-4168-AF40-A73497DCF5E0}</Project>
+      <Name>ForGlobalVariables</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ScheduledTaskAgent1\ScheduledTaskAgent1.csproj">
       <Project>{1A4E33F7-19AF-4DB7-B8A9-510124E33F06}</Project>
       <Name>ScheduledTaskAgent1</Name>
