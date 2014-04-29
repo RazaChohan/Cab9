@@ -32,7 +32,12 @@ namespace FYP_Prototype_1
                 NICLabel.Text = dt.Rows[0]["Driver_NIC"].ToString();
                 TextBox1.Text = dt.Rows[0]["Driver_Address"].ToString();
                 GenderLabel.Text = dt.Rows[0]["Driver_Gender"].ToString();
-                AgeLabel.Text = dt.Rows[0]["Driver_Age"].ToString();
+                
+                DateTime bday = Convert.ToDateTime(dt.Rows[0]["Driver_DOB"].ToString());
+                DateTime today = DateTime.Today;
+                int age = today.Year - bday.Year;
+
+                AgeLabel.Text = age.ToString()+" Years";
 
                 // To view the driver picture
                 Session["Image"] = (byte[])dt.Rows[0]["Driver_Picture"];

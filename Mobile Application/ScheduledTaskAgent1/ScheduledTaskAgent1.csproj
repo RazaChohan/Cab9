@@ -96,6 +96,12 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ForGlobalVariables\ForGlobalVariables.csproj">
+      <Project>{1DA0CB42-9B12-4168-AF40-A73497DCF5E0}</Project>
+      <Name>ForGlobalVariables</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Service References\ServiceReference1\ScheduledTaskAgent1.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -105,23 +111,18 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServiceReference1\Service.disco" />
-    <None Include="Service References\ServiceReference1\Service.wsdl" />
-    <None Include="Service References\ServiceReference1\Service.xsd">
+    <None Include="Service References\ServiceReference1\Service1.disco" />
+    <Content Include="ServiceReferences.ClientConfig" />
+    <None Include="Service References\ServiceReference1\Service1.wsdl" />
+    <None Include="Service References\ServiceReference1\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service1.xsd">
+    <None Include="Service References\ServiceReference1\Service31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service2.xsd">
+    <None Include="Service References\ServiceReference1\Service32.xsd">
       <SubType>Designer</SubType>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ForGlobalVariables\ForGlobalVariables.csproj">
-      <Project>{1DA0CB42-9B12-4168-AF40-A73497DCF5E0}</Project>
-      <Name>ForGlobalVariables</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ServiceReference1\" />

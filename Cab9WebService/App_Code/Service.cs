@@ -269,7 +269,7 @@ public class Service : IService
         {
             SqlConnection connection = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
             connection.Open();
-            SqlDataAdapter da = new SqlDataAdapter("select * from Booking where Cab_ID="+CabID.ToString()+" and Booking_Status = 'Uncatered'",connection);
+            SqlDataAdapter da = new SqlDataAdapter("select * from Booking where Cab_ID="+CabID.ToString()+" and Booking_Status = 'Uncatered' or Booking_Status='Being Catered'",connection);
             DataTable dt = new DataTable();
             da.Fill(dt);
             string toReturn="No Booking";
@@ -320,7 +320,13 @@ public class Service : IService
         DataTable dt = new DataTable();
         da.Fill(dt);
         conn.Close();
-        return dt.Rows[0]["Cab_RegNo"].ToString();
+        if (dt.Rows.Count > 0)
+        {
+            return dt.Rows[0]["Cab_RegNo"].ToString();
+        }
+        else
+            return "No Cab Found";
+        
 
     }
 
@@ -332,8 +338,12 @@ public class Service : IService
         DataTable dt = new DataTable();
         da.Fill(dt);
         conn.Close();
-        return Convert.ToInt32(dt.Rows[0]["Driver_Rating"]);
+        if (dt.Rows.Count > 0)
+            return Convert.ToInt32(dt.Rows[0]["Driver_Rating"]);
+        else
+            return -1;
     }
+
 
     public string CabBooking(string BookingStatus, DateTime BookingDateTime, string BookingOrigin, string BookingDestination, string BookingCabType, string SourceLat, string SourceLong, string DestinationLat, string DestinationLong, string CustomerID)
     {
@@ -342,12 +352,37 @@ public class Service : IService
         {
             //  Call calculate nearest cab
             int nearestCabID = AllotNearestCab(BookingOrigin);
+            if(nearestCabID<0)
+            {
+                SqlConnection cntn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+                SqlCommand cmnd = cntn.CreateCommand();
+                cntn.Open();
 
+                // Inserting the booking details in db
+                cmnd.CommandText = "Insert into Booking (Customer_ID,Booking_Status, Booking_DateTime, Booking_Source, Booking_Destination, Booking_CabType, Booking_SourceLatitude, Booking_SourceLongitude, Booking_DestinationLatitude, Booking_DestinationLongitude, Booking_ReceiveTime)  VALUES (" + CustomerID + ", '" + BookingStatus + "',convert(datetime,'" + BookingDateTime.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5), '" + BookingOrigin + "', '" + BookingDestination + "', '" + BookingCabType + "'," + SourceLat + "," + SourceLong + "," + DestinationLat + "," + DestinationLong + ",convert(datetime,'" + DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5))";
+                int result = cmnd.ExecuteNonQuery();
+                if (result > 0)
+                {
+                    cntn.Close();
+
+                    string returnMessage = "Origin: " + BookingOrigin + "\nDestination: " + BookingDestination + "\nApproximate Distance: " + CalculateRoadDistance(BookingOrigin, BookingDestination) + "km\nEstimated Fare: PKR. " + CalculateFare(BookingOrigin, BookingDestination, BookingCabType, BookingDateTime).ToString() + "/-\nCab Type: " + BookingCabType + "\nBooking Time: " + BookingDateTime.ToString() + "\nBooking Status: Received!";
+                    return returnMessage;
+                }
+                else
+                {
+                    cntn.Close();
+                    return "Error storing request into database";
+                }
+            }
             // Query registration number against cab ID
             String CabRegistrationNumber = RegistrationNumForCabID(nearestCabID);
 
             // Finding driver rating to show to customer
             int DriverRating = FindDriverRating(nearestCabID);
+            if(DriverRating<0)
+            {
+                return "Exception in Driver Rating";
+            }
 
             SqlConnection connection = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
             connection.Open();
@@ -374,14 +409,17 @@ public class Service : IService
                     cmd.ExecuteNonQuery();
                     cmd = connection.CreateCommand();
 
+                    // Calculating approximate fare for the cab driver
+                    int ApproximateFare = CalculateFare(BookingOrigin, BookingDestination, BookingCabType, BookingDateTime);
+
                     // Inserting the booking details in db
-                    cmd.CommandText = "Insert into Booking (Cab_ID,Customer_ID,Booking_Status, Booking_DateTime, Booking_Source, Booking_Destination, Booking_CabType, Booking_SourceLatitude, Booking_SourceLongitude, Booking_DestinationLatitude, Booking_DestinationLongitude, Booking_ReceiveTime) VALUES (" + nearestCabID.ToString() + "," + CustomerID + ", 'Being Catered',convert(datetime,'" + BookingDateTime.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5), '" + BookingOrigin + "', '" + BookingDestination + "', '" + BookingCabType + "'," + SourceLat + "," + SourceLong + "," + DestinationLat + "," + DestinationLong + ",convert(datetime,'" + DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5))";
+                    cmd.CommandText = "Insert into Booking (Cab_ID,Customer_ID,Booking_Status, Booking_DateTime, Booking_Source, Booking_Destination, Booking_CabType, Booking_SourceLatitude, Booking_SourceLongitude, Booking_DestinationLatitude, Booking_DestinationLongitude, Booking_ReceiveTime, Booking_Fare) VALUES (" + nearestCabID.ToString() + "," + CustomerID + ", 'Being Catered',convert(datetime,'" + BookingDateTime.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5), '" + BookingOrigin + "', '" + BookingDestination + "', '" + BookingCabType + "'," + SourceLat + "," + SourceLong + "," + DestinationLat + "," + DestinationLong + ",convert(datetime,'" + DateTime.Now.ToString("dd-MMM-yyy hh:mm:ss tt") + "',5), " + ApproximateFare.ToString() + ")";
                     int result = cmd.ExecuteNonQuery();
                     if (result > 0)
                     {
                         connection.Close();
 
-                        string returnMessage = "Origin: " + BookingOrigin + "\nDestination: " + BookingDestination + "\nApproximate Distance: " + CalculateRoadDistance(BookingOrigin, BookingDestination) + "km\nEstimated Fare: PKR. " + CalculateFare(BookingOrigin, BookingDestination, BookingCabType, BookingDateTime).ToString() + "/-\nCab Type: " + BookingCabType + "\nBooking Time: " + BookingDateTime.ToString() + "\nBooking Status: Being Catered!\nCab Registration Number: " + CabRegistrationNumber + "\nDriver Assigned: " + DriverName + "\nDriver Rating: "+DriverRating.ToString() +"\nETA for Cab: " + ETA.ToString() + " Minutes";
+                        string returnMessage = "Origin: " + BookingOrigin + "\nDestination: " + BookingDestination + "\nApproximate Distance: " + CalculateRoadDistance(BookingOrigin, BookingDestination) + "km\nEstimated Fare: PKR. " + ApproximateFare.ToString() + "/-\nCab Type: " + BookingCabType + "\nBooking Time: " + BookingDateTime.ToString() + "\nBooking Status: Being Catered!\nCab Registration Number: " + CabRegistrationNumber + "\nDriver Assigned: " + DriverName + "\nDriver Rating: " + DriverRating.ToString() + "\nETA for Cab: " + ETA.ToString() + " Minutes";
                         return returnMessage;
                     }
                     else
@@ -389,6 +427,7 @@ public class Service : IService
                         connection.Close();
                         return "Error storing request into database";
                     }
+                    //return "Service Returned";
                 }
                 else
                 {
@@ -650,6 +689,8 @@ public class Service : IService
         int TimeElapsed = Convert.ToInt32(time);
         if(TimeElapsed > 10 && BookingStatus.Contains("Being Catered"))
         {
+            // Have to inform the driver and charge the customer
+ 
             SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
             conn.Open();
             
@@ -672,8 +713,9 @@ public class Service : IService
             }
             return "No booking found";
         }
-        else
+        else if(TimeElapsed < 10 && BookingStatus.Contains("Being Catered"))
         {
+            // Have to inform the driver but dont charge customer
             SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
             conn.Open();
             SqlCommand comm = conn.CreateCommand();
@@ -681,7 +723,68 @@ public class Service : IService
             int result = comm.ExecuteNonQuery();
             return "Booking Cancelled";
         }
+        else
+        {
+            // Neither have to inform the driver nor charge the customer
+            SqlConnection conn = new SqlConnection("Data Source = WALEED-PC; Inital Catalog = cab9; Integrated Security=True;");
+            conn.Open();
+            SqlCommand comm = conn.CreateCommand();
+            comm.CommandText = "Updated Booking set Booking_Status = 'Cancelled' where Booking_ID=" + BookingID;
+            comm.ExecuteNonQuery();
+            return "Booking Cancelled";
+
+        }
         
     }
 
+    public int CheckForDriverCancelledBookings(int CabID)
+    {
+        // Checking for driver's unnotified bookings to generate toast
+        SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter("select Booking_ID From Booking where Cab_ID=" + CabID.ToString() + " and Booking_Status='Cancelled_Unnotified'", conn);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+
+        if(dt.Rows.Count > 0 )
+        {
+            return Convert.ToInt32(dt.Rows[0]["Booking_ID"]);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    public String DetailsForCancelledBooking(int BookingID)
+    {
+        SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+        conn.Open();
+        SqlDataAdapter da = new SqlDataAdapter("select * From Booking where Booking_ID=" + BookingID.ToString(), conn);
+        DataTable dt = new DataTable();
+        da.Fill(dt);
+
+        if (dt.Rows.Count > 0)
+        {
+            return dt.Rows[0]["Booking_Source"].ToString() +"+"+ dt.Rows[0]["Booking_Destination"].ToString() +"+"+dt.Rows[0]["Booking_DateTime"].ToString();
+        }
+        else
+        {
+            return "No booking corresponding to Booking ID: "+BookingID.ToString();
+        }
+    }
+
+    public int UpdateBookingAndCabStatus(int BookingID, int CabID)
+    {
+        SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+        conn.Open();
+        SqlCommand command = conn.CreateCommand();
+        command.CommandText = "Update Booking set Booking_Status='Cancelled' where Booking_ID=" + BookingID.ToString();
+        command.ExecuteNonQuery();
+
+        command.CommandText = "Update Cab set Cab_Status='Available' where CabID=" + CabID.ToString();
+        command.ExecuteNonQuery();
+
+        return 0;
+    }
 }

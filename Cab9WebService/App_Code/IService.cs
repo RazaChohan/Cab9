@@ -55,6 +55,15 @@ public interface IService
 
     [OperationContract]
     String CancelBooking(int BookingID, String time, string BookingStatus, int ApproximateFare);
+
+    [OperationContract]
+    int CheckForDriverCancelledBookings(int CabID);
+
+    [OperationContract]
+    String DetailsForCancelledBooking(int BookingID);
+
+    [OperationContract]
+    int UpdateBookingAndCabStatus(int BookingID, int CabID);
     //[OperationContract]
     //int DetermineNearestCab(string latitude, string longitude);
 }

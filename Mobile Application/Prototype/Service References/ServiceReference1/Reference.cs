@@ -138,6 +138,21 @@ namespace Prototype.ServiceReference1 {
         System.IAsyncResult BeginCancelBooking(int BookingID, string time, string BookingStatus, int ApproximateFare, System.AsyncCallback callback, object asyncState);
         
         string EndCancelBooking(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/CheckForDriverCancelledBookings", ReplyAction="http://tempuri.org/IService/CheckForDriverCancelledBookingsResponse")]
+        System.IAsyncResult BeginCheckForDriverCancelledBookings(int CabID, System.AsyncCallback callback, object asyncState);
+        
+        int EndCheckForDriverCancelledBookings(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/DetailsForCancelledBooking", ReplyAction="http://tempuri.org/IService/DetailsForCancelledBookingResponse")]
+        System.IAsyncResult BeginDetailsForCancelledBooking(int BookingID, System.AsyncCallback callback, object asyncState);
+        
+        string EndDetailsForCancelledBooking(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/UpdateBookingAndCabStatus", ReplyAction="http://tempuri.org/IService/UpdateBookingAndCabStatusResponse")]
+        System.IAsyncResult BeginUpdateBookingAndCabStatus(int BookingID, int CabID, System.AsyncCallback callback, object asyncState);
+        
+        int EndUpdateBookingAndCabStatus(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -431,6 +446,63 @@ namespace Prototype.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CheckForDriverCancelledBookingsCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public CheckForDriverCancelledBookingsCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class DetailsForCancelledBookingCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public DetailsForCancelledBookingCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public string Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class UpdateBookingAndCabStatusCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public UpdateBookingAndCabStatusCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceClient : System.ServiceModel.ClientBase<Prototype.ServiceReference1.IService>, Prototype.ServiceReference1.IService {
         
         private BeginOperationDelegate onBeginGetDataDelegate;
@@ -523,6 +595,24 @@ namespace Prototype.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onCancelBookingCompletedDelegate;
         
+        private BeginOperationDelegate onBeginCheckForDriverCancelledBookingsDelegate;
+        
+        private EndOperationDelegate onEndCheckForDriverCancelledBookingsDelegate;
+        
+        private System.Threading.SendOrPostCallback onCheckForDriverCancelledBookingsCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginDetailsForCancelledBookingDelegate;
+        
+        private EndOperationDelegate onEndDetailsForCancelledBookingDelegate;
+        
+        private System.Threading.SendOrPostCallback onDetailsForCancelledBookingCompletedDelegate;
+        
+        private BeginOperationDelegate onBeginUpdateBookingAndCabStatusDelegate;
+        
+        private EndOperationDelegate onEndUpdateBookingAndCabStatusDelegate;
+        
+        private System.Threading.SendOrPostCallback onUpdateBookingAndCabStatusCompletedDelegate;
+        
         private BeginOperationDelegate onBeginOpenDelegate;
         
         private EndOperationDelegate onEndOpenDelegate;
@@ -605,6 +695,12 @@ namespace Prototype.ServiceReference1 {
         public event System.EventHandler<GetBookingTimeCompletedEventArgs> GetBookingTimeCompleted;
         
         public event System.EventHandler<CancelBookingCompletedEventArgs> CancelBookingCompleted;
+        
+        public event System.EventHandler<CheckForDriverCancelledBookingsCompletedEventArgs> CheckForDriverCancelledBookingsCompleted;
+        
+        public event System.EventHandler<DetailsForCancelledBookingCompletedEventArgs> DetailsForCancelledBookingCompleted;
+        
+        public event System.EventHandler<UpdateBookingAndCabStatusCompletedEventArgs> UpdateBookingAndCabStatusCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1354,6 +1450,146 @@ namespace Prototype.ServiceReference1 {
                         ApproximateFare}, this.onEndCancelBookingDelegate, this.onCancelBookingCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginCheckForDriverCancelledBookings(int CabID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginCheckForDriverCancelledBookings(CabID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int Prototype.ServiceReference1.IService.EndCheckForDriverCancelledBookings(System.IAsyncResult result) {
+            return base.Channel.EndCheckForDriverCancelledBookings(result);
+        }
+        
+        private System.IAsyncResult OnBeginCheckForDriverCancelledBookings(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int CabID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginCheckForDriverCancelledBookings(CabID, callback, asyncState);
+        }
+        
+        private object[] OnEndCheckForDriverCancelledBookings(System.IAsyncResult result) {
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndCheckForDriverCancelledBookings(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnCheckForDriverCancelledBookingsCompleted(object state) {
+            if ((this.CheckForDriverCancelledBookingsCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.CheckForDriverCancelledBookingsCompleted(this, new CheckForDriverCancelledBookingsCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void CheckForDriverCancelledBookingsAsync(int CabID) {
+            this.CheckForDriverCancelledBookingsAsync(CabID, null);
+        }
+        
+        public void CheckForDriverCancelledBookingsAsync(int CabID, object userState) {
+            if ((this.onBeginCheckForDriverCancelledBookingsDelegate == null)) {
+                this.onBeginCheckForDriverCancelledBookingsDelegate = new BeginOperationDelegate(this.OnBeginCheckForDriverCancelledBookings);
+            }
+            if ((this.onEndCheckForDriverCancelledBookingsDelegate == null)) {
+                this.onEndCheckForDriverCancelledBookingsDelegate = new EndOperationDelegate(this.OnEndCheckForDriverCancelledBookings);
+            }
+            if ((this.onCheckForDriverCancelledBookingsCompletedDelegate == null)) {
+                this.onCheckForDriverCancelledBookingsCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnCheckForDriverCancelledBookingsCompleted);
+            }
+            base.InvokeAsync(this.onBeginCheckForDriverCancelledBookingsDelegate, new object[] {
+                        CabID}, this.onEndCheckForDriverCancelledBookingsDelegate, this.onCheckForDriverCancelledBookingsCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginDetailsForCancelledBooking(int BookingID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginDetailsForCancelledBooking(BookingID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        string Prototype.ServiceReference1.IService.EndDetailsForCancelledBooking(System.IAsyncResult result) {
+            return base.Channel.EndDetailsForCancelledBooking(result);
+        }
+        
+        private System.IAsyncResult OnBeginDetailsForCancelledBooking(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int BookingID = ((int)(inValues[0]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginDetailsForCancelledBooking(BookingID, callback, asyncState);
+        }
+        
+        private object[] OnEndDetailsForCancelledBooking(System.IAsyncResult result) {
+            string retVal = ((Prototype.ServiceReference1.IService)(this)).EndDetailsForCancelledBooking(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnDetailsForCancelledBookingCompleted(object state) {
+            if ((this.DetailsForCancelledBookingCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.DetailsForCancelledBookingCompleted(this, new DetailsForCancelledBookingCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void DetailsForCancelledBookingAsync(int BookingID) {
+            this.DetailsForCancelledBookingAsync(BookingID, null);
+        }
+        
+        public void DetailsForCancelledBookingAsync(int BookingID, object userState) {
+            if ((this.onBeginDetailsForCancelledBookingDelegate == null)) {
+                this.onBeginDetailsForCancelledBookingDelegate = new BeginOperationDelegate(this.OnBeginDetailsForCancelledBooking);
+            }
+            if ((this.onEndDetailsForCancelledBookingDelegate == null)) {
+                this.onEndDetailsForCancelledBookingDelegate = new EndOperationDelegate(this.OnEndDetailsForCancelledBooking);
+            }
+            if ((this.onDetailsForCancelledBookingCompletedDelegate == null)) {
+                this.onDetailsForCancelledBookingCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnDetailsForCancelledBookingCompleted);
+            }
+            base.InvokeAsync(this.onBeginDetailsForCancelledBookingDelegate, new object[] {
+                        BookingID}, this.onEndDetailsForCancelledBookingDelegate, this.onDetailsForCancelledBookingCompletedDelegate, userState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginUpdateBookingAndCabStatus(int BookingID, int CabID, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginUpdateBookingAndCabStatus(BookingID, CabID, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int Prototype.ServiceReference1.IService.EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
+            return base.Channel.EndUpdateBookingAndCabStatus(result);
+        }
+        
+        private System.IAsyncResult OnBeginUpdateBookingAndCabStatus(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            int BookingID = ((int)(inValues[0]));
+            int CabID = ((int)(inValues[1]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginUpdateBookingAndCabStatus(BookingID, CabID, callback, asyncState);
+        }
+        
+        private object[] OnEndUpdateBookingAndCabStatus(System.IAsyncResult result) {
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndUpdateBookingAndCabStatus(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnUpdateBookingAndCabStatusCompleted(object state) {
+            if ((this.UpdateBookingAndCabStatusCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.UpdateBookingAndCabStatusCompleted(this, new UpdateBookingAndCabStatusCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void UpdateBookingAndCabStatusAsync(int BookingID, int CabID) {
+            this.UpdateBookingAndCabStatusAsync(BookingID, CabID, null);
+        }
+        
+        public void UpdateBookingAndCabStatusAsync(int BookingID, int CabID, object userState) {
+            if ((this.onBeginUpdateBookingAndCabStatusDelegate == null)) {
+                this.onBeginUpdateBookingAndCabStatusDelegate = new BeginOperationDelegate(this.OnBeginUpdateBookingAndCabStatus);
+            }
+            if ((this.onEndUpdateBookingAndCabStatusDelegate == null)) {
+                this.onEndUpdateBookingAndCabStatusDelegate = new EndOperationDelegate(this.OnEndUpdateBookingAndCabStatus);
+            }
+            if ((this.onUpdateBookingAndCabStatusCompletedDelegate == null)) {
+                this.onUpdateBookingAndCabStatusCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnUpdateBookingAndCabStatusCompleted);
+            }
+            base.InvokeAsync(this.onBeginUpdateBookingAndCabStatusDelegate, new object[] {
+                        BookingID,
+                        CabID}, this.onEndUpdateBookingAndCabStatusDelegate, this.onUpdateBookingAndCabStatusCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1649,6 +1885,46 @@ namespace Prototype.ServiceReference1 {
             public string EndCancelBooking(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("CancelBooking", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginCheckForDriverCancelledBookings(int CabID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = CabID;
+                System.IAsyncResult _result = base.BeginInvoke("CheckForDriverCancelledBookings", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndCheckForDriverCancelledBookings(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("CheckForDriverCancelledBookings", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginDetailsForCancelledBooking(int BookingID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[1];
+                _args[0] = BookingID;
+                System.IAsyncResult _result = base.BeginInvoke("DetailsForCancelledBooking", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public string EndDetailsForCancelledBooking(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                string _result = ((string)(base.EndInvoke("DetailsForCancelledBooking", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginUpdateBookingAndCabStatus(int BookingID, int CabID, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = BookingID;
+                _args[1] = CabID;
+                System.IAsyncResult _result = base.BeginInvoke("UpdateBookingAndCabStatus", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("UpdateBookingAndCabStatus", _args, result)));
                 return _result;
             }
         }

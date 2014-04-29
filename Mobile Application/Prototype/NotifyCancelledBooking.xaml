@@ -1,0 +1,45 @@
+﻿<phone:PhoneApplicationPage
+    x:Class="Prototype.NotifyCancelledBooking"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    mc:Ignorable="d"
+    shell:SystemTray.IsVisible="True">
+
+    <!--LayoutRoot is the root grid where all page content is placed-->
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!--TitlePanel contains the name of the application and page title-->
+        <StackPanel Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock Text="Booking Cancelled" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}" FontSize="50"/>
+        </StackPanel>
+
+        <!--ContentPanel - place additional content here-->
+        <Grid Height="639"  Width="469" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="1,129,0,0" Grid.RowSpan="2">
+            <TextBlock HorizontalAlignment="Left" Margin="10,37,0,0" TextWrapping="Wrap" Text="Customer Location" VerticalAlignment="Top" Width="234"/>
+
+            <TextBlock HorizontalAlignment="Left" Margin="10,131,0,0" TextWrapping="Wrap" Text="Destination" VerticalAlignment="Top" Width="234"/>
+           
+            <TextBlock HorizontalAlignment="Left" Margin="10,230,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Booking Date Time"/>
+            <TextBox x:Name="DateTextBox" HorizontalAlignment="Left" Height="72" Margin="0,257,0,0" TextWrapping="Wrap" Text="Default Time" VerticalAlignment="Top" Width="459" />
+            <TextBlock HorizontalAlignment="Left" Margin="10,329,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Booking Status"/>
+            <TextBox x:Name="BookingStatusTextBox" HorizontalAlignment="Left" Height="72" Margin="0,356,0,0" TextWrapping="Wrap" Text="Cancelled" VerticalAlignment="Top" Width="459"/>
+            <TextBox x:Name="CustomerLocationText" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="456" Margin="0,59,0,0"/>
+            <TextBox x:Name="DestinationTextBox" HorizontalAlignment="Left" Height="72" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="456" Margin="0,158,0,0"/>
+
+        </Grid>
+    </Grid>
+
+</phone:PhoneApplicationPage>

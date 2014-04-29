@@ -97,6 +97,24 @@
   <wsdl:message name="IService_CancelBooking_OutputMessage">
     <wsdl:part name="parameters" element="tns:CancelBookingResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_CheckForDriverCancelledBookings_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForDriverCancelledBookings" />
+  </wsdl:message>
+  <wsdl:message name="IService_CheckForDriverCancelledBookings_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckForDriverCancelledBookingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_DetailsForCancelledBooking_InputMessage">
+    <wsdl:part name="parameters" element="tns:DetailsForCancelledBooking" />
+  </wsdl:message>
+  <wsdl:message name="IService_DetailsForCancelledBooking_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DetailsForCancelledBookingResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateBookingAndCabStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookingAndCabStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService_UpdateBookingAndCabStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateBookingAndCabStatusResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -157,6 +175,18 @@
     <wsdl:operation name="CancelBooking">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CancelBooking" message="tns:IService_CancelBooking_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CancelBookingResponse" message="tns:IService_CancelBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckForDriverCancelledBookings">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CheckForDriverCancelledBookings" message="tns:IService_CheckForDriverCancelledBookings_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CheckForDriverCancelledBookingsResponse" message="tns:IService_CheckForDriverCancelledBookings_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DetailsForCancelledBooking">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/DetailsForCancelledBooking" message="tns:IService_DetailsForCancelledBooking_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/DetailsForCancelledBookingResponse" message="tns:IService_DetailsForCancelledBooking_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBookingAndCabStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/UpdateBookingAndCabStatus" message="tns:IService_UpdateBookingAndCabStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/UpdateBookingAndCabStatusResponse" message="tns:IService_UpdateBookingAndCabStatus_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -289,6 +319,33 @@
     </wsdl:operation>
     <wsdl:operation name="CancelBooking">
       <soap:operation soapAction="http://tempuri.org/IService/CancelBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckForDriverCancelledBookings">
+      <soap:operation soapAction="http://tempuri.org/IService/CheckForDriverCancelledBookings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DetailsForCancelledBooking">
+      <soap:operation soapAction="http://tempuri.org/IService/DetailsForCancelledBooking" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateBookingAndCabStatus">
+      <soap:operation soapAction="http://tempuri.org/IService/UpdateBookingAndCabStatus" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

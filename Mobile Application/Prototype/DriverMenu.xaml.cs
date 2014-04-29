@@ -48,7 +48,9 @@ namespace Prototype
                         //MessageBox.Show("Customer Location: " + ReadingString);
                         ReadingString = "";
                         ReadingString = Reader.ReadLine();
+                        //MessageBox.Show(ReadingString);
                         ReadingString = Reader.ReadLine();
+                        //MessageBox.Show(ReadingString);
                         DestinationTextBox.Text = ReadingString;
                         //MessageBox.Show("Destination: " + ReadingString);
                         //ReadingString = "";

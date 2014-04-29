@@ -22,7 +22,7 @@ namespace FYP_Prototype_1
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
                 conn.Open();
-                SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY Booking_DateTime DESC", conn);
+                SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab', Booking.Booking_Fare as 'Fare' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY [Booking_ReceiveTime] DESC", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
                 BookingsGridView.DataSource = dt;
@@ -36,7 +36,7 @@ namespace FYP_Prototype_1
         {
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString);
             conn.Open();
-            SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY Booking_DateTime DESC", conn);
+            SqlDataAdapter da = new SqlDataAdapter("Select Customer.Customer_Name as 'Customer Name', Booking_Status as 'Status', Booking_DateTime as 'Time', Booking_Source as 'Origin', Booking_Destination as 'Destination', Booking_CabType as 'Type Of Cab', Booking.Booking_Fare as 'Fare' from Booking,Customer where Booking.Customer_ID=Customer.Customer_ID ORDER BY [Booking_ReceiveTime] DESC", conn);
             DataTable dt = new DataTable();
             da.Fill(dt);
             BookingsGridView.DataSource = dt;
@@ -102,7 +102,7 @@ namespace FYP_Prototype_1
                 DataRowView drv = (DataRowView)e.Row.DataItem;
                 string link_status = drv["Status"].ToString();
 
-                if (link_status == "Uncatered")
+                if (link_status == "Uncatered" || link_status == "Cancelled")
                 {
                     //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\red.gif",new string[]{".gif"});
                     TableCellCollection myCells = e.Row.Cells;
@@ -118,6 +118,15 @@ namespace FYP_Prototype_1
                     HyperLink planLink = (HyperLink)myCells[0].Controls[0];
                     planLink.ImageUrl = "~/gifs/green.gif";
                 }
+                else if (link_status == "Being Catered")
+                {
+                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\green.gif", new string[] { ".gif" });
+                    TableCellCollection myCells = e.Row.Cells;
+                    int count = e.Row.Cells.Count;
+                    HyperLink planLink = (HyperLink)myCells[0].Controls[0];
+                    planLink.ImageUrl = "~/gifs/yellow.gif";
+                }
+
             }
             else
             { }

@@ -72,27 +72,12 @@
             <br />
             <a href="cabreg.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">Add New Cab</a>
         </center>
-        
+       </div>
         <center>
-                <asp:Panel ID="Panel1" runat="server" Width="980px">
-            <div style="float:left;">
-                <table>
-                    <asp:Label ID="Label2" runat="server" ForeColor="White" Font-Size="X-Large" Text="Check location" Width="181px"></asp:Label>
-        <asp:ListView ID="ListView1" runat="server">
-            
-            <ItemTemplate>
-                <AlternatingRowStyle BackColor="#DCDCDC"/>
-                <tr onclick="redir('<%# Eval("Registration") %>');">
-                    <td>
-                        <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("Registration") %>' ForeColor="White" />
-                    </td>
-                </tr>
-            </ItemTemplate>
-        </asp:ListView>
-        </table>
-                </div>
-            <div style="float:right; width: 637px; height: 260px;">
-            <center>
+            <asp:Panel ID="Panel1" runat="server" Width="981px">
+                <div id="content">
+            <div id="content-bg">
+                <div class="post">
                 <br />
                 <asp:GridView ID="GridView1" runat="server" AutoGenerateSelectButton="True" BackColor="White" BorderColor="#999999" BorderStyle="None" BorderWidth="1px" CellPadding="3" GridLines="Vertical" HorizontalAlign="Justify" OnRowDataBound="GridView1_RowDataBound1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged1" Width="500px">
                     <AlternatingRowStyle BackColor="#DCDCDC" />
@@ -109,16 +94,38 @@
                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
                     <SortedDescendingHeaderStyle BackColor="#000065" />
                 </asp:GridView>
-
-            </center>
-            </div>    
+                    </div>
+            </div>
+                </div>
+            
+            <div id="sidebar-bg">
+            <div id="sidebar">
+                <table>
+                    <asp:Label ID="Label2" runat="server" ForeColor="White" Font-Size="X-Large" Text="Check location" Width="181px"></asp:Label>
+        <asp:ListView ID="ListView1" runat="server">
+            
+            <ItemTemplate>
+                <AlternatingRowStyle BackColor="#DCDCDC"/>
+                <tr onclick="redir('<%# Eval("Registration") %>');">
+                    <td>
+                        <asp:Label ID="nameLabel" runat="server" Text='<%# Eval("Registration") %>' ForeColor="White" />
+                    </td>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
+        </table>
+                </div>
+                    </div>
             </asp:Panel>
+        </center>
+        
+            
 
            
             
-        </center>
-            
-    </div>
+        
+           
+   
        
     </form>
 </body>

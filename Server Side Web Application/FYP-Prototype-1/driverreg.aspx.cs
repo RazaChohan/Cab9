@@ -199,13 +199,13 @@ namespace FYP_Prototype_1
                             command.ExecuteNonQuery();
 
                             // Getting ID for the added driver
-                            da = new SqlDataAdapter("Select Driver_ID from Driver where Driver_Name='"+NameTextBox.Text+"' and driver_email = '"+EmailTextBox.Text+"' and driver_PhNum = '"+PhoneNumberTextBox.Text+"' and Driver_NIC='"+NICTextBox.Text+"'", conn);
-                            dt = new DataTable();
-                            da.Fill(dt);
+                            //da = new SqlDataAdapter("Select Driver_ID from Driver where Driver_Name='"+NameTextBox.Text+"' and driver_email = '"+EmailTextBox.Text+"' and driver_PhNum = '"+PhoneNumberTextBox.Text+"' and Driver_NIC='"+NICTextBox.Text+"'", conn);
+                            //dt = new DataTable();
+                            //da.Fill(dt);
 
 
-                            String DriverID = dt.Rows[0]["Driver_ID"].ToString();
-                            SendActivationEmail(Convert.ToInt32(DriverID));
+                            //String DriverID = dt.Rows[0]["Driver_ID"].ToString();
+                            //SendActivationEmail(Convert.ToInt32(DriverID));
 
                             conn.Close();
                             WarningLabel.Text = "Driver Successfully Added";

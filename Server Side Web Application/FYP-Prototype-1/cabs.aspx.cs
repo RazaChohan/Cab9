@@ -143,6 +143,14 @@ namespace FYP_Prototype_1
                     HyperLink planLink = (HyperLink)myCells[1].Controls[0];
                     planLink.ImageUrl = "~/gifs/green.gif";
                 }
+                else if (link_status == "Booked")
+                {
+                    //drv["StatusLight"] = ReadImage(@"C:\Users\walee_000\Documents\Cab9\Server Side Web Application\FYP-Prototype-1\gifs\green.gif", new string[] { ".gif" });
+                    TableCellCollection myCells = e.Row.Cells;
+                    int count = e.Row.Cells.Count;
+                    HyperLink planLink = (HyperLink)myCells[1].Controls[0];
+                    planLink.ImageUrl = "~/gifs/yellow.gif";
+                }
             }
             else
             { }

@@ -17,6 +17,7 @@ namespace ScheduledTaskAgent1
     {
 
         AutoResetEvent ServiceWait = new AutoResetEvent(false);
+        AutoResetEvent ServiceWati2 = new AutoResetEvent(false);
         AutoResetEvent GPSWait = new AutoResetEvent(false);
 
         public Geoposition gPos = null;
@@ -27,6 +28,9 @@ namespace ScheduledTaskAgent1
 
         string CabLatitude;
         string CabLongitude;
+
+        int CabID = -1;
+        int DriverID = -1;
 
         private static volatile bool _classInitialized;
 
@@ -60,21 +64,50 @@ namespace ScheduledTaskAgent1
             ServiceWait.Set();
             //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Location updated in database" };
             //toast.Show();
-            
+
+        }
+        private void CheckForCancelledBookingsReturnFunction(object sender, ServiceReference1.CheckForDriverCancelledBookingsCompletedEventArgs e)
+        {
+            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Inside cancellation check function" };
+            //toast.Show();
+            if (e.Result != -1)
+            {
+                // Some booking has been cancelled
+                IsolatedStorageFile storageFile = IsolatedStorageFile.GetUserStoreForApplication();
+                if (storageFile.FileExists("BookingCancellation.txt"))
+                {
+                    storageFile.DeleteFile("BookingCancellation.txt");
+                }
+                StreamWriter Writer = new StreamWriter(new IsolatedStorageFileStream("BookingCancellation.txt", FileMode.OpenOrCreate, storageFile));
+                Writer.WriteLine(e.Result.ToString());
+                Writer.WriteLine(CabID.ToString());
+                Writer.Close();
+
+                // Generating toast notification
+                var CancelledToast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Alert! A booking has been cancelled.", NavigationUri = new Uri("/NotifyCancelledBooking.xaml", UriKind.Relative) };
+                CancelledToast.Show();
+            }
+            else
+            {
+                var CancelledToast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "-1" };
+                CancelledToast.Show();
+            }
+            ServiceWati2.Set();
+
         }
 
         private void CheckForDriverBookingCompletedReturnFunction(object sender, ServiceReference1.CheckForDriverBookingCompletedEventArgs e)
         {
             // Add code here
             if (e.Result == "No Booking") { }
-            else if (e.Result.Contains("EXCEPTION")) 
+            else if (e.Result.Contains("EXCEPTION"))
             {
                 var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "ERROR! Exception while checking for driver's bookings" };
                 toast.Show();
             }
             else
             {
-                
+
                 // Extract the individual details through tokenization and write on file
                 using (var store = IsolatedStorageFile.GetUserStoreForApplication())
                 {
@@ -137,6 +170,7 @@ namespace ScheduledTaskAgent1
                     Writer.Close();
                 }
 
+
                 // Show notification about new booking
                 var NewBookingAlertToast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Alert! New Booking Request.", NavigationUri = new Uri("/DriverMenu.xaml", UriKind.Relative) };
                 NewBookingAlertToast.Show();
@@ -150,7 +184,7 @@ namespace ScheduledTaskAgent1
 
             // **************************************** Getting location from GPS Sensor *******************************************************
             positionLoaded = false;
-            
+
 
             Geolocator geolocator = new Geolocator();
             geolocator.DesiredAccuracyInMeters = 10;
@@ -167,7 +201,7 @@ namespace ScheduledTaskAgent1
                 dlong = gPos.Coordinate.Longitude;
 
                 //Converting the GPS coordinates to string
-                CabLatitude = gPos.Coordinate.Latitude.ToString("0.000000");    
+                CabLatitude = gPos.Coordinate.Latitude.ToString("0.000000");
                 CabLongitude = gPos.Coordinate.Longitude.ToString("0.000000");
 
                 //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "GPS CHECK" };
@@ -217,9 +251,7 @@ namespace ScheduledTaskAgent1
         }
         protected override void OnInvoke(ScheduledTask task)
         {
-            bool driverLoggedIn = false ;
-            int CabID = -1;
-            int DriverID = -1;
+            bool driverLoggedIn = false;
 
             ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(60));
 
@@ -247,7 +279,7 @@ namespace ScheduledTaskAgent1
                     driverLoggedIn = false;
 
                 }
-                else if(ReadText.Equals("Driver Logged In"))
+                else if (ReadText.Equals("Driver Logged In"))
                 {
                     driverLoggedIn = true;
 
@@ -271,21 +303,21 @@ namespace ScheduledTaskAgent1
                 MessageBox.Show("File it not created");
             }
 
-            if(driverLoggedIn && DriverID != -1)
+            if (driverLoggedIn && DriverID != -1)
             {
                 ServiceReference1.ServiceClient clientForTesting = new ServiceReference1.ServiceClient();
-                if(DriverLocation != "LocationNotUpdatedManually" && DriverLocation !="Exception")
+                if (DriverLocation != "LocationNotUpdatedManually" && DriverLocation != "Exception")
                 {
                     // Calling web service function to update Cab Location
-                    
+
                     clientForTesting.UpdateLocationCompleted += new EventHandler<ServiceReference1.UpdateLocationCompletedEventArgs>(TestCallback);
                     clientForTesting.UpdateLocationAsync(CabLatitude, CabLongitude, CabID);
 
                     // lock the thread until web call is completed
                     ServiceWait.WaitOne();
-                    
-                    
-                    
+
+
+
                 }
                 ServiceWait = new AutoResetEvent(false);
 
@@ -293,13 +325,19 @@ namespace ScheduledTaskAgent1
                 clientForTesting.CheckForDriverBookingCompleted += new EventHandler<ServiceReference1.CheckForDriverBookingCompletedEventArgs>(CheckForDriverBookingCompletedReturnFunction);
                 clientForTesting.CheckForDriverBookingAsync(CabID);
                 ServiceWait.WaitOne();
-                
+
+
+                // Calling web service to check if there are any notifications regard booking cancellation
+                clientForTesting.CheckForDriverCancelledBookingsCompleted += new EventHandler<ServiceReference1.CheckForDriverCancelledBookingsCompletedEventArgs>(CheckForCancelledBookingsReturnFunction);
+                clientForTesting.CheckForDriverCancelledBookingsAsync(CabID);
+                ServiceWati2.WaitOne();
+
             }
 
-            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Booking Table Check\t:" };
+            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Background Agent Launched" };
             //toast.Show();
             NotifyComplete();
-            
+
         }
     }
 

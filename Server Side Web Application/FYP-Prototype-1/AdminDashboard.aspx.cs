@@ -14,12 +14,12 @@ namespace FYP_Prototype_1
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Page.Header.DataBind();  
+            Page.Header.DataBind();
             if (Session["uname"] == null)
             {
                 Response.Redirect("Index.aspx");
             }
-            if(!IsPostBack)
+            if (!IsPostBack)
             {
                 SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
                 conn.Open();
@@ -34,7 +34,28 @@ namespace FYP_Prototype_1
                     Details += dt.Rows[i]["Status"].ToString() + "," + dt.Rows[i]["Driver Name"].ToString() + "," + dt.Rows[i]["Lat"].ToString() + "," + dt.Rows[i]["Long"].ToString() + "," + dt.Rows[i]["Cab_RegNo"].ToString() + "_";
                 }
                 Session["CurrentCabLocations"] = Details;
-                
+                SqlConnection conn0 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                conn0.Open();
+                SqlDataAdapter da0 = new SqlDataAdapter("Select COUNT(Cab_ID) As Cabs from Cab", conn0);
+                DataTable dt0 = new DataTable();
+                da0.Fill(dt0);
+                ASPxGaugeControl1.Value = dt0.Rows[0]["Cabs"].ToString();
+                conn0.Close();
+                SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                conn1.Open();
+                SqlDataAdapter da1 = new SqlDataAdapter("Select COUNT(Booking_ID) As Bookings from Booking WHERE Booking_Status='Catered'", conn1);
+                DataTable dt1 = new DataTable();
+                da1.Fill(dt1);
+                ASPxGaugeControl2.Value = dt1.Rows[0]["Bookings"].ToString();
+                conn1.Close();
+                SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                conn2.Open();
+                SqlDataAdapter da2 = new SqlDataAdapter("Select COUNT(Driver_ID) As Drivers from Driver", conn2);
+                DataTable dt2 = new DataTable();
+                da2.Fill(dt2);
+                ASPxGaugeControl3.Value = dt2.Rows[0]["Drivers"].ToString();
+                conn2.Close();
+
             }
         }
 
@@ -88,9 +109,10 @@ namespace FYP_Prototype_1
             String Details = String.Empty;
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Details += dt.Rows[i]["Status"].ToString() + "," + dt.Rows[i]["Driver Name"].ToString() + "," + dt.Rows[i]["Lat"].ToString() + "," + dt.Rows[i]["Long"].ToString() + ","+dt.Rows[i]["Cab_RegNo"].ToString()+"_";
+                Details += dt.Rows[i]["Status"].ToString() + "," + dt.Rows[i]["Driver Name"].ToString() + "," + dt.Rows[i]["Lat"].ToString() + "," + dt.Rows[i]["Long"].ToString() + "," + dt.Rows[i]["Cab_RegNo"].ToString() + "_";
             }
             Session["CurrentCabLocations"] = Details;
+
             //Label1.Text = Label1.Text + "<br/>" + Session["CurrentCabLocations"].ToString();
             //Label1.Visible = true;
         }
