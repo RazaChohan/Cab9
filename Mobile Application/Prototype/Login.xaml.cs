@@ -173,7 +173,7 @@ namespace Prototype
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message.ToString());
+                    //MessageBox.Show(ex.Message.ToString());
                 }
 
                 //NavigationService.Navigate(new Uri("/MainMenu.xaml", UriKind.Relative));
@@ -195,7 +195,7 @@ namespace Prototype
                 }
                 catch (Exception ex)
                 {
-                   MessageBox.Show(ex.Message.ToString());
+                   //MessageBox.Show(ex.Message.ToString());
                 }
                 
             }

@@ -774,17 +774,24 @@ public class Service : IService
         }
     }
 
-    public int UpdateBookingAndCabStatus(int BookingID, int CabID)
+    public string UpdateBookingAndCabStatus(int BookingID, int CabID)
     {
-        SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
-        conn.Open();
-        SqlCommand command = conn.CreateCommand();
-        command.CommandText = "Update Booking set Booking_Status='Cancelled' where Booking_ID=" + BookingID.ToString();
-        command.ExecuteNonQuery();
+        try
+        {
+            SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+            conn.Open();
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = "Update Booking set Booking_Status='Cancelled' where Booking_ID=" + BookingID.ToString();
+            command.ExecuteNonQuery();
 
-        command.CommandText = "Update Cab set Cab_Status='Available' where CabID=" + CabID.ToString();
-        command.ExecuteNonQuery();
-
-        return 0;
+            command = conn.CreateCommand();
+            command.CommandText = "Update Cab set Cab_Status='Available' where Cab_ID=" + CabID.ToString();
+            command.ExecuteNonQuery();
+            return "Statuses Updated";
+        }
+        catch (Exception ex)
+        {
+            return ex.Message;
+        }
     }
 }

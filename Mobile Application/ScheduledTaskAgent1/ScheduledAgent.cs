@@ -62,14 +62,10 @@ namespace ScheduledTaskAgent1
         private void TestCallback(object sender, ServiceReference1.UpdateLocationCompletedEventArgs e)
         {
             ServiceWait.Set();
-            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Location updated in database" };
-            //toast.Show();
 
         }
         private void CheckForCancelledBookingsReturnFunction(object sender, ServiceReference1.CheckForDriverCancelledBookingsCompletedEventArgs e)
         {
-            //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Inside cancellation check function" };
-            //toast.Show();
             if (e.Result != -1)
             {
                 // Some booking has been cancelled
@@ -85,11 +81,6 @@ namespace ScheduledTaskAgent1
 
                 // Generating toast notification
                 var CancelledToast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Alert! A booking has been cancelled.", NavigationUri = new Uri("/NotifyCancelledBooking.xaml", UriKind.Relative) };
-                CancelledToast.Show();
-            }
-            else
-            {
-                var CancelledToast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "-1" };
                 CancelledToast.Show();
             }
             ServiceWati2.Set();
@@ -143,19 +134,6 @@ namespace ScheduledTaskAgent1
                     BookingDate = token[0];
                     BookingTime = token[1];
 
-                    //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "BookingDate: "+BookingDate};
-                    //toast.Show();
-                    //toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "BookingTime: "+BookingTime };
-                    //toast.Show();
-                    //toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "BookingSource: "+BookingSource };
-                    //toast.Show();
-                    //toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "BookingDestination: "+BookingDestination };
-                    //toast.Show();
-                    //toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "CabType: "+CabType };
-                    //toast.Show();
-                    //toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "SourceLat: "+SourceLat };
-                    //toast.Show();
-
                     IsolatedStorageFile fileStorage = IsolatedStorageFile.GetUserStoreForApplication();
                     StreamWriter Writer = new StreamWriter(new IsolatedStorageFileStream("Booking.txt", FileMode.OpenOrCreate, fileStorage));
                     Writer.WriteLine(BookingDate);
@@ -204,9 +182,6 @@ namespace ScheduledTaskAgent1
                 CabLatitude = gPos.Coordinate.Latitude.ToString("0.000000");
                 CabLongitude = gPos.Coordinate.Longitude.ToString("0.000000");
 
-                //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "GPS CHECK" };
-                //toast.Show();
-
                 GPSWait.Set();
             }
             catch (Exception ex)
@@ -214,9 +189,7 @@ namespace ScheduledTaskAgent1
                 if ((uint)ex.HResult == 0x80004004)
                 {
                     // the application does not have the right capability or the location master switch is off
-                    //MessageBox.Show("location  is disabled in phone settings");
-                    //var toast = new ShellToast { Title = DateTime.Now.ToShortTimeString(), Content = "Exception in gps check" };
-                    //toast.Show();
+                    
                 }
             }
         }

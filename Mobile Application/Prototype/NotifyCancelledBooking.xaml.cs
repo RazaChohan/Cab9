@@ -37,25 +37,24 @@ namespace Prototype
                    
             clientForTesting.UpdateBookingAndCabStatusCompleted += new EventHandler<ServiceReference1.UpdateBookingAndCabStatusCompletedEventArgs>(CallBackFunction2);
             clientForTesting.UpdateBookingAndCabStatusAsync(BookingID, CabID);
-            //MessageBox.Show("At the end of return 1");
             
 
         }
         private void CallBackFunction2(object sender, ServiceReference1.UpdateBookingAndCabStatusCompletedEventArgs e)
         {
-            //MessageBox.Show("At the start of return 2");
-            if (e.Result == 0)
+            if (e.Result.Equals("Statuses Updated"))
             {
                 MessageBox.Show("Your availability status has been set to available");
             }
-            //ServiceWait.Set();
-            //MessageBox.Show("At the end of return 2");
+            else
+            {
+                MessageBox.Show(e.Result);
+            }
 
         }
         public NotifyCancelledBooking()
         {
             InitializeComponent();
-            //MessageBox.Show("Inside Constructor");
             IsolatedStorageFile storageFile = IsolatedStorageFile.GetUserStoreForApplication();
             if (storageFile.FileExists("BookingCancellation.txt"))
             {
@@ -70,11 +69,6 @@ namespace Prototype
                     ServiceReference1.ServiceClient clientForTesting = new ServiceReference1.ServiceClient();
                     clientForTesting.DetailsForCancelledBookingCompleted += new EventHandler<ServiceReference1.DetailsForCancelledBookingCompletedEventArgs>(CallBackFunction);
                     clientForTesting.DetailsForCancelledBookingAsync(BookingID);
-                    //ServiceWait.WaitOne();
-
-                    //ServiceWait = new AutoResetEvent(false);
-                    // Setting Booking and Cab Status
-                    // Booking status to Cancel and Cab Status to Available
                    
                 }
                 catch

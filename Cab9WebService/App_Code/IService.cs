@@ -63,7 +63,7 @@ public interface IService
     String DetailsForCancelledBooking(int BookingID);
 
     [OperationContract]
-    int UpdateBookingAndCabStatus(int BookingID, int CabID);
+    string UpdateBookingAndCabStatus(int BookingID, int CabID);
     //[OperationContract]
     //int DetermineNearestCab(string latitude, string longitude);
 }

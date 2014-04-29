@@ -1,8 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cdetails.aspx.cs" Inherits="FYP_Prototype_1.cdetails" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cdetails.aspx.cs" Inherits="FYP_Prototype_1.cdetails" CodeFile="~/cdetails.aspx.cs"%>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
 
 <!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">

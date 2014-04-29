@@ -152,7 +152,7 @@ namespace ScheduledTaskAgent1.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/UpdateBookingAndCabStatus", ReplyAction="http://tempuri.org/IService/UpdateBookingAndCabStatusResponse")]
         System.IAsyncResult BeginUpdateBookingAndCabStatus(int BookingID, int CabID, System.AsyncCallback callback, object asyncState);
         
-        int EndUpdateBookingAndCabStatus(System.IAsyncResult result);
+        string EndUpdateBookingAndCabStatus(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -493,10 +493,10 @@ namespace ScheduledTaskAgent1.ServiceReference1 {
             this.results = results;
         }
         
-        public int Result {
+        public string Result {
             get {
                 base.RaiseExceptionIfNecessary();
-                return ((int)(this.results[0]));
+                return ((string)(this.results[0]));
             }
         }
     }
@@ -1548,7 +1548,7 @@ namespace ScheduledTaskAgent1.ServiceReference1 {
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        int ScheduledTaskAgent1.ServiceReference1.IService.EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
+        string ScheduledTaskAgent1.ServiceReference1.IService.EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
             return base.Channel.EndUpdateBookingAndCabStatus(result);
         }
         
@@ -1559,7 +1559,7 @@ namespace ScheduledTaskAgent1.ServiceReference1 {
         }
         
         private object[] OnEndUpdateBookingAndCabStatus(System.IAsyncResult result) {
-            int retVal = ((ScheduledTaskAgent1.ServiceReference1.IService)(this)).EndUpdateBookingAndCabStatus(result);
+            string retVal = ((ScheduledTaskAgent1.ServiceReference1.IService)(this)).EndUpdateBookingAndCabStatus(result);
             return new object[] {
                     retVal};
         }
@@ -1922,9 +1922,9 @@ namespace ScheduledTaskAgent1.ServiceReference1 {
                 return _result;
             }
             
-            public int EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
+            public string EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
                 object[] _args = new object[0];
-                int _result = ((int)(base.EndInvoke("UpdateBookingAndCabStatus", _args, result)));
+                string _result = ((string)(base.EndInvoke("UpdateBookingAndCabStatus", _args, result)));
                 return _result;
             }
         }

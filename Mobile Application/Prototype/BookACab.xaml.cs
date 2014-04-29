@@ -26,8 +26,6 @@ namespace Prototype
 
         private void TestCallback(object sender, ServiceReference1.CabBookingCompletedEventArgs e)
         {
-            MessageBox.Show("Inside return function");
-            MessageBox.Show(e.Result.ToString());
             if (e.Result.ToString().Contains(':'))
             {
                 // Reading logged in customer details
