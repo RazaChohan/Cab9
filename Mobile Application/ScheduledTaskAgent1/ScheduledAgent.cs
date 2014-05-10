@@ -226,7 +226,7 @@ namespace ScheduledTaskAgent1
         {
             bool driverLoggedIn = false;
 
-            ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(60));
+           ScheduledActionService.LaunchForTest(task.Name, TimeSpan.FromSeconds(60));
 
             // Read manually updated driver location from file.
             string DriverLocation = ReadLocationFromFile();

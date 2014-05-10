@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             if(!IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 SqlDataAdapter da = new SqlDataAdapter("Select * from driver where Driver_Name='" + Session["DriverDetailsName"].ToString() + "'", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -52,7 +52,7 @@ namespace FYP_Prototype_1
         {
             try
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = "Update Driver set Driver_Name='" + NameTextBox.Text + "', Driver_Password='" + PasswordTextBox.Text + "', Driver_Email='" + EmailTextBox.Text + "', Driver_PhNum='" + PhoneNumberTextBox.Text + "', Driver_NIC='" + NICTextBox.Text + "', Driver_Address='" + TextBox1.Text + "' where Driver_ID=" + Session["DriverEditID"].ToString();

@@ -21,7 +21,7 @@ namespace FYP_Prototype_1
             }
             if (!IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select Cab.Cab_Status as 'Status', Driver.Driver_Name as 'Driver Name', CabLocations.Latitude as 'Lat', CabLocations.Longitude as 'Long', Cab.Cab_RegNo from Cab,CabLocations, Driver where Cab.Cab_ID=CabLocations.Cab_ID AND Cab.Cab_ID = Driver.Cab_ID", conn);
                 DataTable dt = new DataTable();
@@ -34,21 +34,21 @@ namespace FYP_Prototype_1
                     Details += dt.Rows[i]["Status"].ToString() + "," + dt.Rows[i]["Driver Name"].ToString() + "," + dt.Rows[i]["Lat"].ToString() + "," + dt.Rows[i]["Long"].ToString() + "," + dt.Rows[i]["Cab_RegNo"].ToString() + "_";
                 }
                 Session["CurrentCabLocations"] = Details;
-                SqlConnection conn0 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn0 = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn0.Open();
                 SqlDataAdapter da0 = new SqlDataAdapter("Select COUNT(Cab_ID) As Cabs from Cab", conn0);
                 DataTable dt0 = new DataTable();
                 da0.Fill(dt0);
                 ASPxGaugeControl1.Value = dt0.Rows[0]["Cabs"].ToString();
                 conn0.Close();
-                SqlConnection conn1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn1 = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn1.Open();
                 SqlDataAdapter da1 = new SqlDataAdapter("Select COUNT(Booking_ID) As Bookings from Booking WHERE Booking_Status='Catered'", conn1);
                 DataTable dt1 = new DataTable();
                 da1.Fill(dt1);
                 ASPxGaugeControl2.Value = dt1.Rows[0]["Bookings"].ToString();
                 conn1.Close();
-                SqlConnection conn2 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn2 = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn2.Open();
                 SqlDataAdapter da2 = new SqlDataAdapter("Select COUNT(Driver_ID) As Drivers from Driver", conn2);
                 DataTable dt2 = new DataTable();
@@ -99,7 +99,7 @@ namespace FYP_Prototype_1
         protected void Timer1_Tick(object sender, EventArgs e)
         {
             //Label1.Text = "Page updated at: " + DateTime.Now.ToString();
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
             conn.Open();
             SqlDataAdapter da = new SqlDataAdapter("Select Cab.Cab_Status as 'Status', Driver.Driver_Name as 'Driver Name', CabLocations.Latitude as 'Lat', CabLocations.Longitude as 'Long', Cab.Cab_RegNo from Cab,CabLocations, Driver where Cab.Cab_ID=CabLocations.Cab_ID AND Cab.Cab_ID = Driver.Cab_ID", conn);
             DataTable dt = new DataTable();

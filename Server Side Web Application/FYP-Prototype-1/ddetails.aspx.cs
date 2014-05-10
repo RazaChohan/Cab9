@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             if(!IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 SqlDataAdapter da = new SqlDataAdapter("Select * from driver where Driver_Name='" + Session["DriverDetailsName"].ToString() + "'", conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
@@ -63,7 +63,7 @@ namespace FYP_Prototype_1
         {
             try
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
 
                 SqlCommand cmd = conn.CreateCommand();

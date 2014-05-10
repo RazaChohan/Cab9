@@ -30,8 +30,8 @@
         <Grid x:Name="ContentPanel" Grid.Row="1" Margin="10,10,14,-10">
             <Button Content="Book a Cab" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="61,119,0,0" Width="338" Click="Button_Click"/>
             <Button Content="Log out" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="61,491,0,0" Width="338" Click="Button_Click_2"/>
-            <Button Content="History" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="61,400,0,0" Width="338" Click="Button_Click_5"/>
-            <Button Content="Booking Status" HorizontalAlignment="Left" Margin="61,213,0,0" VerticalAlignment="Top" Width="338" Click="Button_Click_1"/>
+            <Button Content="Rate Driver" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="61,400,0,0" Width="338" Click="Button_Click_5"/>
+            <Button Content="Check Status" HorizontalAlignment="Left" Margin="61,213,0,0" VerticalAlignment="Top" Width="338" Click="Button_Click_1"/>
             <Button Content="Cancel Booking" HorizontalAlignment="Left" Margin="61,307,0,0" VerticalAlignment="Top" Width="338" Click="cancel_Booking_Button"/>
 
         </Grid>

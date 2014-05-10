@@ -28,7 +28,7 @@ namespace FYP_Prototype_1
             double lat = 0, lon = 0;
             //          SELECT Cab.Cab_ID, CabLocations.Latitude, CabLocations.Longitude FROM Cab INNER JOIN CabLocations ON Cab.Cab_ID=CabLocations.Cab_ID WHERE Cab.Cab_RegNo = 'VY-702';
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            SqlConnection connection = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
             connection.Open();
             SqlCommand sqlCmd = new SqlCommand("SELECT Cab.Cab_ID, CabLocations.Latitude, CabLocations.Longitude FROM Cab INNER JOIN CabLocations ON Cab.Cab_ID=CabLocations.Cab_ID WHERE Cab.Cab_RegNo = '" + id + "'", connection);
             SqlDataAdapter sqlDa = new SqlDataAdapter(sqlCmd);
@@ -81,7 +81,38 @@ namespace FYP_Prototype_1
             mManager.Add(iws, 7, 8);
 
             GMap1.markerManager = mManager;
-
+            ///////////////////////////////////////////////////////////////////
+            string cab = "";
+            DataTable dt1 = new DataTable();
+            SqlConnection connection1 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            connection1.Open();
+            SqlCommand sqlCmd1 = new SqlCommand("Select Cab_ID from Cab where Cab_RegistrationNumber='" + id + "'", connection1);
+            SqlDataAdapter sqlDa1 = new SqlDataAdapter(sqlCmd);
+            sqlDa.Fill(dt1);
+            if (dt.Rows.Count > 0)
+            {
+                cab = dt.Rows[0]["Cab_ID"].ToString();
+            }
+            connection.Close();
+            /////////////////////////////////////////////////////////////////
+            DataTable dt2 = new DataTable();
+            SqlConnection connection2 = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            connection2.Open();
+            SqlCommand sqlCmd2 = new SqlCommand("Select SUM([Booking_Fare]) As Total from Booking where Cab_ID='" + cab + "'", connection2);
+            SqlDataAdapter sqlDa2 = new SqlDataAdapter(sqlCmd2);
+            sqlDa2.Fill(dt2);
+            string fare = "";
+            if (dt2.Rows.Count > 0)
+            {
+                fare = dt2.Rows[0]["Total"].ToString();
+            }
+            ASPxGaugeControl1.Value = fare;
+            connection.Close();
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////
+            //SELECT DISTINCT([Booking_Source]), COUNT([Booking_Source]) FROM [Booking] GROUP BY Booking_Source
+            SqlDataSource1.SelectCommand = "SELECT DISTINCT([Booking_Source]), COUNT([Booking_Source]) FROM [Booking] where Cab_ID='" + cab + "' GROUP BY Booking_Source ";
+            SqlDataSource2.SelectCommand = "SELECT DISTINCT([Booking_Destination]), COUNT([Booking_Destination]) FROM [Booking] where Cab_ID='" + cab + "' GROUP BY Booking_Destination ";
+            
         }
 
         protected void DashboardButton_Click1(object sender, EventArgs e)

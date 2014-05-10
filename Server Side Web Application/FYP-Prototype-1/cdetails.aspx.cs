@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             if(!IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select * from Cab where Cab_ID=" + Session["CabDetailsID"].ToString(), conn);
                 DataTable dt = new DataTable();
@@ -44,7 +44,7 @@ namespace FYP_Prototype_1
 
         protected void DeleteCabButton_Click(object sender, EventArgs e)
         {
-            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            SqlConnection connection = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
             connection.Open();
             SqlDataAdapter da = new SqlDataAdapter("select * from Driver where Cab_ID=" + Session["CabDetailsID"].ToString(), connection);
             DataTable dt = new DataTable();

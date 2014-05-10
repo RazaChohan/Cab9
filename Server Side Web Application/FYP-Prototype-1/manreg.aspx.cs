@@ -23,7 +23,7 @@ namespace FYP_Prototype_1
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString();
+            conn.ConnectionString = @"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True";
             conn.Open();
 
             //OleDbConnection conn = new OleDbConnection();

@@ -18,7 +18,7 @@ namespace FYP_Prototype_1
             {
                 Response.Redirect("Index.aspx");
             }
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+            SqlConnection con = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
             con.Open();
             SqlDataAdapter da = new SqlDataAdapter("SELECT [Driver_Name] as 'Name', [Driver_PhNum] as 'Phone Number'  FROM [Driver]", con);
             DataSet ds = new DataSet();

@@ -29,7 +29,7 @@ namespace FYP_Prototype_1
             }
             else
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select Cab_RegNo from Cab where Cab_AssignedDriver='No'",conn);
                 DataTable dt = new DataTable();
@@ -147,7 +147,7 @@ namespace FYP_Prototype_1
                             }
                             // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-                            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                            SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                             conn.Open();
                             DataTable dt = new DataTable();
                             SqlDataAdapter da = new SqlDataAdapter("Select Cab_ID from cab where Cab_RegNo='" + CabDropDown.SelectedItem.ToString() + "'", conn);
@@ -155,10 +155,26 @@ namespace FYP_Prototype_1
 
                             int CabID = Convert.ToInt32(dt.Rows[0]["Cab_ID"]);
 
-                            // Setting default latlongs of the cab and setting default status to unavaiable until the driver changes it himself
+
+                            SqlDataAdapter Adapter = new SqlDataAdapter("Select * from CabLocations where Cab_ID=" + CabID.ToString(), conn);
+                            DataTable Table = new DataTable();
+                            Adapter.Fill(Table);
                             SqlCommand comm = conn.CreateCommand();
-                            comm.CommandText = "Insert into CabLocations (Cab_ID, Latitude, Longitude) VALUES(" + CabID + ",'33.729388','73.093146')";
-                            comm.ExecuteNonQuery();
+
+                            if (dt.Rows.Count > 0) //The record exists so location just needs to be updated
+                            {
+                                comm.CommandText = "Update CabLocations set Latitude='33.729388', Longitude='73.093146' where Cab_ID=" + CabID.ToString();
+                                int result = comm.ExecuteNonQuery();
+                                conn.Close();
+
+                            }
+                            else
+                            {
+                                // Setting default latlongs of the cab and setting default status to unavaiable until the driver changes it himself
+
+                                comm.CommandText = "Insert into CabLocations (Cab_ID, Latitude, Longitude) VALUES(" + CabID + ",'33.729388','73.093146')";
+                                comm.ExecuteNonQuery();
+                            }
 
                             using (SqlCommand cmd = new SqlCommand())
                             {

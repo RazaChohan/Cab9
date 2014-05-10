@@ -20,7 +20,7 @@ namespace FYP_Prototype_1
             }
             if (!IsPostBack)
             {
-                SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 conn.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select * from Cab where Cab_ID=" + Session["CabDetailsID"].ToString(), conn);
                 DataTable dt = new DataTable();
@@ -49,7 +49,7 @@ namespace FYP_Prototype_1
                 }
                 else
                 {
-                    SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                    SqlConnection conn = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                     conn.Open();
                     SqlCommand command = conn.CreateCommand();
                     command.CommandText = "Update Cab set Cab_RegNo='" + RegistrationNumbertextBox.Text + "', Cab_ChassisNum='" + ChassisNumTextBox.Text + "', Cab_Make='" + MakeDropDown.SelectedItem.ToString() + "', Cab_Model='" + ModelTextBox.Text + "', Cab_Color='" + ColorTextBox.Text + "' where Cab_ID=" + Session["CabDetailsID"].ToString();

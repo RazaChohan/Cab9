@@ -393,7 +393,7 @@ Cab 9</title>
                                         </asp:ChartArea>
                                     </ChartAreas>
                                 </asp:Chart>
-                                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:Cab9ConnectionString %>" SelectCommand="SELECT [Driver_Name], [Driver_Rating] FROM [Driver] ORDER BY [Driver_Rating] DESC"></asp:SqlDataSource>
+                                <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True" SelectCommand="SELECT [Driver_Name], [Driver_Rating] FROM [Driver] ORDER BY [Driver_Rating] DESC"></asp:SqlDataSource>
                             </td><td>
                                 <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource1" Width="357px">
                                     <Series>
@@ -409,9 +409,9 @@ Cab 9</title>
                                         </asp:Legend>
                                     </Legends>
                                 </asp:Chart>
-                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:Cab9ConnectionString %>" SelectCommand="Select Booking.Booking_Source,
+                                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True" SelectCommand="Select Booking.Booking_Source,
  count(Booking.Booking_Source)
-  from Booking group by Booking_Source"></asp:SqlDataSource>
+  from Booking group by Booking_Source" ProviderName="<%$ ConnectionStrings:Cab9ConnectionString.ProviderName %>"></asp:SqlDataSource>
                             </td>
                         </tr>
                     </table>
@@ -428,10 +428,10 @@ Cab 9</title>
                             </asp:ChartArea>
                         </ChartAreas>
                     </asp:Chart>
-                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:Cab9ConnectionString %>" SelectCommand="SELECT LEFT(Booking_DateTime,11) AS DATE, 
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True" SelectCommand="SELECT LEFT(Booking_DateTime,11) AS DATE, 
        [Booking_Fare] 
   FROM [Cab9].[dbo].[Booking]
-ORDER BY [Booking_DateTime]"></asp:SqlDataSource>
+ORDER BY [Booking_DateTime]" ProviderName="System.Data.SqlClient"></asp:SqlDataSource>
                     <br />
                 </center>
             </center>

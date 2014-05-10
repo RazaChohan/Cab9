@@ -28,7 +28,7 @@ namespace FYP_Prototype_1
             if (length == 14)
             {
                 SqlCommand cmd;
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection con = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 con.Open();
                 cmd = new SqlCommand("Select Cab_ChassisNum,Cab_RegNo From Cab where Cab_ChassisNum='" + ChassisNumberTextBox.Text + "' AND Cab_RegNo='" + RegistrationNumberTextBox.Text + "'", con);
                 SqlDataReader read = cmd.ExecuteReader();

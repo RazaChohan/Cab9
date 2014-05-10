@@ -543,6 +543,60 @@ public class Service : IService
         }
     }
 
+    public void CheckBookingCompletion(string latitude, string longitude, int cabID)
+    {
+        try
+        {
+            SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+            conn.Open();
+            // Checking if Cab is Servicing
+            SqlDataAdapter da = new SqlDataAdapter("Select Cab_Status from Cab where Cab_ID=" + cabID.ToString(), conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["Cab_Status"].ToString().Equals("Booked"))
+                {
+                    // Cab is booked. Now check distance from destination
+                    // Getting destination of Booking
+                    SqlDataAdapter da2 = new SqlDataAdapter("Select Booking_Destination from Booking where Cab_ID=" + cabID.ToString() + " and Booking_Status='Being Catered'", conn);
+                    DataTable dt2 = new DataTable();
+                    da2.Fill(dt2);
+                    String BookingDestination = dt2.Rows[0]["Booking_Destination"].ToString();
+
+                    CalculateAddress(latitude, longitude);
+                    AddressCalculateWait.WaitOne();
+                    //System.IO.File.AppendAllText("F:\\test.txt", address);
+                    double distanceFromDestination = CalculateRoadDistance(address, BookingDestination);
+                    //System.IO.File.AppendAllText("F:\\test.txt", "\nDistance: " + distanceFromDestination.ToString());
+
+                    if (distanceFromDestination <= 1)
+                    {
+                        // Update Statuses
+
+                        SqlCommand command = conn.CreateCommand();
+                        command.CommandText = "Update cab set Cab_Status='Available' where Cab_ID=" + cabID.ToString();
+                        command.ExecuteNonQuery();
+
+                        command.CommandText = "Update Booking Set Booking_Status = 'Catered' where Cab_ID=" + cabID.ToString() + " and Booking_Status='Being Catered' ";
+                        command.ExecuteNonQuery();
+                    }
+
+
+
+                }
+            }
+
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+
+            System.IO.File.AppendAllText("F:\\test.txt", ex.Message);
+        }
+    }
+
     public string UpdateLocation(string latitude, string longitude, int CabID)
     {
         try
@@ -561,6 +615,7 @@ public class Service : IService
                 connection.Close();
                 if (result > 0)
                 {
+                    CheckBookingCompletion(latitude,longitude,CabID);
                     return "Success";
                 }
                 else
@@ -574,6 +629,7 @@ public class Service : IService
                 connection.Close();
                 if (result > 0)
                 {
+                    CheckBookingCompletion(latitude, longitude, CabID);
                     return "Success";
                 }
                 else

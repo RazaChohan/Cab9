@@ -20,14 +20,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://192.168.1.6/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.1.9/Cab9Service/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="57f9097a-9cdb-475d-a0c0-ea4c833a3937" SourceId="1" SourceUrl="http://192.168.1.6/Cab9Service/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="d7c70575-a3ea-4cca-80b8-2b1bd1b3cf87" SourceId="1" SourceUrl="http://192.168.1.6/Cab9Service/Service.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="bc240d81-1988-419e-983f-f6da6942ce6b" SourceId="1" SourceUrl="http://192.168.1.6/Cab9Service/Service.svc?wsdl" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="91a062b3-c107-4755-a2b0-eb047b3d6cf4" SourceId="1" SourceUrl="http://192.168.1.6/Cab9Service/Service.svc?disco" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="83b5293e-4309-41e3-9af1-c24c14e4a24a" SourceId="1" SourceUrl="http://192.168.1.6/Cab9Service/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="a8c27f0d-4009-455a-890b-14c7cb76970d" SourceId="1" SourceUrl="http://192.168.1.9/Cab9Service/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="0a4c4520-8d75-4bb8-8d01-06bff9ca0959" SourceId="1" SourceUrl="http://192.168.1.9/Cab9Service/Service.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="e9642a2b-c9ab-4e88-afa0-195ddeae9587" SourceId="1" SourceUrl="http://192.168.1.9/Cab9Service/Service.svc?wsdl" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="1fbf7b08-c72f-4b3f-af06-660e6f08e081" SourceId="1" SourceUrl="http://192.168.1.9/Cab9Service/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="cb87fff3-849a-4ef6-bcb4-91f9a4d5ac21" SourceId="1" SourceUrl="http://192.168.1.9/Cab9Service/Service.svc?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

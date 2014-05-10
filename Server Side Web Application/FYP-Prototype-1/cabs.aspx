@@ -71,6 +71,8 @@
             <asp:Label ID="Label1" runat="server" Text="Cabs" Font-Size="XX-Large" ForeColor="White"></asp:Label>
             <br />
             <a href="cabreg.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">Add New Cab</a>
+            <br />
+            <a href="EditCabAllocation.aspx" style="text-decoration:none; font-size:large; color: #FFFFFF;">Edit Cab Allocation</a>
         </center>
        </div>
         <center>

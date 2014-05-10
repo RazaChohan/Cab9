@@ -23,7 +23,7 @@ namespace FYP_Prototype_1
             if (!IsPostBack)
             {
                 /////////////////////////////////////////////////////////////
-                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString());
+                SqlConnection con = new SqlConnection(@"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True");
                 con.Open();
                 SqlDataAdapter da = new SqlDataAdapter("Select [Cab_ID] as 'ID',[Cab_RegNo] as 'Registration Number',[Cab_Make] as 'Make',[Cab_Model] as 'Model', [Cab_Status] as 'Status' from Cab", con);
                 DataTable dt = new DataTable();

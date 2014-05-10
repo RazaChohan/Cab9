@@ -11,7 +11,7 @@ namespace FYP_Prototype_1
     {
         public bool AuthenticateUser(string name, string password)
         {
-            string ConnectionString = ConfigurationManager.ConnectionStrings["Connection1"].ConnectionString.ToString();
+            string ConnectionString = @"Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True";
             SqlConnection sqlConn = new SqlConnection(ConnectionString);
             SqlDataAdapter ad = new SqlDataAdapter();
             sqlConn.Open();

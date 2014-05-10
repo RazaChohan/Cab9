@@ -1,8 +1,16 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="cabloc.aspx.cs" Inherits="FYP_Prototype_1.cabloc" CodeFile="~/cabloc.aspx.cs"%>
 
+<%@ Register Assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxGauges" TagPrefix="dx" %>
+
 <%@ Register Assembly="GMaps" Namespace="Subgurim.Controles" TagPrefix="cc1" %>
 
 <%@ Register Assembly="DevExpress.Web.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web.ASPxEditors" TagPrefix="dx" %>
+
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Linear" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Circular" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.State" tagprefix="dx" %>
+<%@ Register assembly="DevExpress.Web.ASPxGauges.v13.1, Version=13.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.Web.ASPxGauges.Gauges.Digital" tagprefix="dx" %>
 
 <!DOCTYPE html>
 
@@ -185,7 +193,44 @@
                 <cc1:GMap ID="GMap1" runat=server></cc1:GMap>
             </center>
         </div>
+    <center>
+        <asp:Label ID="Label1" runat="server" Font-Size="XX-Large" ForeColor="White" Text="Total Revenue"></asp:Label>
         <br />
+        <dx:ASPxGaugeControl ID="ASPxGaugeControl1" Height="250px" Width="250px" runat="server" BackColor="Transparent" Value="00,000">
+            <Gauges>
+                <dx:DigitalGauge AppearanceOff-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:#C8C8C8&quot;/&gt;" AppearanceOn-ContentBrush="&lt;BrushObject Type=&quot;Solid&quot; Data=&quot;Color:Black&quot;/&gt;" Bounds="0, 0, 250, 250" DigitCount="5" Name="Gauge0" Padding="20, 20, 20, 20" Text="00,000">
+                    <backgroundlayers>
+                        <dx:DigitalBackgroundLayerComponent AcceptOrder="-1000" BottomRight="259.8125, 99.9625" Name="digitalBackgroundLayerComponent13" ShapeType="Style11" TopLeft="20, 0" ZOrder="1000" />
+                    </backgroundlayers>
+                </dx:DigitalGauge>
+            </Gauges>
+<LayoutPadding All="0" Left="0" Top="0" Right="0" Bottom="0"></LayoutPadding>
+        </dx:ASPxGaugeControl>
+        <br />
+        <br />
+        <table>
+            <tr><td>
+                <center><asp:Label ID="Label2" runat="server" Font-Size="X-Large" ForeColor="White" Text="Best Sources"></asp:Label></center>
+                </td><td>
+                    <center><asp:Label ID="Label3" runat="server" Font-Size="X-Large" ForeColor="White" Text="Best Destinations"></asp:Label></center>
+                </td></tr>
+            <tr><td><asp:Chart ID="Chart1" runat=server DataSourceID="SqlDataSource1" Height="335px" Width="492px"><Series><asp:Series Name="Series1" ChartType="Pie" CustomProperties="PieLabelStyle=Disabled" Legend="Legend1" XValueMember="Booking_Source" YValueMembers="Column1"></asp:Series></Series><ChartAreas><asp:ChartArea Name="ChartArea1"></asp:ChartArea></ChartAreas>
+                <Legends>
+                    <asp:Legend Name="Legend1">
+                    </asp:Legend>
+                </Legends>
+                </asp:Chart>
+                <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True" SelectCommand="SELECT [Booking_Source], Count([Booking_Source]) FROM [Booking] Group By Booking_Source"></asp:SqlDataSource>
+                </td><td><asp:Chart ID="Chart2" runat=server DataSourceID="SqlDataSource2" Height="337px" Width="467px"><Series><asp:Series Name="Series1" ChartArea="ChartArea1" ChartType="Pie" CustomProperties="PieLabelStyle=Disabled" Legend="Legend1" XValueMember="Booking_Destination" YValueMembers="Column1"></asp:Series></Series><ChartAreas><asp:ChartArea Name="ChartArea1"></asp:ChartArea></ChartAreas>
+                    <Legends>
+                        <asp:Legend Name="Legend1">
+                        </asp:Legend>
+                    </Legends>
+                    </asp:Chart>
+                    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="Data Source=WALEED-PC;Initial Catalog=Cab9;Integrated Security=True" SelectCommand="SELECT [Booking_Destination], COUNT([Booking_Destination]) FROM [Booking] GROUP BY Booking_Destination"></asp:SqlDataSource>
+                </td></tr>
+        </table>
+    </center>
     </form>
-</body>
+    </body>
 </html>
