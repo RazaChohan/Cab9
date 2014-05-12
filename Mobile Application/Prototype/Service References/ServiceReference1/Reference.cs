@@ -153,6 +153,11 @@ namespace Prototype.ServiceReference1 {
         System.IAsyncResult BeginUpdateBookingAndCabStatus(int BookingID, int CabID, System.AsyncCallback callback, object asyncState);
         
         string EndUpdateBookingAndCabStatus(System.IAsyncResult result);
+        
+        [System.ServiceModel.OperationContractAttribute(AsyncPattern=true, Action="http://tempuri.org/IService/RateDriver", ReplyAction="http://tempuri.org/IService/RateDriverResponse")]
+        System.IAsyncResult BeginRateDriver(string CabRegNo, int rating, System.AsyncCallback callback, object asyncState);
+        
+        int EndRateDriver(System.IAsyncResult result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -503,6 +508,25 @@ namespace Prototype.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RateDriverCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        public RateDriverCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        public int Result {
+            get {
+                base.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public partial class ServiceClient : System.ServiceModel.ClientBase<Prototype.ServiceReference1.IService>, Prototype.ServiceReference1.IService {
         
         private BeginOperationDelegate onBeginGetDataDelegate;
@@ -613,6 +637,12 @@ namespace Prototype.ServiceReference1 {
         
         private System.Threading.SendOrPostCallback onUpdateBookingAndCabStatusCompletedDelegate;
         
+        private BeginOperationDelegate onBeginRateDriverDelegate;
+        
+        private EndOperationDelegate onEndRateDriverDelegate;
+        
+        private System.Threading.SendOrPostCallback onRateDriverCompletedDelegate;
+        
         private BeginOperationDelegate onBeginOpenDelegate;
         
         private EndOperationDelegate onEndOpenDelegate;
@@ -701,6 +731,8 @@ namespace Prototype.ServiceReference1 {
         public event System.EventHandler<DetailsForCancelledBookingCompletedEventArgs> DetailsForCancelledBookingCompleted;
         
         public event System.EventHandler<UpdateBookingAndCabStatusCompletedEventArgs> UpdateBookingAndCabStatusCompleted;
+        
+        public event System.EventHandler<RateDriverCompletedEventArgs> RateDriverCompleted;
         
         public event System.EventHandler<System.ComponentModel.AsyncCompletedEventArgs> OpenCompleted;
         
@@ -1590,6 +1622,54 @@ namespace Prototype.ServiceReference1 {
                         CabID}, this.onEndUpdateBookingAndCabStatusDelegate, this.onUpdateBookingAndCabStatusCompletedDelegate, userState);
         }
         
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.IAsyncResult Prototype.ServiceReference1.IService.BeginRateDriver(string CabRegNo, int rating, System.AsyncCallback callback, object asyncState) {
+            return base.Channel.BeginRateDriver(CabRegNo, rating, callback, asyncState);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        int Prototype.ServiceReference1.IService.EndRateDriver(System.IAsyncResult result) {
+            return base.Channel.EndRateDriver(result);
+        }
+        
+        private System.IAsyncResult OnBeginRateDriver(object[] inValues, System.AsyncCallback callback, object asyncState) {
+            string CabRegNo = ((string)(inValues[0]));
+            int rating = ((int)(inValues[1]));
+            return ((Prototype.ServiceReference1.IService)(this)).BeginRateDriver(CabRegNo, rating, callback, asyncState);
+        }
+        
+        private object[] OnEndRateDriver(System.IAsyncResult result) {
+            int retVal = ((Prototype.ServiceReference1.IService)(this)).EndRateDriver(result);
+            return new object[] {
+                    retVal};
+        }
+        
+        private void OnRateDriverCompleted(object state) {
+            if ((this.RateDriverCompleted != null)) {
+                InvokeAsyncCompletedEventArgs e = ((InvokeAsyncCompletedEventArgs)(state));
+                this.RateDriverCompleted(this, new RateDriverCompletedEventArgs(e.Results, e.Error, e.Cancelled, e.UserState));
+            }
+        }
+        
+        public void RateDriverAsync(string CabRegNo, int rating) {
+            this.RateDriverAsync(CabRegNo, rating, null);
+        }
+        
+        public void RateDriverAsync(string CabRegNo, int rating, object userState) {
+            if ((this.onBeginRateDriverDelegate == null)) {
+                this.onBeginRateDriverDelegate = new BeginOperationDelegate(this.OnBeginRateDriver);
+            }
+            if ((this.onEndRateDriverDelegate == null)) {
+                this.onEndRateDriverDelegate = new EndOperationDelegate(this.OnEndRateDriver);
+            }
+            if ((this.onRateDriverCompletedDelegate == null)) {
+                this.onRateDriverCompletedDelegate = new System.Threading.SendOrPostCallback(this.OnRateDriverCompleted);
+            }
+            base.InvokeAsync(this.onBeginRateDriverDelegate, new object[] {
+                        CabRegNo,
+                        rating}, this.onEndRateDriverDelegate, this.onRateDriverCompletedDelegate, userState);
+        }
+        
         private System.IAsyncResult OnBeginOpen(object[] inValues, System.AsyncCallback callback, object asyncState) {
             return ((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(callback, asyncState);
         }
@@ -1925,6 +2005,20 @@ namespace Prototype.ServiceReference1 {
             public string EndUpdateBookingAndCabStatus(System.IAsyncResult result) {
                 object[] _args = new object[0];
                 string _result = ((string)(base.EndInvoke("UpdateBookingAndCabStatus", _args, result)));
+                return _result;
+            }
+            
+            public System.IAsyncResult BeginRateDriver(string CabRegNo, int rating, System.AsyncCallback callback, object asyncState) {
+                object[] _args = new object[2];
+                _args[0] = CabRegNo;
+                _args[1] = rating;
+                System.IAsyncResult _result = base.BeginInvoke("RateDriver", _args, callback, asyncState);
+                return _result;
+            }
+            
+            public int EndRateDriver(System.IAsyncResult result) {
+                object[] _args = new object[0];
+                int _result = ((int)(base.EndInvoke("RateDriver", _args, result)));
                 return _result;
             }
         }

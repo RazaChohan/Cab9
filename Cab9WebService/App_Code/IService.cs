@@ -64,6 +64,9 @@ public interface IService
 
     [OperationContract]
     string UpdateBookingAndCabStatus(int BookingID, int CabID);
+
+    [OperationContract]
+    int RateDriver(string CabRegNo, int rating);
     //[OperationContract]
     //int DetermineNearestCab(string latitude, string longitude);
 }

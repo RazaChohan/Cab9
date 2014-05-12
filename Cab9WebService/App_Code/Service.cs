@@ -58,7 +58,55 @@ public class Service : IService
             return ex.Message;
         }
     }
+
+    public int RateDriver(string CabRegNo, int rating)
+    {
+        try
+        {
+            int currentRating = 0;
+            int ratingCount = 0;
+            int newRating = 0;
+            SqlConnection conn = new SqlConnection("Data Source=WALEED-PC; Initial Catalog=Cab9; Integrated Security=True;");
+            conn.Open();
+
+            SqlDataAdapter Adapter = new SqlDataAdapter("Select Driver_Name from Driver, Cab where Driver.Cab_ID = Cab.Cab_ID and Cab_RegNo='" + CabRegNo + "'",conn);
+            DataTable table = new DataTable();
+            Adapter.Fill(table);
+
+            string driver = table.Rows[0]["Driver_Name"].ToString();
+
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = "";
+            SqlDataAdapter da = new SqlDataAdapter("SELECT [Driver_ID],[Driver_Name],[Driver_Rating],[Driver_RatingCount] FROM [Driver] where Driver_Name='" + driver + "'", conn);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+                currentRating=Convert.ToInt32(dt.Rows[0]["Driver_Rating"]);
+                ratingCount = Convert.ToInt32(dt.Rows[0]["Driver_RatingCount"]);
+
+                newRating=(currentRating+rating)/(ratingCount+1);
+
+
+                command.CommandText = "UPDATE [Driver] SET ,[Driver_Rating] = '"+newRating+"' ,[Driver_RatingCount] = '"+(ratingCount+1)+"' WHERE Driver_Name='"+driver+"'";
+                command.ExecuteNonQuery();
+                command = conn.CreateCommand();
+                return 1;
+
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+        catch (Exception ex)
+        {
+            return -1;
+        }
+    }
 	
+
     public int CheckCustomerBookings(int CustomerID)
     {
         try

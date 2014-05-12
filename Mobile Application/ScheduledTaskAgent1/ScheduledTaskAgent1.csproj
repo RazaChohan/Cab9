@@ -111,16 +111,16 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Service References\ServiceReference1\Service1.disco" />
+    <None Include="Service References\ServiceReference1\Service.disco" />
     <Content Include="ServiceReferences.ClientConfig" />
-    <None Include="Service References\ServiceReference1\Service1.wsdl" />
-    <None Include="Service References\ServiceReference1\Service3.xsd">
+    <None Include="Service References\ServiceReference1\Service.wsdl" />
+    <None Include="Service References\ServiceReference1\Service.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service31.xsd">
+    <None Include="Service References\ServiceReference1\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ServiceReference1\Service32.xsd">
+    <None Include="Service References\ServiceReference1\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
