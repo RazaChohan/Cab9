@@ -120,6 +120,7 @@ namespace Prototype
                     
                     //Calling service function to return the cab ID for this logged in Driver
                     ServiceReference1.ServiceClient clientfortesting = new ServiceReference1.ServiceClient();
+                    
                     clientfortesting.CabIDforDriverCompleted += new EventHandler<ServiceReference1.CabIDforDriverCompletedEventArgs>(CabIDForDriverReturnFunction);
                     clientfortesting.CabIDforDriverAsync(ForGlobalVariables.LoginDetails.DriverID);
 
